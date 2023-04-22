@@ -1,10 +1,18 @@
+#pragma once
 #include <iostream>
-#include "utils/Vector.h"
-#include "algorithms/VectorMultiplication.h"
+#include "algorithms/MillerRabinTest.h"
 
-int main() {
-    Vector3D a{1, 2, 3};
-    Vector3D b{1, 2, 3};
-    std::cout << VectorMultiplication::run(a, b) << std::endl;
-    std::cout << "Hello world" << std::endl;
+int main()
+{
+    unsigned int k = 8;  // Number of iterations
+    bigint n = 87178291199;
+
+    if (MillerRabinTest::run(n, k))
+         cout <<"Number "<< n<<" is prime\n";  
+    else
+        cout << "Number " << n << " is not prime\n";
+
+  
+
+    return 0;
 }
