@@ -1,5 +1,6 @@
 #pragma once
 #include"utils/BigInteger.h"
+
 using namespace BigInt;
 class MillerRabinTest
 {
@@ -9,6 +10,6 @@ private:
 	static bigint modPow(bigint x, bigint y, bigint p);
 public:
 	
-	/// <summary>By default iterationsNumber is 1</summary>
+	// Main function to run algorithm. By default iterationsNumber is 1.
 	static bool run(bigint numberToCheckIsPrime, int iterationsNumber);
 };

@@ -1,19 +1,22 @@
 #pragma once
 #include "algorithms/MillerRabinTest.h"
+#include <iostream>
+
+
 //функцiя для модульного пiднесення до степеня
 bigint MillerRabinTest::modPow(bigint x, bigint y, bigint p)
 {
     bigint res = 1;      //iнiцiалiзацiя результату
     x = x % p;  // Потрiбно оновити х, якщо воно бiльше або так ж саме як р 
- 
+  
     while (y > 0)
     {
         // Якщо у непарне, то потрiбно помножити на результат
-        if (y.longValue() & 1)
+        if ((y % 2)!=0)
             res = (res * x) % p;
 
         // у повине бути парне зараз 
-        y = y.longValue() >> 1; // y = y/2
+        y /= 2;  
         x = (x * x) % p;
     }
     return res;
