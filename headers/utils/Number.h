@@ -1,115 +1,103 @@
-//
-// Created by Ihor on 19.03.2023.
-//
-
 #ifndef LAB_NUMBER_H
 #define LAB_NUMBER_H
 
-#include <vector>
+#include <algorithm>
 #include <string>
-#include <iostream>
-
-using std::vector;
-using std::string;
-using std:: isdigit;
-using std:: size_t;
-using std:: cout;
-using std:: endl;
+#include <vector>
 
 class Number {
-private:
-    vector<unsigned int> digits;
-
-    bool isEqual(Number& n) const {
-        if (digits.size() != n.digits.size())
-            return false;
-        for (int i = 0; i < digits.size(); i++) {
-            if (digits[i] != n[i])
-                return false;
-        }
-        return true;
-    }
-
-    static vector<unsigned int> digitalize(const string& str)
-    {
-        vector<unsigned int> digits;
-        for (char c : str) {
-            if (isdigit(c)) {
-                digits.push_back(c - '0');
-            }
-        }
-        return digits;
-    }
+    friend class NumberAddition;
+    friend class NumberMultiplication;
+    friend class NumberSubtraction;
 public:
     Number() = default;
 
-    explicit Number(const string& str) {
-        this->digits = digitalize(str);
+    explicit Number(const std::string& str) : digits(digitalize(str)) {
+        simplify();
     }
 
-    explicit Number(const vector<unsigned int>& digits) {
-        this->digits = digits;
-    }
-
-    unsigned int &operator[](unsigned int i) {
+    unsigned int& operator [] (int i) {
         return digits[i];
     }
 
-    unsigned int &operator[](int i) {
+    unsigned int& operator [] (unsigned int i) {
         return digits[i];
     }
 
-    unsigned int &operator[](size_t i) {
+    unsigned int& operator [] (std::size_t i) {
         return digits[i];
     }
 
-    bool operator == (const Number& other) const {
-        if (digits.size() != other.digits.size()) {
-            return false;
-        }
-        for (unsigned int i = 0; i < digits.size(); i++) {
-            if (digits[i] != other.digits[i]) {
-                return false;
-            }
-        }
-        return true;
+    bool operator ==( const Number& other) const {
+        return digits == other.digits;
     }
 
-    bool operator != (Number& n) const {
-        return !isEqual(n);
+    bool operator != (const Number& other) const {
+        return !(*this == other);
     }
 
-    size_t getSize() {
-        return this->digits.size();
+    bool operator > (const Number& other) const {
+        return compareDigits(other) > 0;
     }
 
-    Number simplify() {
-        while (!digits.empty() && digits.back() == 0) {
-            this->digits.pop_back();
-        }
-        return (*this);
+    bool operator >= (const Number& other) const {
+        return compareDigits(other) >= 0;
     }
 
-    string toString() {
-        if (this->digits.empty()) {
+    bool operator < (const Number& other) const {
+        return compareDigits(other) < 0;
+    }
+
+    bool operator <= (const Number& other) const {
+        return compareDigits(other) <= 0;
+    }
+
+    bool isZero() const {
+        return digits.empty();
+    }
+
+    std::string toString() const {
+        if (isZero()) {
             return "0";
         }
-        string result;
-        for (unsigned int i : this->digits) {
-            do {
-                result += static_cast<char>('0' + (i % 10));
-                i /= 10;
-            } while (i != 0);
-        }
-        reverse(result.begin(), result.end());
-        return result;
+        std::string str(digits.size(), '0');
+        std::transform(digits.rbegin(), digits.rend(), str.begin(),
+                       [](unsigned int d) { return d + '0'; });
+        return str;
     }
 
-    void print(bool printNewLine = false) {
-        cout << this->toString();
-        if (printNewLine) {
-            cout << endl;
+private:
+    std::vector<unsigned int> digits;
+
+    void simplify() {
+        while (!digits.empty() && digits.back() == 0) {
+            digits.pop_back();
         }
     }
+
+    int compareDigits(const Number& other) const {
+        if (digits.size() != other.digits.size()) {
+            return digits.size() < other.digits.size() ? -1 : 1;
+        }
+        for (int i = int(digits.size() - 1); i >= 0; --i) {
+            if (digits[i] < other.digits[i]) {
+                return -1;
+            }
+            if (digits[i] > other.digits[i]) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    static std::vector<unsigned int> digitalize(const std::string& str) {
+        std::vector<unsigned int> digits;
+        digits.reserve(str.size());
+        for (auto it = str.rbegin(); it != str.rend(); ++it) {
+            digits.emplace_back(*it - '0');
+        }
+        return digits;
+    }
 };
+
 #endif //LAB_NUMBER_H

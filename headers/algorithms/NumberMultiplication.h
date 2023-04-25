@@ -1,33 +1,36 @@
-//
-// Created by Ihor on 20.03.2023.
-//
-
 #ifndef LAB_NUMBERMULTIPLICATION_H
 #define LAB_NUMBERMULTIPLICATION_H
 
+#include <vector>
 #include "utils/Number.h"
+#include "NumberAddition.h"
 
 using std::vector;
+using huge = unsigned long long int;
 
 class NumberMultiplication {
 public:
-    static Number run(Number a, Number b, unsigned int modulo) {
-        vector<unsigned int> product(a.getSize() + b.getSize());
-        for (unsigned int i = 0; i < a.getSize(); i++) {
-            for (unsigned int j = 0; j < b.getSize(); j++) {
-                product[i+j] += static_cast<unsigned int>(a[i]) * static_cast<unsigned int>(b[j]);
+    static Number run(const Number& a, const Number& b, unsigned int modulo) {
+        Number product;
+        std::size_t aSize = a.digits.size();
+        std::size_t bSize = b.digits.size();
+        product.digits.resize(aSize + bSize);
+        for (std::size_t i = 0; i < aSize; i++) {
+            unsigned int carry = 0;
+            for (std::size_t j = 0; j < bSize; j++) {
+                huge temp = huge(a.digits[i]) * huge(b.digits[j]) + huge(product.digits[i+j]) + huge(carry);
+                product.digits[i+j] = temp % modulo;
+                carry = temp / modulo;
+            }
+            if (carry > 0) {
+                product.digits[i + bSize] += carry;
             }
         }
-        vector<unsigned int> resultDigits;
-        unsigned int carry = 0;
-        for (unsigned int i : product) {
-            carry += i;
-            resultDigits.push_back(carry % modulo);
-            carry /= modulo;
-        }
-        Number result(resultDigits);
-        return result.simplify();
+
+        product.simplify();
+        return product;
     }
- };
+};
+
 
 #endif //LAB_NUMBERMULTIPLICATION_H
