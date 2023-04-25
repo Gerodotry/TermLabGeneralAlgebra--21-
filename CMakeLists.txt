@@ -28,7 +28,9 @@ add_executable(Lab main.cpp
         sources/GUI/Windows.cpp headers/GUI/Windows.h
         headers/GUI/algorithms/Algorithm.h
         sources/GUI/algorithms/VectorMultiplicationAlgorithm.cpp
-        headers/GUI/algorithms/VectorMultiplicationAlgorithm.h)
+        headers/GUI/algorithms/VectorMultiplicationAlgorithm.h
+        headers/algorithms/NumberMultiplication.h
+        headers/algorithms/NumberAddition.h headers/utils/Number.h headers/algorithms/NumberSubtraction.h headers/utils/FieldNumber.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)
