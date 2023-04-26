@@ -20,7 +20,7 @@ public:
         for (unsigned int i = small.size(); i < big.size(); i++) {
             unsigned int v = big[i] - borrow;
             borrow = v >= modulo;
-            difference.digits.push_back(v + (borrow ? modulo : 0));
+            difference.digits.push_back(v + modulo * borrow);
         }
         return difference;
     }

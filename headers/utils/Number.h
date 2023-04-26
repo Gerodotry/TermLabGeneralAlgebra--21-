@@ -13,7 +13,11 @@ public:
     Number() = default;
 
     explicit Number(const std::string& string) {
-        digits = digitalize(string.substr(1));
+        if (string[0] == '-') {
+            string.substr(1);
+        } else {
+            digitalize(string);
+        }
         simplify();
     }
 
@@ -109,13 +113,11 @@ protected:
         return 0;
     }
 
-    static std::vector<unsigned int> digitalize(const std::string& str) {
-        std::vector<unsigned int> digits;
-        digits.reserve(str.size());
-        for (auto it = str.rbegin(); it != str.rend(); ++it) {
-            digits.emplace_back(*it - '0');
+    void digitalize(const std::string& str) {
+        digits = std::vector<unsigned int>(str.size());
+        for (size_t i = 0; i < str.size(); ++i) {
+            digits[i] = str[str.size() - 1 - i] - '0';
         }
-        return digits;
     }
 };
 
