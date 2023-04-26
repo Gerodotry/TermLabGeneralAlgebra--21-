@@ -15,7 +15,7 @@ public:
         for (unsigned int i = 0; i < small.size(); i++) {
             unsigned int v = big[i] - small[i] - borrow;
             borrow = v >= modulo;
-            difference.digits.push_back(v + (borrow ? modulo : 0));
+            difference.digits.push_back(v + modulo * borrow);
         }
         for (unsigned int i = small.size(); i < big.size(); i++) {
             unsigned int v = big[i] - borrow;
