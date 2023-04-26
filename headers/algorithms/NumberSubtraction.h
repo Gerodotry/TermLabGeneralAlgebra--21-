@@ -6,6 +6,12 @@
 class NumberSubtraction {
 public:
     static Number run(Number a, Number b, unsigned int modulo) {
+        a.toField(modulo);
+        b.toField(modulo);
+        return subtract(a, b, modulo);
+    }
+
+    static Number subtract(Number a, Number b, unsigned int modulo) {
         if (a < b) {
             std::swap(a, b);
         }

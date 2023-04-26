@@ -10,7 +10,13 @@ using huge = unsigned long long int;
 
 class NumberMultiplication {
 public:
-    static Number run(const Number& a, const Number& b, unsigned int modulo) {
+    static Number run(Number a, Number b, unsigned int modulo) {
+        a.toField(modulo);
+        b.toField(modulo);
+        return multiply(a, b, modulo);
+    }
+
+    static Number multiply(const Number& a, const Number& b, unsigned int modulo) {
         Number product;
         std::size_t aSize = a.digits.size();
         std::size_t bSize = b.digits.size();
@@ -28,6 +34,7 @@ public:
         }
 
         product.simplify();
+        product.toField(modulo);
         return product;
     }
 };
