@@ -12,8 +12,20 @@ class Number {
 public:
     Number() = default;
 
-    explicit Number(const std::string& str) : digits(digitalize(str)) {
+    explicit Number(const std::string& string) {
+        digits = digitalize(string.substr(1));
         simplify();
+    }
+
+    explicit Number(int num) {
+        if (num < 0) {
+            sign = false;
+            num = abs(num);
+        }
+        while (num > 0) {
+            digits.push_back(num % 10);
+            num /= 10;
+        }
     }
 
     unsigned int& operator [] (int i) {
@@ -28,7 +40,7 @@ public:
         return digits[i];
     }
 
-    bool operator ==( const Number& other) const {
+    bool operator == ( const Number& other) const {
         return digits == other.digits;
     }
 
@@ -63,10 +75,11 @@ public:
         std::string str(digits.size(), '0');
         std::transform(digits.rbegin(), digits.rend(), str.begin(),
                        [](unsigned int d) { return d + '0'; });
-        return str;
+        return (sign) ? str : ("-" + str);
     }
 
-private:
+protected:
+    bool sign = true;
     std::vector<unsigned int> digits;
 
     void simplify() {
@@ -76,15 +89,21 @@ private:
     }
 
     int compareDigits(const Number& other) const {
+        if (sign != other.sign) {
+            // If the signs are different, return -1 if this number is negative,
+            // and return 1 if this number is positive.
+            return sign ? -1 : 1;
+        }
+        // If the signs are the same, compare the absolute values of the numbers.
         if (digits.size() != other.digits.size()) {
             return digits.size() < other.digits.size() ? -1 : 1;
         }
         for (int i = int(digits.size() - 1); i >= 0; --i) {
             if (digits[i] < other.digits[i]) {
-                return -1;
+                return sign ? 1 : -1;
             }
             if (digits[i] > other.digits[i]) {
-                return 1;
+                return sign ? -1 : 1;
             }
         }
         return 0;

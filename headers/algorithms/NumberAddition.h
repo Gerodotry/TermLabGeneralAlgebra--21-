@@ -1,7 +1,3 @@
-//
-// Created by Ihor on 24.04.2023.
-//
-
 #ifndef LAB_NUMBERADDITION_H
 #define LAB_NUMBERADDITION_H
 #include "utils/Number.h"
