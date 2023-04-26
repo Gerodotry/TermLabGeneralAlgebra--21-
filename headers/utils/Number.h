@@ -83,10 +83,6 @@ public:
                        [](unsigned int d) { return d + '0'; });
         return (sign) ? str : ("-" + str);
     }
-    void funny(int m) {
-        toField(m);
-        std::cout << toString();
-    }
 
 protected:
     bool sign = true;
