@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <cmath>
 
 class Number {
     friend class NumberAddition;
@@ -44,7 +45,7 @@ public:
         return digits[i];
     }
 
-    bool operator == ( const Number& other) const {
+    bool operator == (const Number& other) const {
         return digits == other.digits;
     }
 
@@ -89,6 +90,25 @@ protected:
     void simplify() {
         while (!digits.empty() && digits.back() == 0) {
             digits.pop_back();
+        }
+    }
+
+    void toField(unsigned int modulo) {
+        // Compute the value of the number in the given field
+        unsigned int value = 0;
+        for (int i = int(digits.size() - 1); i >= 0; --i) {
+            value = (value * 10 + digits[i]) % modulo;
+        }
+        if (!sign) {
+            value = modulo - value;
+            sign = true;
+        }
+        // Convert the value back to digits
+        digits.clear();
+        int nDigits = int(log10(value));
+        for(int i = 0; i < nDigits; ++i) {
+            digits.push_back(value % 10);
+            value /= 10;
         }
     }
 
