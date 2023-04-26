@@ -1,4 +1,4 @@
-#include "../../headers/algorithms/NumberSubtraction.h"
+#include "algorithms/NumberSubtraction.h"
 
 Number NumberSubtraction::run(Number a, Number b, unsigned int modulo) {
     a.toField(modulo);

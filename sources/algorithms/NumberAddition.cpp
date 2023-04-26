@@ -1,4 +1,4 @@
-#include "../../headers/algorithms/NumberAddition.h"
+#include "algorithms/NumberAddition.h"
 
 
 Number NumberAddition::run(Number a, Number b, unsigned int modulo) {

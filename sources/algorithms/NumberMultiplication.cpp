@@ -1,4 +1,4 @@
-#include "../../headers/algorithms/NumberMultiplication.h"
+#include "algorithms/NumberMultiplication.h"
 
 Number NumberMultiplication::run(Number a, Number b, unsigned int modulo) {
     a.toField(modulo);

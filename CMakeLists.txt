@@ -34,9 +34,9 @@ add_executable(Lab main.cpp
         headers/utils/Number.h
         headers/algorithms/NumberSubtraction.h
         sources/utils/Number.cpp
-        sources/GUI/algorithms/NumberAddition.cpp
-        sources/GUI/algorithms/NumberMultiplication.cpp
-        sources/GUI/algorithms/NumberSubtraction.cpp)
+        sources/algorithms/NumberAddition.cpp
+        sources/algorithms/NumberMultiplication.cpp
+        sources/algorithms/NumberSubtraction.cpp)
 
 include_directories(h headers)
 include_directories(ImGui imgui)
