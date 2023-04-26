@@ -28,6 +28,7 @@ public:
             borrow = v >= modulo;
             difference.digits.push_back(v + modulo * borrow);
         }
+        difference.toField(modulo);
         return difference;
     }
 };

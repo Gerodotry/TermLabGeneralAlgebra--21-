@@ -30,6 +30,7 @@ public:
         if (carry) {
             result.digits.emplace_back(1);
         }
+        result.toField(modulo);
         return result;
     }
 };
