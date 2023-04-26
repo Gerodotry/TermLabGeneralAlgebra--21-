@@ -15,7 +15,7 @@ public:
 
     explicit Number(const std::string& string) {
         if (string[0] == '-') {
-            sign = false;
+            isPositive = false;
             digitalize(string.substr(1));
         } else {
             digitalize(string);
@@ -25,7 +25,7 @@ public:
 
     explicit Number(int num) {
         if (num < 0) {
-            sign = false;
+            isPositive = false;
             num = abs(num);
         }
         while (num > 0) {
@@ -81,11 +81,11 @@ public:
         std::string str(digits.size(), '0');
         std::transform(digits.rbegin(), digits.rend(), str.begin(),
                        [](unsigned int d) { return d + '0'; });
-        return (sign) ? str : ("-" + str);
+        return (isPositive) ? str : ("-" + str);
     }
 
 protected:
-    bool sign = true;
+    bool isPositive = true;
     std::vector<unsigned int> digits;
 
     void simplify() {
@@ -100,9 +100,9 @@ protected:
         for (int i = int(digits.size() - 1); i >= 0; --i) {
             value = (value * 10 + digits[i]) % modulo;
         }
-        if (!sign) {
+        if (!isPositive) {
             value = modulo - value;
-            sign = true;
+            isPositive = true;
         }
         // Convert the value back to digits
         digits.clear();
@@ -114,10 +114,10 @@ protected:
     }
 
     int compareDigits(const Number& other) const {
-        if (sign != other.sign) {
+        if (isPositive != other.isPositive) {
             // If the signs are different, return -1 if this number is negative,
             // and return 1 if this number is positive.
-            return sign ? -1 : 1;
+            return isPositive ? -1 : 1;
         }
         // If the signs are the same, compare the absolute values of the numbers.
         if (digits.size() != other.digits.size()) {
@@ -125,10 +125,10 @@ protected:
         }
         for (int i = int(digits.size() - 1); i >= 0; --i) {
             if (digits[i] < other.digits[i]) {
-                return sign ? 1 : -1;
+                return isPositive ? 1 : -1;
             }
             if (digits[i] > other.digits[i]) {
-                return sign ? -1 : 1;
+                return isPositive ? -1 : 1;
             }
         }
         return 0;
