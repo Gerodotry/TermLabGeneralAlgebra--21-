@@ -15,7 +15,8 @@ public:
 
     explicit Number(const std::string& string) {
         if (string[0] == '-') {
-            string.substr(1);
+            sign = false;
+            digitalize(string.substr(1));
         } else {
             digitalize(string);
         }
@@ -82,6 +83,10 @@ public:
                        [](unsigned int d) { return d + '0'; });
         return (sign) ? str : ("-" + str);
     }
+    void funny(int m) {
+        toField(m);
+        std::cout << toString();
+    }
 
 protected:
     bool sign = true;
@@ -105,7 +110,7 @@ protected:
         }
         // Convert the value back to digits
         digits.clear();
-        int nDigits = int(log10(value));
+        int nDigits = ceil(log10(value));
         for(int i = 0; i < nDigits; ++i) {
             digits.push_back(value % 10);
             value /= 10;
