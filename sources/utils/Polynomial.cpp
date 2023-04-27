@@ -1,11 +1,12 @@
 #include "utils/Polynomial.h"
 
 #include <utility>
+#include <sstream>
 
 void Polynomial::dropZeroes() {
-    for (auto it = terms.begin(); it != terms.end(); ) {
+    for (auto it = this->terms.begin(); it != this->terms.end(); ) {
         if (it->isZero()) {
-            it = terms.erase(it);
+            it = this->terms.erase(it);
         } else {
             ++it;
         }
@@ -20,11 +21,12 @@ void Polynomial::toField(unsigned int modulo) {
 }
 
 std::string Polynomial::toString() {
-    if (terms.empty()) {
+    if (this->terms.empty()) {
         return "0";
     }
     std::string result;
-    for (const auto& term : terms) {
+    sortByDegree();
+    for (const auto& term : this->terms) {
         std::string termString = term.toString();
         result += (termString[0] == '-') ? termString : ("+" + termString);
     }
@@ -65,4 +67,22 @@ Polynomial::Polynomial(std::vector<std::string> degrees, std::vector<std::string
             this->terms[i] = PolynomialTerm(degrees[i], coefficients[i]);
         }
     }
+}
+
+void Polynomial::sortByDegree(bool ascending) {
+    std::sort(this->terms.begin(), this->terms.end(), [&ascending](const PolynomialTerm& leftTerm, const PolynomialTerm& rightTerm) {
+        if (ascending) {
+            return leftTerm.getDegree() > rightTerm.getDegree();
+        }
+        return leftTerm.getDegree() < rightTerm.getDegree();
+    });
+}
+
+void Polynomial::sortByCoefficient(bool ascending) {
+    std::sort(this->terms.begin(), this->terms.end(), [&ascending](const PolynomialTerm& leftTerm, const PolynomialTerm& rightTerm) {
+        if (ascending) {
+            return leftTerm.getCoefficient() > rightTerm.getCoefficient();
+        }
+        return leftTerm.getCoefficient() < rightTerm.getCoefficient();
+    });
 }

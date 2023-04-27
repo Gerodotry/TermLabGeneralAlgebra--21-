@@ -31,25 +31,25 @@ void PolynomialTerm::toField(unsigned int modulo) {
 }
 
 bool PolynomialTerm::isZero() const {
-    return coeff.isZero();
+    return this->coeff.isZero();
 }
 
 std::string PolynomialTerm::toString() const {
-    std::string coefficient = (degree.isZero()) ? coeff.toString() : coeffToString();
-    if (!coeff.isZero() && !degree.isZero()) {
-        std::string term = (degree.toString() == "1") ? "x" : ("x^" + degree.toString());
+    std::string coefficient = (this->degree.isZero()) ? this->coeff.toString() : coeffToString();
+    if (!this->coeff.isZero() && !this->degree.isZero()) {
+        std::string term = (this->degree.toString() == "1") ? "x" : ("x^" + this->degree.toString());
         coefficient += term;
     }
     return coefficient;
 }
 
 std::string PolynomialTerm::coeffToString() const {
-    std::string coefficient = coeff.toString(true);
+    std::string coefficient = this->coeff.toString(true);
     std::string result;
-    if (!coeff.isPositive) {
+    if (!this->coeff.isPositive) {
         result = "-";
     }
-    if (coeff.isZero() || coefficient != "1") {
+    if (this->coeff.isZero() || coefficient != "1") {
         result += coefficient;
     }
     return result;

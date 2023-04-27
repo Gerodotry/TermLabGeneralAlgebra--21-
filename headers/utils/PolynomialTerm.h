@@ -40,5 +40,4 @@ protected:
     void toField(unsigned int modulo);
 };
 
-
 #endif //LAB_POLYNOMIALTERM_H

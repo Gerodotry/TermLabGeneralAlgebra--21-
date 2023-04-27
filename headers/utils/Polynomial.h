@@ -6,10 +6,15 @@
 
 class Polynomial {
     friend class PolynomialTerm;
+    friend class PolynomialAddition;
+    friend class PolynomialSubtraction;
+    friend class PolynomialMultiplication;
 
 public:
     // TODO: Maybe, it is better to use templates for constructors
     Polynomial() = default;
+
+    Polynomial(const std::string& str);
 
     explicit Polynomial(const std::vector<PolynomialTerm>& terms);
 
@@ -23,14 +28,17 @@ public:
 
     std::string toString();
 
-private:
-    void dropZeroes();
-
 protected:
     std::vector<PolynomialTerm> terms;
 
     void toField(unsigned int modulo);
-};
 
+    void sortByDegree(bool ascending = true);
+
+    void sortByCoefficient(bool ascending = true);
+
+private:
+    void dropZeroes();
+};
 
 #endif //LAB_POLYNOMIAL_H
