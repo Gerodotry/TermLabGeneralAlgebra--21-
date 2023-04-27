@@ -20,6 +20,9 @@ void Polynomial::toField(unsigned int modulo) {
 }
 
 std::string Polynomial::toString() {
+    if (terms.empty()) {
+        return "0";
+    }
     std::string result;
     for (const auto& term : terms) {
         std::string termString = term.toString();
