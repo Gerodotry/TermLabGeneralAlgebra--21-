@@ -36,7 +36,7 @@ add_executable(Lab main.cpp
         sources/utils/Number.cpp
         sources/algorithms/NumberAddition.cpp
         sources/algorithms/NumberMultiplication.cpp
-        sources/algorithms/NumberSubtraction.cpp)
+        sources/algorithms/NumberSubtraction.cpp sources/utils/Polynomial.cpp headers/utils/Polynomial.h sources/utils/PolynomialTerm.cpp headers/utils/PolynomialTerm.h headers/algorithms/PolynomialAddition.h sources/algorithms/PolynomialAddition.cpp sources/algorithms/PolynomialSubtraction.cpp headers/algorithms/PolynomialSubtraction.h sources/algorithms/PolynomialMultiplication.cpp headers/algorithms/PolynomialMultiplication.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)
