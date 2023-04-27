@@ -25,7 +25,7 @@ PolynomialTerm::PolynomialTerm(const std::string &degree, const std::string &coe
     this->coeff = Number(coefficient);
 }
 
-void PolynomialTerm::simplify(unsigned int modulo) {
+void PolynomialTerm::toField(unsigned int modulo) {
     this->degree.toField(modulo);
     this->coeff.toField(modulo);
 }

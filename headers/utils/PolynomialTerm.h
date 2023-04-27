@@ -29,7 +29,7 @@ protected:
     Number degree;
     Number coeff;
 
-    void simplify(unsigned int modulo);
+    void toField(unsigned int modulo);
 };
 
 

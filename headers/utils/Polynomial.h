@@ -29,7 +29,7 @@ private:
 protected:
     std::vector<PolynomialTerm> terms;
 
-    void simplify(unsigned int modulo);
+    void toField(unsigned int modulo);
 };
 
 

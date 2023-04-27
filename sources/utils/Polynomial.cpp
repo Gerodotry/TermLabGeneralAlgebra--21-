@@ -12,10 +12,10 @@ void Polynomial::dropZeroes() {
     }
 }
 
-void Polynomial::simplify(unsigned int modulo) {
+void Polynomial::toField(unsigned int modulo) {
     dropZeroes();
     for (auto term : terms) {
-        term.simplify(modulo);
+        term.toField(modulo);
     }
 }
 
