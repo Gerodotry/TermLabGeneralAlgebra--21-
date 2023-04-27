@@ -70,7 +70,7 @@ bool Number::isZero() const {
     return digits.empty();
 }
 
-std::string Number::toString(bool abs = false) const {
+std::string Number::toString(bool abs) const {
     if (isZero()) {
         return "0";
     }
