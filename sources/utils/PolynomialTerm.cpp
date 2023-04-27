@@ -54,3 +54,19 @@ std::string PolynomialTerm::coeffToString() const {
     }
     return result;
 }
+
+Number PolynomialTerm::getDegree() const {
+    return this->degree;
+}
+
+Number PolynomialTerm::getCoefficient() const {
+    return this->coeff;
+}
+
+void PolynomialTerm::setDegree(const Number& newDegree) {
+    this->degree = newDegree;
+}
+
+void PolynomialTerm::setCoefficient(const Number& newCoefficient) {
+    this->coeff = newCoefficient;
+}

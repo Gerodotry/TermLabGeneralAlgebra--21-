@@ -18,6 +18,14 @@ public:
 
     PolynomialTerm(const std::string& degree, const std::string& coefficient);
 
+    Number getDegree() const;
+
+    Number getCoefficient() const;
+
+    void setDegree(const Number& degree);
+
+    void setCoefficient(const Number& coefficient);
+
     bool isZero() const;
 
     std::string toString() const;
