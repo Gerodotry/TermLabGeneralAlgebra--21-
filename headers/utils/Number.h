@@ -10,10 +10,13 @@ class Number {
     friend class NumberAddition;
     friend class NumberMultiplication;
     friend class NumberSubtraction;
+    friend class PolynomialTerm;
 public:
     Number() = default;
 
     explicit Number(const std::string& string);
+
+    explicit Number(unsigned int num);
 
     explicit Number(int num);
 

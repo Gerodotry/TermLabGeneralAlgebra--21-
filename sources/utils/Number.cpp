@@ -10,6 +10,13 @@ Number::Number(const std::string &string) {
     simplify();
 }
 
+Number::Number(unsigned int num) {
+    while (num > 0) {
+        digits.push_back(num % 10);
+        num /= 10;
+    }
+}
+
 Number::Number(int num) {
     if (num < 0) {
         isPositive = false;
