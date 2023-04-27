@@ -15,6 +15,7 @@ Number::Number(unsigned int num) {
         digits.push_back(num % 10);
         num /= 10;
     }
+    simplify();
 }
 
 Number::Number(int num) {
@@ -26,6 +27,7 @@ Number::Number(int num) {
         digits.push_back(num % 10);
         num /= 10;
     }
+    simplify();
 }
 
 unsigned int &Number::operator[](int i) {
@@ -79,6 +81,9 @@ std::string Number::toString() const {
 }
 
 void Number::simplify() {
+    if (isZero()) {
+        isPositive = true;
+    }
     while (!digits.empty() && digits.back() == 0) {
         digits.pop_back();
     }
@@ -130,4 +135,5 @@ void Number::digitalize(const std::string &str) {
     for (size_t i = 0; i < str.size(); ++i) {
         digits[i] = str[str.size() - 1 - i] - '0';
     }
+    simplify();
 }
