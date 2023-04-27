@@ -101,12 +101,11 @@ void Number::toField(unsigned int modulo) {
     }
     // Convert the value back to digits
     digits.clear();
-    int nDigits = ceil(log10(value));
-    for(int i = 0; i < nDigits; ++i) {
+    int nDigits = floor(log10(value)) + 1;
+    for (int i = 0; i < nDigits; ++i) {
         digits.push_back(value % 10);
         value /= 10;
     }
-
 }
 
 int Number::compareDigits(const Number &other) const {
