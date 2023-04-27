@@ -40,7 +40,7 @@ public:
 
     bool isZero() const;
 
-    std::string toString() const;
+    std::string toString(bool abs = false) const;
 
 protected:
     bool isPositive = true;

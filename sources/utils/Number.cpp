@@ -70,14 +70,14 @@ bool Number::isZero() const {
     return digits.empty();
 }
 
-std::string Number::toString() const {
+std::string Number::toString(bool abs = false) const {
     if (isZero()) {
         return "0";
     }
     std::string str(digits.size(), '0');
     std::transform(digits.rbegin(), digits.rend(), str.begin(),
                    [](unsigned int d) { return d + '0'; });
-    return (isPositive) ? str : ("-" + str);
+    return (isPositive || abs) ? str : ("-" + str);
 }
 
 void Number::simplify() {
