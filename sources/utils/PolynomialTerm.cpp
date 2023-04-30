@@ -1,54 +1,17 @@
 #include "utils/PolynomialTerm.h"
-#include <initializer_list>
 
 PolynomialTerm::PolynomialTerm() {
     degree = Number(1);
     coefficient = Number(1);
 }
 
-PolynomialTerm::PolynomialTerm(const std::initializer_list<Number>& degreeAndCoefficient) {
-    if (degreeAndCoefficient.size() == 2) {
-        auto it = degreeAndCoefficient.begin();
-        degree = *it++;
-        coefficient = *it;
-    } else {
-        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
-                                    "first values is degree and the second one is coefficient");
-    }
-}
+PolynomialTerm::PolynomialTerm(const Number &degree, const Number &coefficient): degree(degree), coefficient(coefficient) {}
 
-PolynomialTerm::PolynomialTerm(const std::initializer_list<int>& degreeAndCoefficient) {
-    if (degreeAndCoefficient.size() == 2) {
-        auto it = degreeAndCoefficient.begin();
-        degree = Number(*it++);
-        coefficient = Number(*it);
-    } else {
-        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
-                                    "first values is degree and the second one is coefficient");
-    }
-}
+PolynomialTerm::PolynomialTerm(const int &degree, const int &coefficient): degree(degree), coefficient(coefficient) {}
 
-PolynomialTerm::PolynomialTerm(const std::initializer_list<unsigned int>& degreeAndCoefficient) {
-    if (degreeAndCoefficient.size() == 2) {
-        auto it = degreeAndCoefficient.begin();
-        degree = Number(*it++);
-        coefficient = Number(*it);
-    } else {
-        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
-                                    "first values is degree and the second one is coefficient");
-    }
-}
+PolynomialTerm::PolynomialTerm(const unsigned int &degree, const unsigned int &coefficient): degree(degree), coefficient(coefficient) {}
 
-PolynomialTerm::PolynomialTerm(const std::initializer_list<std::string>& degreeAndCoefficient) {
-    if (degreeAndCoefficient.size() == 2) {
-        auto it = degreeAndCoefficient.begin();
-        degree = Number(*it++);
-        coefficient = Number(*it);
-    } else {
-        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
-                                    "first values is degree and the second one is coefficient");
-    }
-}
+PolynomialTerm::PolynomialTerm(const std::string &degree, const std::string &coefficient): degree(degree), coefficient(coefficient) {}
 
 void PolynomialTerm::toField(unsigned int modulo) {
     degree.toField(modulo);
