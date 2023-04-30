@@ -14,11 +14,11 @@ class Number {
 public:
     Number() = default;
 
-    explicit Number(const std::string& string);
+    explicit Number(const std::string& number);
 
-    explicit Number(unsigned int num);
+    explicit Number(unsigned int number);
 
-    explicit Number(int num);
+    explicit Number(int number);
 
     unsigned int& operator [] (int i);
 
@@ -42,17 +42,17 @@ public:
 
     std::string toString(bool abs = false) const;
 
+    void toField(unsigned int modulo);
+
 protected:
     bool isPositive = true;
     std::vector<unsigned int> digits;
 
     void simplify();
 
-    void toField(unsigned int modulo);
-
     int compareDigits(const Number& other) const;
 
-    void digitalize(const std::string& str);
+    void digitalize(const std::string& string);
 };
 
 #endif //LAB_NUMBER_H
