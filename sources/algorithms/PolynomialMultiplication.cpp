@@ -14,7 +14,7 @@ Polynomial PolynomialMultiplication::multiply(const Polynomial& a, const Polynom
         for (const auto& termB : b.terms) {
             Number degree = NumberAddition::run(termA.getDegree(), termB.getDegree(), modulo);
             Number coefficient = NumberMultiplication::run(termA.getCoefficient(), termB.getCoefficient(), modulo);
-            PolynomialTerm term(degree, coefficient);
+            PolynomialTerm term({degree, coefficient});
             product.terms.push_back(term);
         }
     }

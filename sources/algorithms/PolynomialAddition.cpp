@@ -16,7 +16,7 @@ Polynomial PolynomialAddition::add(const Polynomial& a, const Polynomial& b, con
         Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[i].getCoefficient();
         if (aDegree == bDegree) {
             Number coefficientsSum = NumberAddition::run(aCoefficient, bCoefficient, modulo);
-            PolynomialTerm term(aDegree, coefficientsSum);
+            PolynomialTerm term({aDegree, coefficientsSum});
             sum.terms.push_back(term);
             ++i;
             ++j;

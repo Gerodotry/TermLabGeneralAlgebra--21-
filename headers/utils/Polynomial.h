@@ -14,15 +14,12 @@ public:
     // TODO: Maybe, it is better to use templates for constructors
     Polynomial() = default;
 
-    explicit Polynomial(const std::vector<PolynomialTerm>& terms);
+    Polynomial(const std::initializer_list<PolynomialTerm>& terms);
 
     Polynomial(std::vector<Number> degrees, std::vector<Number> coefficients);
 
-    Polynomial(std::vector<int> degrees, std::vector<int> coefficients);
-
-    Polynomial(std::vector<unsigned int> degrees, std::vector<unsigned int> coefficients);
-
-    Polynomial(std::vector<std::string> degrees, std::vector<std::string> coefficients);
+    template<typename T>
+    Polynomial(std::vector<T> degrees, std::vector<T> coefficients);
 
     std::string toString();
 

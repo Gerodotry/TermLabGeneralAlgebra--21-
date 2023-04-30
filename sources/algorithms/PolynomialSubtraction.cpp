@@ -16,7 +16,7 @@ Polynomial PolynomialSubtraction::subtract(const Polynomial& a, const Polynomial
         Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[i].getCoefficient();
         if (aDegree == bDegree) {
             Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, modulo);
-            PolynomialTerm term(aDegree, coefficientsDifference);
+            PolynomialTerm term({aDegree, coefficientsDifference});
             difference.terms.push_back(term);
             ++i;
             ++j;

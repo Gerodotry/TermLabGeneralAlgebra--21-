@@ -1,72 +1,97 @@
 #include "utils/PolynomialTerm.h"
+#include <initializer_list>
 
 PolynomialTerm::PolynomialTerm() {
-    this->degree = Number(1);
-    this->coeff = Number(1);
+    degree = Number(1);
+    coefficient = Number(1);
 }
 
-PolynomialTerm::PolynomialTerm(const Number &degree, const Number &coefficient) {
-    this->degree = degree;
-    this->coeff = coefficient;
+PolynomialTerm::PolynomialTerm(const std::initializer_list<Number>& degreeAndCoefficient) {
+    if (degreeAndCoefficient.size() == 2) {
+        auto it = degreeAndCoefficient.begin();
+        degree = *it++;
+        coefficient = *it;
+    } else {
+        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
+                                    "first values is degree and the second one is coefficient");
+    }
 }
 
-PolynomialTerm::PolynomialTerm(int degree, int coefficient) {
-    this->degree = Number(degree);
-    this->coeff = Number(coefficient);
+PolynomialTerm::PolynomialTerm(const std::initializer_list<int>& degreeAndCoefficient) {
+    if (degreeAndCoefficient.size() == 2) {
+        auto it = degreeAndCoefficient.begin();
+        degree = Number(*it++);
+        coefficient = Number(*it);
+    } else {
+        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
+                                    "first values is degree and the second one is coefficient");
+    }
 }
 
-PolynomialTerm::PolynomialTerm(unsigned int degree, unsigned int coefficient) {
-    this->degree = Number(degree);
-    this->coeff = Number(coefficient);
+PolynomialTerm::PolynomialTerm(const std::initializer_list<unsigned int>& degreeAndCoefficient) {
+    if (degreeAndCoefficient.size() == 2) {
+        auto it = degreeAndCoefficient.begin();
+        degree = Number(*it++);
+        coefficient = Number(*it);
+    } else {
+        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
+                                    "first values is degree and the second one is coefficient");
+    }
 }
 
-PolynomialTerm::PolynomialTerm(const std::string &degree, const std::string &coefficient) {
-    this->degree = Number(degree);
-    this->coeff = Number(coefficient);
+PolynomialTerm::PolynomialTerm(const std::initializer_list<std::string>& degreeAndCoefficient) {
+    if (degreeAndCoefficient.size() == 2) {
+        auto it = degreeAndCoefficient.begin();
+        degree = Number(*it++);
+        coefficient = Number(*it);
+    } else {
+        throw std::invalid_argument("degreeAndCoefficient must have length 2:"
+                                    "first values is degree and the second one is coefficient");
+    }
 }
 
 void PolynomialTerm::toField(unsigned int modulo) {
-    this->degree.toField(modulo);
-    this->coeff.toField(modulo);
+    degree.toField(modulo);
+    coefficient.toField(modulo);
 }
 
 bool PolynomialTerm::isZero() const {
-    return this->coeff.isZero();
+    return coefficient.isZero();
 }
 
 std::string PolynomialTerm::toString() const {
-    std::string coefficient = (this->degree.isZero()) ? this->coeff.toString() : coeffToString();
-    if (!this->coeff.isZero() && !this->degree.isZero()) {
-        std::string term = (this->degree.toString() == "1") ? "x" : ("x^" + this->degree.toString());
-        coefficient += term;
+    std::string coeff = (degree.isZero()) ? coefficient.toString() : coeffToString();
+    if (!coefficient.isZero() && !degree.isZero()) {
+        std::string term = (degree.toString() == "1") ? "x" : ("x^" + degree.toString());
+        coeff += term;
     }
-    return coefficient;
+    return coeff;
 }
 
 std::string PolynomialTerm::coeffToString() const {
-    std::string coefficient = this->coeff.toString(true);
+    std::string coeff = coefficient.toString(true);
     std::string result;
-    if (!this->coeff.isPositive) {
+    if (!coefficient.isPositive) {
         result = "-";
     }
-    if (this->coeff.isZero() || coefficient != "1") {
-        result += coefficient;
+    if (coefficient.isZero() || coeff != "1") {
+        result += coeff;
     }
     return result;
 }
 
 Number PolynomialTerm::getDegree() const {
-    return this->degree;
+    return degree;
 }
 
 Number PolynomialTerm::getCoefficient() const {
-    return this->coeff;
+    return coefficient;
 }
 
 void PolynomialTerm::setDegree(const Number& newDegree) {
-    this->degree = newDegree;
+    degree = newDegree;
 }
 
 void PolynomialTerm::setCoefficient(const Number& newCoefficient) {
-    this->coeff = newCoefficient;
+    coefficient = newCoefficient;
 }

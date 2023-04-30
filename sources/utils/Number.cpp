@@ -1,49 +1,49 @@
 #include "../../headers/utils/Number.h"
 
-Number::Number(const std::string &string) {
-    if (string[0] == '-') {
+Number::Number(const std::string &number) {
+    if (number[0] == '-') {
         isPositive = false;
-        digitalize(string.substr(1));
+        digitalize(number.substr(1));
     } else {
-        digitalize(string);
+        digitalize(number);
     }
     simplify();
 }
 
-Number::Number(unsigned int num) {
-    while (num > 0) {
-        this->digits.push_back(num % 10);
-        num /= 10;
+Number::Number(unsigned int number) {
+    while (number > 0) {
+        digits.push_back(number % 10);
+        number /= 10;
     }
     simplify();
 }
 
-Number::Number(int num) {
-    if (num < 0) {
-        this->isPositive = false;
-        num = abs(num);
+Number::Number(int number) {
+    if (number < 0) {
+        isPositive = false;
+        number = abs(number);
     }
-    while (num > 0) {
-        this->digits.push_back(num % 10);
-        num /= 10;
+    while (number > 0) {
+        digits.push_back(number % 10);
+        number /= 10;
     }
     simplify();
 }
 
 unsigned int &Number::operator[](int i) {
-    return this->digits[i];
+    return digits[i];
 }
 
 unsigned int &Number::operator[](unsigned int i) {
-    return this->digits[i];
+    return digits[i];
 }
 
 unsigned int &Number::operator[](std::size_t i) {
-    return this->digits[i];
+    return digits[i];
 }
 
 bool Number::operator==(const Number &other) const {
-    return this->digits == other.digits;
+    return digits == other.digits;
 }
 
 bool Number::operator>(const Number &other) const {
@@ -67,72 +67,72 @@ bool Number::operator<=(const Number &other) const {
 }
 
 bool Number::isZero() const {
-    return this->digits.empty();
+    return digits.empty();
 }
 
 std::string Number::toString(bool abs) const {
     if (isZero()) {
         return "0";
     }
-    std::string str(this->digits.size(), '0');
-    std::transform(this->digits.rbegin(), this->digits.rend(), str.begin(),
+    std::string str(digits.size(), '0');
+    std::transform(digits.rbegin(), digits.rend(), str.begin(),
                    [](unsigned int d) { return d + '0'; });
-    return (this->isPositive || abs) ? str : ("-" + str);
+    return (isPositive || abs) ? str : ("-" + str);
 }
 
 void Number::simplify() {
     if (isZero()) {
-        this->isPositive = true;
+        isPositive = true;
     }
-    while (!this->digits.empty() && this->digits.back() == 0) {
-        this->digits.pop_back();
+    while (!digits.empty() && digits.back() == 0) {
+        digits.pop_back();
     }
 }
 
 void Number::toField(unsigned int modulo) {
     // Compute the value of the number in the given field
     unsigned int value = 0;
-    for (int i = int(this->digits.size() - 1); i >= 0; --i) {
-        value = (value * 10 + this->digits[i]) % modulo;
+    for (int i = int(digits.size() - 1); i >= 0; --i) {
+        value = (value * 10 + digits[i]) % modulo;
     }
-    if (!this->isPositive) {
+    if (!isPositive) {
         value = modulo - value;
-        this->isPositive = true;
+        isPositive = true;
     }
     // Convert the value back to digits
-    this->digits.clear();
+    digits.clear();
     int nDigits = int(floor(log10(value)) + 1);
     for (int i = 0; i < nDigits; ++i) {
-        this->digits.push_back(value % 10);
+        digits.push_back(value % 10);
         value /= 10;
     }
 }
 
 int Number::compareDigits(const Number &other) const {
-    if (this->isPositive != other.isPositive) {
+    if (isPositive != other.isPositive) {
         // If the signs are different, return -1 if this number is negative,
         // and return 1 if this number is positive.
-        return this->isPositive ? -1 : 1;
+        return isPositive ? -1 : 1;
     }
     // If the signs are the same, compare the absolute values of the numbers.
-    if (this->digits.size() != other.digits.size()) {
-        return this->digits.size() < other.digits.size() ? -1 : 1;
+    if (digits.size() != other.digits.size()) {
+        return digits.size() < other.digits.size() ? -1 : 1;
     }
-    for (int i = int(this->digits.size() - 1); i >= 0; --i) {
-        if (this->digits[i] < other.digits[i]) {
-            return this->isPositive ? 1 : -1;
+    for (int i = int(digits.size() - 1); i >= 0; --i) {
+        if (digits[i] < other.digits[i]) {
+            return isPositive ? 1 : -1;
         }
-        if (this->digits[i] > other.digits[i]) {
-            return this->isPositive ? -1 : 1;
+        if (digits[i] > other.digits[i]) {
+            return isPositive ? -1 : 1;
         }
     }
     return 0;
 }
 
-void Number::digitalize(const std::string &str) {
-    this->digits = std::vector<unsigned int>(str.size());
-    for (size_t i = 0; i < str.size(); ++i) {
-        this->digits[i] = str[str.size() - 1 - i] - '0';
+void Number::digitalize(const std::string &string) {
+    digits = std::vector<unsigned int>(string.size());
+    for (size_t i = 0; i < string.size(); ++i) {
+        digits[i] = string[string.size() - 1 - i] - '0';
     }
     simplify();
 }

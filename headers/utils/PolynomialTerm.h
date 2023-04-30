@@ -2,7 +2,8 @@
 #define LAB_POLYNOMIALTERM_H
 
 #include <utility>
-
+#include <stdexcept>
+#include <initializer_list>
 #include "Number.h"
 
 class PolynomialTerm {
@@ -10,13 +11,13 @@ class PolynomialTerm {
 public:
     PolynomialTerm();
 
-    PolynomialTerm(const Number& degree, const Number& coefficient);
+    PolynomialTerm(const std::initializer_list<Number>& values);
 
-    PolynomialTerm(int degree, int coefficient);
+    PolynomialTerm(const std::initializer_list<int>& values);
 
-    PolynomialTerm(unsigned int degree, unsigned int coefficient);
+    PolynomialTerm(const std::initializer_list<unsigned int>& values);
 
-    PolynomialTerm(const std::string& degree, const std::string& coefficient);
+    PolynomialTerm(const std::initializer_list<std::string>& values);
 
     Number getDegree() const;
 
@@ -35,7 +36,7 @@ private:
 
 protected:
     Number degree;
-    Number coeff;
+    Number coefficient;
 
     void toField(unsigned int modulo);
 };
