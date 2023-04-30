@@ -7,7 +7,7 @@ Polynomial PolynomialAddition::run(Polynomial a, Polynomial b, unsigned int modu
     return add(a, b, modulo);
 }
 
-Polynomial PolynomialAddition::add(const Polynomial& a, const Polynomial& b, const unsigned int& modulo) {
+Polynomial PolynomialAddition::add(const Polynomial& a, const Polynomial& b, unsigned int modulo) {
     Polynomial sum;
     // Iterate over the terms of both polynomials and add them together
     int i = 0, j = 0;

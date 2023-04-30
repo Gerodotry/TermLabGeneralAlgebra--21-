@@ -1,17 +1,27 @@
 #include "utils/PolynomialTerm.h"
 
+#include <utility>
+
 PolynomialTerm::PolynomialTerm() {
     degree = Number(1);
     coefficient = Number(1);
 }
 
-PolynomialTerm::PolynomialTerm(const Number &degree, const Number &coefficient): degree(degree), coefficient(coefficient) {}
+PolynomialTerm::PolynomialTerm(Number degree, Number coefficient):
+    degree(std::move(degree)),
+    coefficient(std::move(coefficient)) {}
 
-PolynomialTerm::PolynomialTerm(const int &degree, const int &coefficient): degree(degree), coefficient(coefficient) {}
+PolynomialTerm::PolynomialTerm(int degree, int coefficient):
+    degree(degree),
+    coefficient(coefficient) {}
 
-PolynomialTerm::PolynomialTerm(const unsigned int &degree, const unsigned int &coefficient): degree(degree), coefficient(coefficient) {}
+PolynomialTerm::PolynomialTerm(unsigned int degree,  unsigned int coefficient):
+    degree(degree),
+    coefficient(coefficient) {}
 
-PolynomialTerm::PolynomialTerm(const std::string &degree, const std::string &coefficient): degree(degree), coefficient(coefficient) {}
+PolynomialTerm::PolynomialTerm(const std::string& degree, const std::string& coefficient):
+    degree(degree),
+    coefficient(coefficient) {}
 
 void PolynomialTerm::toField(unsigned int modulo) {
     degree.toField(modulo);

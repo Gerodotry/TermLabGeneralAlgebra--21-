@@ -7,7 +7,7 @@ Polynomial PolynomialSubtraction::run(Polynomial a, Polynomial b, unsigned int m
     return subtract(a, b, modulo);
 }
 
-Polynomial PolynomialSubtraction::subtract(const Polynomial& a, const Polynomial& b, const unsigned int& modulo) {
+Polynomial PolynomialSubtraction::subtract(const Polynomial& a, const Polynomial& b, unsigned int modulo) {
     Polynomial difference;
     // Iterate over the terms of both polynomials and subtract them
     int i = 0, j = 0;
