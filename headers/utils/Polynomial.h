@@ -14,8 +14,6 @@ public:
     // TODO: Maybe, it is better to use templates for constructors
     Polynomial() = default;
 
-    Polynomial(const std::string& str);
-
     explicit Polynomial(const std::vector<PolynomialTerm>& terms);
 
     Polynomial(std::vector<Number> degrees, std::vector<Number> coefficients);

@@ -12,9 +12,9 @@ public:
 
     PolynomialTerm(const Number& degree, const Number& coefficient);
 
-    PolynomialTerm(const int& degree, const int& coefficient);
+    PolynomialTerm(int degree, int coefficient);
 
-    PolynomialTerm(const unsigned int& degree, const unsigned int& coefficient);
+    PolynomialTerm(unsigned int degree, unsigned int coefficient);
 
     PolynomialTerm(const std::string& degree, const std::string& coefficient);
 

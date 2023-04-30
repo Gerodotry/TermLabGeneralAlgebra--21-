@@ -1,7 +1,6 @@
 #include "utils/Polynomial.h"
 
 #include <utility>
-#include <sstream>
 
 void Polynomial::dropZeroes() {
     for (auto it = this->terms.begin(); it != this->terms.end(); ) {

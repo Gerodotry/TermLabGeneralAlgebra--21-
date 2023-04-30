@@ -10,12 +10,12 @@ PolynomialTerm::PolynomialTerm(const Number &degree, const Number &coefficient) 
     this->coeff = coefficient;
 }
 
-PolynomialTerm::PolynomialTerm(const int &degree, const int &coefficient) {
+PolynomialTerm::PolynomialTerm(int degree, int coefficient) {
     this->degree = Number(degree);
     this->coeff = Number(coefficient);
 }
 
-PolynomialTerm::PolynomialTerm(const unsigned int &degree, const unsigned int &coefficient) {
+PolynomialTerm::PolynomialTerm(unsigned int degree, unsigned int coefficient) {
     this->degree = Number(degree);
     this->coeff = Number(coefficient);
 }
