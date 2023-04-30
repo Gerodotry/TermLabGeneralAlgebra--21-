@@ -9,7 +9,7 @@ class PolynomialTerm {
 public:
     PolynomialTerm();
 
-    PolynomialTerm(Number  degree, Number  coefficient);
+    PolynomialTerm(Number degree, Number  coefficient);
 
     PolynomialTerm(int degree, int coefficient);
 
