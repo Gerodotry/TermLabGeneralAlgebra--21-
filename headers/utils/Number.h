@@ -10,12 +10,15 @@ class Number {
     friend class NumberAddition;
     friend class NumberMultiplication;
     friend class NumberSubtraction;
+    friend class PolynomialTerm;
 public:
     Number() = default;
 
-    explicit Number(const std::string& string);
+    explicit Number(const std::string& number);
 
-    explicit Number(int num);
+    explicit Number(unsigned int number);
+
+    explicit Number(int number);
 
     unsigned int& operator [] (int i);
 
@@ -37,7 +40,9 @@ public:
 
     bool isZero() const;
 
-    std::string toString() const;
+    std::string toString(bool abs = false) const;
+
+    void toField(unsigned int modulo);
 
 protected:
     bool isPositive = true;
@@ -45,11 +50,9 @@ protected:
 
     void simplify();
 
-    void toField(unsigned int modulo);
-
     int compareDigits(const Number& other) const;
 
-    void digitalize(const std::string& str);
+    void digitalize(const std::string& string);
 };
 
 #endif //LAB_NUMBER_H

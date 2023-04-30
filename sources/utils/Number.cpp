@@ -1,24 +1,33 @@
 #include "../../headers/utils/Number.h"
 
-Number::Number(const std::string &string) {
-    if (string[0] == '-') {
+Number::Number(const std::string &number) {
+    if (number[0] == '-') {
         isPositive = false;
-        digitalize(string.substr(1));
+        digitalize(number.substr(1));
     } else {
-        digitalize(string);
+        digitalize(number);
     }
     simplify();
 }
 
-Number::Number(int num) {
-    if (num < 0) {
+Number::Number(unsigned int number) {
+    while (number > 0) {
+        digits.push_back(number % 10);
+        number /= 10;
+    }
+    simplify();
+}
+
+Number::Number(int number) {
+    if (number < 0) {
         isPositive = false;
-        num = abs(num);
+        number = abs(number);
     }
-    while (num > 0) {
-        digits.push_back(num % 10);
-        num /= 10;
+    while (number > 0) {
+        digits.push_back(number % 10);
+        number /= 10;
     }
+    simplify();
 }
 
 unsigned int &Number::operator[](int i) {
@@ -61,17 +70,20 @@ bool Number::isZero() const {
     return digits.empty();
 }
 
-std::string Number::toString() const {
+std::string Number::toString(bool abs) const {
     if (isZero()) {
         return "0";
     }
     std::string str(digits.size(), '0');
     std::transform(digits.rbegin(), digits.rend(), str.begin(),
                    [](unsigned int d) { return d + '0'; });
-    return (isPositive) ? str : ("-" + str);
+    return (isPositive || abs) ? str : ("-" + str);
 }
 
 void Number::simplify() {
+    if (isZero()) {
+        isPositive = true;
+    }
     while (!digits.empty() && digits.back() == 0) {
         digits.pop_back();
     }
@@ -89,12 +101,11 @@ void Number::toField(unsigned int modulo) {
     }
     // Convert the value back to digits
     digits.clear();
-    int nDigits = ceil(log10(value));
-    for(int i = 0; i < nDigits; ++i) {
+    int nDigits = int(floor(log10(value)) + 1);
+    for (int i = 0; i < nDigits; ++i) {
         digits.push_back(value % 10);
         value /= 10;
     }
-
 }
 
 int Number::compareDigits(const Number &other) const {
@@ -118,9 +129,10 @@ int Number::compareDigits(const Number &other) const {
     return 0;
 }
 
-void Number::digitalize(const std::string &str) {
-    digits = std::vector<unsigned int>(str.size());
-    for (size_t i = 0; i < str.size(); ++i) {
-        digits[i] = str[str.size() - 1 - i] - '0';
+void Number::digitalize(const std::string &string) {
+    digits = std::vector<unsigned int>(string.size());
+    for (size_t i = 0; i < string.size(); ++i) {
+        digits[i] = string[string.size() - 1 - i] - '0';
     }
+    simplify();
 }

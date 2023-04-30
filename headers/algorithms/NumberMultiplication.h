@@ -1,7 +1,6 @@
 #ifndef LAB_NUMBERMULTIPLICATION_H
 #define LAB_NUMBERMULTIPLICATION_H
 
-#include <vector>
 #include "utils/Number.h"
 #include "NumberAddition.h"
 
@@ -14,6 +13,5 @@ public:
 
     static Number multiply(const Number& a, const Number& b, unsigned int modulo);
 };
-
 
 #endif //LAB_NUMBERMULTIPLICATION_H

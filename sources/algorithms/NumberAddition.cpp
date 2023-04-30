@@ -1,18 +1,17 @@
 #include "algorithms/NumberAddition.h"
 
-
 Number NumberAddition::run(Number a, Number b, unsigned int modulo) {
     a.toField(modulo);
     b.toField(modulo);
     return add(a, b, modulo);
 }
 
-Number NumberAddition::add(Number a, Number b, unsigned int modulo) {
+Number NumberAddition::add(const Number& a, const Number& b, unsigned int modulo) {
     Number result;
     std::size_t minSize = std::min(a.digits.size(), b.digits.size());
     bool carry = false;
     for (std::size_t i = 0; i < minSize; i++) {
-        unsigned int v = a[i] + b[i] + carry;
+        unsigned int v = a.digits[i] + b.digits[i] + carry;
         carry = v >= modulo;
         result.digits.emplace_back(v - modulo * carry);
     }
