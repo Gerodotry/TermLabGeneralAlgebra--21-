@@ -7,6 +7,7 @@ class PolynomialSubtraction {
 public:
     static Polynomial run(Polynomial a, Polynomial b, unsigned int modulo);
 
+private:
     static Polynomial subtract(const Polynomial& a, const Polynomial& b, unsigned int modulo);
 };
 

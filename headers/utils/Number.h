@@ -8,8 +8,10 @@
 
 class Number {
     friend class NumberAddition;
-    friend class NumberMultiplication;
     friend class NumberSubtraction;
+    friend class NumberMultiplication;
+    friend class NumberDivision;
+    friend class NumberRemainder;
     friend class PolynomialTerm;
 public:
     Number() = default;
@@ -28,7 +30,11 @@ public:
 
     bool operator == (const Number& other) const;
 
+    bool operator == (const int& other) const;
+
     bool operator != (const Number& other) const;
+
+    bool operator != (const int& other) const;
 
     bool operator > (const Number& other) const;
 
@@ -37,6 +43,8 @@ public:
     bool operator < (const Number& other) const;
 
     bool operator <= (const Number& other) const;
+
+    Number& operator = (const Number& other);
 
     bool isZero() const;
 

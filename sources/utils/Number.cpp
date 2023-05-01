@@ -30,40 +30,79 @@ Number::Number(int number) {
     simplify();
 }
 
-unsigned int &Number::operator[](int i) {
+unsigned int &Number::operator [] (int i) {
     return digits[i];
 }
 
-unsigned int &Number::operator[](unsigned int i) {
+unsigned int &Number::operator [] (unsigned int i) {
     return digits[i];
 }
 
-unsigned int &Number::operator[](std::size_t i) {
+unsigned int &Number::operator [] (std::size_t i) {
     return digits[i];
 }
 
-bool Number::operator==(const Number &other) const {
+bool Number::operator == (const Number &other) const {
     return digits == other.digits;
 }
 
-bool Number::operator>(const Number &other) const {
-    return compareDigits(other) > 0;
+
+bool Number::operator == (const int &other) const {
+    if (isPositive != (other >= 0)) {
+        return false;
+    }
+    // Check if the number of digits is the same
+    int numDigits = 0;
+    int otherCopy = other;
+    while (otherCopy != 0) {
+        numDigits++;
+        otherCopy /= 10;
+    }
+    if (digits.size() != numDigits) {
+        return false;
+    }
+    otherCopy = other;
+    for (int i = int(digits.size() - 1); i >= 0; i--) {
+        int digit = other % 10;
+        if (digits[i] != abs(digit)) {
+            return false;
+        }
+        otherCopy /= 10;
+    }
+    return true;
 }
 
-bool Number::operator!=(const Number &other) const {
+bool Number::operator != (const int &other) const {
     return !(*this == other);
 }
 
-bool Number::operator>=(const Number &other) const {
+bool Number::operator > (const Number &other) const {
+    return compareDigits(other) > 0;
+}
+
+bool Number::operator != (const Number &other) const {
+    return !(*this == other);
+}
+
+bool Number::operator >= (const Number &other) const {
     return compareDigits(other) >= 0;
 }
 
-bool Number::operator<(const Number &other) const {
+bool Number::operator < (const Number &other) const {
     return compareDigits(other) < 0;
 }
 
-bool Number::operator<=(const Number &other) const {
+bool Number::operator <= (const Number &other) const {
     return compareDigits(other) <= 0;
+}
+
+Number &Number::operator = (const Number &other) {
+    if (this == &other) {
+        return *this;
+    }
+    isPositive = other.isPositive;
+    digits = other.digits;
+    return *this;
 }
 
 bool Number::isZero() const {
@@ -120,10 +159,10 @@ int Number::compareDigits(const Number &other) const {
     }
     for (int i = int(digits.size() - 1); i >= 0; --i) {
         if (digits[i] < other.digits[i]) {
-            return isPositive ? 1 : -1;
+            return isPositive ? -1 : 1;
         }
         if (digits[i] > other.digits[i]) {
-            return isPositive ? -1 : 1;
+            return isPositive ? 1 : -1;
         }
     }
     return 0;

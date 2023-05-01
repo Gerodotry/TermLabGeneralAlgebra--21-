@@ -11,6 +11,7 @@ class NumberMultiplication {
 public:
     static Number run(Number a, Number b, unsigned int modulo);
 
+private:
     static Number multiply(const Number& a, const Number& b, unsigned int modulo);
 };
 

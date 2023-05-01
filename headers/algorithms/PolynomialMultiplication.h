@@ -7,6 +7,7 @@ class PolynomialMultiplication {
 public:
     static Polynomial run(Polynomial a, Polynomial b, unsigned int modulo);
 
+private:
     static Polynomial multiply(const Polynomial& a, const Polynomial& b, unsigned int modulo);
 };
 
