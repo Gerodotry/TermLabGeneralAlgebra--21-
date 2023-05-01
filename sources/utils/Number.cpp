@@ -46,6 +46,36 @@ bool Number::operator == (const Number &other) const {
     return digits == other.digits;
 }
 
+
+bool Number::operator == (const int &other) const {
+    if (isPositive != (other >= 0)) {
+        return false;
+    }
+    // Check if the number of digits is the same
+    int numDigits = 0;
+    int otherCopy = other;
+    while (otherCopy != 0) {
+        numDigits++;
+        otherCopy /= 10;
+    }
+    if (digits.size() != numDigits) {
+        return false;
+    }
+    otherCopy = other;
+    for (int i = int(digits.size() - 1); i >= 0; i--) {
+        int digit = other % 10;
+        if (digits[i] != abs(digit)) {
+            return false;
+        }
+        otherCopy /= 10;
+    }
+    return true;
+}
+
+bool Number::operator != (const int &other) const {
+    return !(*this == other);
+}
+
 bool Number::operator > (const Number &other) const {
     return compareDigits(other) > 0;
 }

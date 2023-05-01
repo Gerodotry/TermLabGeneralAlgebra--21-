@@ -28,7 +28,11 @@ public:
 
     bool operator == (const Number& other) const;
 
+    bool operator == (const int& other) const;
+
     bool operator != (const Number& other) const;
+
+    bool operator != (const int& other) const;
 
     bool operator > (const Number& other) const;
 
