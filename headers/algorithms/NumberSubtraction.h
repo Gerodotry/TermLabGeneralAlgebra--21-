@@ -7,7 +7,7 @@ class NumberSubtraction {
 public:
     static Number run(Number a, Number b, unsigned int modulo);
 
-    static Number subtract(Number a, Number b, unsigned int modulo);
+    static Number subtract(Number& a, Number& b, unsigned int modulo);
 };
 
 #endif //LAB_NUMBERSUBTRACTION_H

@@ -6,7 +6,7 @@ Number NumberSubtraction::run(Number a, Number b, unsigned int modulo) {
     return subtract(a, b, modulo);
 }
 
-Number NumberSubtraction::subtract(Number a, Number b, unsigned int modulo) {
+Number NumberSubtraction::subtract(Number& a, Number& b, unsigned int modulo) {
     if (a < b) {
         std::swap(a, b);
     }
