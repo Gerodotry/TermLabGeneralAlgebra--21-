@@ -10,7 +10,7 @@ Number NumberDivision::run(Number a, Number b, unsigned int modulo) {
 
 Number NumberDivision::divide(const Number &dividend, const Number &divisor, unsigned int modulo) {
     // Check for division by zero
-    if (divisor.digits.size() == 1 && divisor.digits[0] == 0) {
+    if (divisor.isZero()) {
         throw std::invalid_argument("Division by zero");
     }
 
