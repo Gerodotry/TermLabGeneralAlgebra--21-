@@ -8,8 +8,10 @@
 
 class Number {
     friend class NumberAddition;
-    friend class NumberMultiplication;
     friend class NumberSubtraction;
+    friend class NumberMultiplication;
+    friend class NumberDivision;
+    friend class NumberRemainder;
     friend class PolynomialTerm;
 public:
     Number() = default;
