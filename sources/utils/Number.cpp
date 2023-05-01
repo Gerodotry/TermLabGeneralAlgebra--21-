@@ -30,40 +30,49 @@ Number::Number(int number) {
     simplify();
 }
 
-unsigned int &Number::operator[](int i) {
+unsigned int &Number::operator [] (int i) {
     return digits[i];
 }
 
-unsigned int &Number::operator[](unsigned int i) {
+unsigned int &Number::operator [] (unsigned int i) {
     return digits[i];
 }
 
-unsigned int &Number::operator[](std::size_t i) {
+unsigned int &Number::operator [] (std::size_t i) {
     return digits[i];
 }
 
-bool Number::operator==(const Number &other) const {
+bool Number::operator == (const Number &other) const {
     return digits == other.digits;
 }
 
-bool Number::operator>(const Number &other) const {
+bool Number::operator > (const Number &other) const {
     return compareDigits(other) > 0;
 }
 
-bool Number::operator!=(const Number &other) const {
+bool Number::operator != (const Number &other) const {
     return !(*this == other);
 }
 
-bool Number::operator>=(const Number &other) const {
+bool Number::operator >= (const Number &other) const {
     return compareDigits(other) >= 0;
 }
 
-bool Number::operator<(const Number &other) const {
+bool Number::operator < (const Number &other) const {
     return compareDigits(other) < 0;
 }
 
-bool Number::operator<=(const Number &other) const {
+bool Number::operator <= (const Number &other) const {
     return compareDigits(other) <= 0;
+}
+
+Number &Number::operator = (const Number &other) {
+    if (this == &other) {
+        return *this;
+    }
+    isPositive = other.isPositive;
+    digits = other.digits;
+    return *this;
 }
 
 bool Number::isZero() const {

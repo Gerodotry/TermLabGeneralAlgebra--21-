@@ -38,6 +38,8 @@ public:
 
     bool operator <= (const Number& other) const;
 
+    Number& operator = (const Number& other);
+
     bool isZero() const;
 
     std::string toString(bool abs = false) const;
