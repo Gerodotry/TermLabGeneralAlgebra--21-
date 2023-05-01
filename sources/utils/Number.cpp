@@ -159,10 +159,10 @@ int Number::compareDigits(const Number &other) const {
     }
     for (int i = int(digits.size() - 1); i >= 0; --i) {
         if (digits[i] < other.digits[i]) {
-            return isPositive ? 1 : -1;
+            return isPositive ? -1 : 1;
         }
         if (digits[i] > other.digits[i]) {
-            return isPositive ? -1 : 1;
+            return isPositive ? 1 : -1;
         }
     }
     return 0;
