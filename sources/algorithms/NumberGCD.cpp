@@ -20,5 +20,6 @@ Number NumberGCD::gcd(Number& a, Number& b, unsigned int modulo) {
             b = NumberSubtraction::run(b, a, modulo);
         }
     }
+    a.toField(modulo);
     return a;
 }
