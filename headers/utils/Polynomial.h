@@ -25,7 +25,9 @@ public:
 
     virtual std::string toString() override;
 
-    Polynomial& operator=(const Polynomial& polynomial);
+    friend std::ostream& operator << (std::ostream& os, Polynomial& polynomial);
+
+    Polynomial& operator = (const Polynomial& polynomial);
 protected:
     std::vector<PolynomialTerm> terms;
 

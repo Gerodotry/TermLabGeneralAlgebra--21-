@@ -17,6 +17,8 @@ class Number: public Object {
 public:
     Number() = default;
 
+    explicit Number(const std::vector<unsigned int>& number);
+
     explicit Number(const std::string& number);
 
     explicit Number(unsigned int number);
@@ -46,6 +48,8 @@ public:
     bool operator <= (const Number& other) const;
 
     Number& operator = (const Number& other);
+
+    friend std::ostream& operator << (std::ostream& os, const Number& number);
 
     bool isZero() const;
 
