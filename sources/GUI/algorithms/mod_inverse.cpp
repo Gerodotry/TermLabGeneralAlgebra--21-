@@ -18,6 +18,8 @@ int GCDExtended::calculate(int a, int b, int *x, int *y)
     return gcd;
 }
 
+// next
+
 int ModInverse::calculate(int a, int m)
 {
     int x, y;
