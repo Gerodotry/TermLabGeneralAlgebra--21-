@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(Lab)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Lab main.cpp
         sources/algorithms/VectorMultiplication.cpp headers/algorithms/VectorMultiplication.h
@@ -29,14 +29,50 @@ add_executable(Lab main.cpp
         headers/GUI/algorithms/Algorithm.h
         sources/GUI/algorithms/VectorMultiplicationAlgorithm.cpp
         headers/GUI/algorithms/VectorMultiplicationAlgorithm.h
+        headers/GUI/algorithms/NumberAdditionAlgorithm.h
+        sources/GUI/algorithms/NumberAdditionAlgorithm.cpp
+        headers/GUI/algorithms/NumberSubtractionAlgorithm.h
+        sources/GUI/algorithms/NumberSubtractionAlgorithm.cpp
+        headers/GUI/algorithms/NumberMultiplicationAlgorithm.h
+        sources/GUI/algorithms/NumberMultiplicationAlgorithm.cpp
+        headers/GUI/algorithms/NumberGCDAlgorithm.h
+        sources/GUI/algorithms/NumberGCDAlgorithm.cpp
+        headers/GUI/algorithms/NumberDivisionAlgorithm.h
+        sources/GUI/algorithms/NumberDivisionAlgorithm.cpp
+        headers/GUI/algorithms/NumberRemainderAlgorithm.h
+        sources/GUI/algorithms/NumberRemainderAlgorithm.cpp
         headers/algorithms/NumberMultiplication.h
         headers/algorithms/NumberAddition.h
         headers/utils/Number.h
         headers/algorithms/NumberSubtraction.h
+        headers/algorithms/NumberGCD.h
+        sources/algorithms/NumberGCD.cpp
+        sources/algorithms/NumberRemainder.cpp
+        headers/algorithms/NumberRemainder.h
+        sources/algorithms/NumberDivision.cpp
+        headers/algorithms/NumberDivision.h
+        headers/algorithms/NumberSubtraction.h
         sources/utils/Number.cpp
         sources/algorithms/NumberAddition.cpp
         sources/algorithms/NumberMultiplication.cpp
-        sources/algorithms/NumberSubtraction.cpp sources/utils/Polynomial.cpp headers/utils/Polynomial.h sources/utils/PolynomialTerm.cpp headers/utils/PolynomialTerm.h headers/algorithms/PolynomialAddition.h sources/algorithms/PolynomialAddition.cpp sources/algorithms/PolynomialSubtraction.cpp headers/algorithms/PolynomialSubtraction.h sources/algorithms/PolynomialMultiplication.cpp headers/algorithms/PolynomialMultiplication.h)
+        sources/algorithms/NumberSubtraction.cpp
+        sources/utils/Polynomial.cpp
+        headers/utils/Polynomial.h
+        sources/utils/PolynomialTerm.cpp
+        headers/utils/PolynomialTerm.h
+        headers/algorithms/PolynomialAddition.h
+        sources/algorithms/PolynomialAddition.cpp
+        sources/algorithms/PolynomialSubtraction.cpp
+        headers/algorithms/PolynomialSubtraction.h
+        sources/algorithms/PolynomialMultiplication.cpp
+        headers/algorithms/PolynomialMultiplication.h
+        headers/GUI/inputComponents/NumberInputComponent.h
+        sources/GUI/inputComponents/NumberInputComponent.cpp
+        sources/GUI/inputComponents/IntInputComponent.cpp
+        headers/GUI/inputComponents/IntInputComponent.h
+        sources/utils/Int.cpp
+        headers/utils/Int.h
+        )
 
 include_directories(h headers)
 include_directories(ImGui imgui)

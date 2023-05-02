@@ -10,7 +10,7 @@
 
 class Float : public Object {
 public:
-    Float(float value);
+    Float(float value = 0);
 
     std::string toString() const override;
 private:

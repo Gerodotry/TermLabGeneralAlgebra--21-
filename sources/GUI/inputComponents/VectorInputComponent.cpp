@@ -7,16 +7,14 @@
 
 void VectorInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
-    ImGui::InputFloat3("Values", values);
+    ImGui::InputFloat("X", &vector.x);
+    ImGui::InputFloat("Y", &vector.y);
+    ImGui::InputFloat("Z", &vector.z);
     ImGui::End();
 }
 
 Object* VectorInputComponent::getObject() {
-    Vector3D *vector = new Vector3D;
-    vector->x = values[0];
-    vector->y = values[1];
-    vector->z = values[2];
-    return vector;
+    return &vector;
 }
 
 VectorInputComponent::VectorInputComponent(const std::string &name): InputComponent(name){

@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "algorithms/NumberDivision.h"
 #include "algorithms/NumberSubtraction.h"
 #include "algorithms/NumberMultiplication.h"
