@@ -7,33 +7,24 @@ Number NumberSubtraction::run(Number a, Number b, unsigned int modulo) {
 }
 
 Number NumberSubtraction::subtract(Number& a, Number& b, unsigned int modulo) {
-    Number difference = Number();
-    bool borrow = false;
-    int i = 0;
-    for (; i < b.digits.size(); ++i) {
-        int digitDifference;
-        if (a.digits[i]) {
-            digitDifference = int(a.digits[i] - b.digits[i] - borrow);
-            borrow = digitDifference < 0;
-        } else {
-            digitDifference = int(modulo - b.digits[i] - borrow);
-            borrow = true;
-        }
-        difference.digits.push_back(digitDifference + modulo * borrow);
+    Number result;
+    if (a < b) {
+        std::swap(a, b);
+        result.isPositive = false;
     }
-    while (i < a.digits.size()) {
-        int digitDifference;
-        if (a.digits[i]) {
-            digitDifference = int(a.digits[i] - borrow);
-            borrow = digitDifference < 0;
-        } else {
-            digitDifference = modulo - borrow;
-            borrow = true;
+    result.digits.resize(a.digits.size());
+    unsigned int borrow = 0;
+    for (size_t i = 0; i < a.digits.size(); i++) {
+        unsigned int digit = a.digits[i];
+        if (i < b.digits.size()) {
+            digit -= b.digits[i];
         }
-        difference.digits.push_back(digitDifference + modulo * borrow);
-        ++i;
+        digit -= borrow;
+        borrow = 0;
+        result.digits[i] = digit;
     }
-    difference.toField(modulo);
-    difference.simplify();
-    return difference;
+    result.simplify();
+    result.toField(modulo);
+    return result;
 }
+
