@@ -4,7 +4,7 @@
 #include <vector>
 #include "PolynomialTerm.h"
 
-class Polynomial {
+class Polynomial: public Object {
     friend class PolynomialTerm;
     friend class PolynomialAddition;
     friend class PolynomialSubtraction;
@@ -16,13 +16,16 @@ public:
 
     Polynomial(const std::initializer_list<PolynomialTerm>& terms);
 
+    Polynomial(const std::vector<std::string>& degrees, const std::vector<std::string>& coefficients);
+
     Polynomial(std::vector<Number> degrees, std::vector<Number> coefficients);
 
     template<typename T>
     Polynomial(std::vector<T> degrees, std::vector<T> coefficients);
 
-    std::string toString();
+    virtual std::string toString() override;
 
+    Polynomial& operator=(const Polynomial& polynomial);
 protected:
     std::vector<PolynomialTerm> terms;
 
