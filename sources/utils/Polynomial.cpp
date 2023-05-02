@@ -78,7 +78,12 @@ Polynomial::Polynomial(const std::vector<std::string> &degrees, const std::vecto
     }
 }
 
-Polynomial& Polynomial::operator=(const Polynomial &polynomial) {
+Polynomial& Polynomial::operator = (const Polynomial &polynomial) {
     terms = polynomial.terms;
     return *this;
+}
+
+std::ostream &operator << (std::ostream &os, Polynomial &polynomial) {
+    os << polynomial.toString();
+    return os;
 }

@@ -49,6 +49,8 @@ public:
 
     Number& operator = (const Number& other);
 
+    friend std::ostream& operator << (std::ostream& os, const Number& number);
+
     bool isZero() const;
 
     virtual std::string toString() override;
