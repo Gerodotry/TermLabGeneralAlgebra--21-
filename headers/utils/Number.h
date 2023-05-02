@@ -17,6 +17,8 @@ class Number: public Object {
 public:
     Number() = default;
 
+    explicit Number(const std::vector<unsigned int>& number);
+
     explicit Number(const std::string& number);
 
     explicit Number(unsigned int number);

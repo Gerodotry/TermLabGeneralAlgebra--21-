@@ -1,5 +1,9 @@
 #include "../../headers/utils/Number.h"
 
+Number::Number(const std::vector<unsigned int>& number) {
+    digits = number;
+}
+
 Number::Number(const std::string &number) {
     if (number[0] == '-') {
         isPositive = false;
@@ -62,7 +66,7 @@ bool Number::operator == (const int &other) const {
         return false;
     }
     otherCopy = other;
-    for (int i = int(digits.size() - 1); i >= 0; i--) {
+    for (int i = int(digits.size() - 1); i >= 0; --i) {
         int digit = other % 10;
         if (digits[i] != abs(digit)) {
             return false;
