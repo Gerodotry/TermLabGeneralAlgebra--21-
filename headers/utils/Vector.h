@@ -9,18 +9,17 @@
 
 class Vector3D : public Object {
 public:
-    float x;
-    float y;
-    float z;
+    float x = 0;
+    float y = 0;
+    float z = 0;
 private:
     std::string name;
 };
 
 class Vector2D {
 public:
-    float x;
-    float y;
-    float z;
+    float x = 0;
+    float y = 0;
 };
 
 #endif //LAB_VECTOR_H

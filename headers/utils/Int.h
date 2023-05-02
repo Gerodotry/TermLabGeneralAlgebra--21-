@@ -10,11 +10,13 @@
 
 class Int : public Object {
 public:
-    Int(int value);
+    Int(int value = 0);
 
     std::string toString() const override;
 
     int get() const;
+
+    int* getPointer();
 private:
     int value;
 };

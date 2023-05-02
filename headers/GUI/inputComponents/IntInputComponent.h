@@ -7,6 +7,7 @@
 
 
 #include "InputComponent.h"
+#include "utils/Int.h"
 
 class IntInputComponent: public InputComponent {
 public:
@@ -18,7 +19,7 @@ public:
 
     bool isInputValid() override;
 private:
-    int value;
+    Int value;
 };
 
 

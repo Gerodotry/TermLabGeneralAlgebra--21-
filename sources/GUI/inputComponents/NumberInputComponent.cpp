@@ -8,14 +8,14 @@
 
 void NumberInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
-    ImGui::InputText("Value", &number[0], 1024);
+    ImGui::InputText("Value", &numberString[0], 1024);
     ImGui::End();
 }
 
 Object* NumberInputComponent::getObject() {
-    int len = number.find_first_of('\000');
-    Number* result = new Number(number.substr(0, len));
-    return result;
+    size_t len = numberString.find_first_of('\000');
+    number = Number(numberString.substr(0, len));
+    return &number;
 }
 
 NumberInputComponent::NumberInputComponent(const std::string &name): InputComponent(name){

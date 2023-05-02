@@ -19,7 +19,7 @@ public:
 
     bool isInputValid() override;
 private:
-    float values[3] = {0, 0, 0};
+    Vector3D vector;
 };
 
 

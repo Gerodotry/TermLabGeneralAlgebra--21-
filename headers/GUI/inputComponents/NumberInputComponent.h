@@ -7,6 +7,7 @@
 
 
 #include "InputComponent.h"
+#include "utils/Number.h"
 
 class NumberInputComponent: public InputComponent {
 public:
@@ -18,7 +19,9 @@ public:
 
     bool isInputValid() override;
 private:
-    std::string number = std::string(1024, '.');
+    Number number;
+
+    std::string numberString = std::string(1024, '.');
 };
 
 

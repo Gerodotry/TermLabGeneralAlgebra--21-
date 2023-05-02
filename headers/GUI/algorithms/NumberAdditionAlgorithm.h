@@ -6,6 +6,7 @@
 #define MAIN_CPP_NUMBERADDITIONALGORITHM_H
 
 #include "Algorithm.h"
+#include "utils/Number.h"
 
 class NumberAdditionAlgorithm : public Algorithm {
 public:
@@ -14,12 +15,8 @@ public:
     std::string getName() const override;
 
     virtual Object* run() override;
-
-    virtual std::vector<InputComponent*> getTypes() const override;
-
-    ~NumberAdditionAlgorithm();
 private:
-    std::vector<InputComponent *> dataTypes;
+    Number result;
 };
 
 

@@ -6,6 +6,7 @@
 #define MAIN_CPP_ALGORITHM_H
 
 #include <vector>
+#include <memory>
 #include "utils/Object.h"
 #include "GUI/InputComponents/InputComponent.h"
 
@@ -15,7 +16,9 @@ public:
 
     virtual Object* run() = 0;
 
-    virtual std::vector<InputComponent*> getTypes() const = 0;
+    virtual const std::vector<std::shared_ptr<InputComponent>>& getTypes() const { return dataTypes; }
+protected:
+    std::vector<std::shared_ptr<InputComponent>> dataTypes;
 };
 
 #endif //MAIN_CPP_ALGORITHM_H

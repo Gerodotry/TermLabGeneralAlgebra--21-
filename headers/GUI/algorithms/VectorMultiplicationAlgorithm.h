@@ -6,6 +6,7 @@
 #define MAIN_CPP_VECTORMULTIPLICATIONALGORITHM_H
 
 #include "Algorithm.h"
+#include "utils/Float.h"
 
 class VectorMultiplicationAlgorithm : public Algorithm {
 public:
@@ -15,11 +16,9 @@ public:
 
     virtual Object* run() override;
 
-    virtual std::vector<InputComponent*> getTypes() const override;
-
-    ~VectorMultiplicationAlgorithm();
+    virtual const std::vector<std::shared_ptr<InputComponent>>& getTypes() const override;
 private:
-    std::vector<InputComponent *> dataTypes;
+    Float result;
 };
 
 

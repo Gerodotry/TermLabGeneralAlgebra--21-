@@ -14,3 +14,7 @@ std::string Int::toString() const {
 int Int::get() const {
     return value;
 }
+
+int *Int::getPointer() {
+    return &value;
+}
