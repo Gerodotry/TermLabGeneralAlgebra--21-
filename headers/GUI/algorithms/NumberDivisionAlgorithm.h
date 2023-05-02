@@ -2,15 +2,15 @@
 // Created by Dklishch on 4/24/2023.
 //
 
-#ifndef MAIN_CPP_NumberAdditionAlgorithm_H
-#define MAIN_CPP_NumberAdditionAlgorithm_H
+#ifndef MAIN_CPP_NumberDivisionAlgorithm_H
+#define MAIN_CPP_NumberDivisionAlgorithm_H
 
 #include "Algorithm.h"
 #include "utils/Number.h"
 
-class NumberAdditionAlgorithm : public Algorithm {
+class NumberDivisionAlgorithm : public Algorithm {
 public:
-    NumberAdditionAlgorithm();
+    NumberDivisionAlgorithm();
 
     std::string getName() const override;
 
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif //MAIN_CPP_NumberAdditionAlgorithm_H
+#endif //MAIN_CPP_NumberDivisionAlgorithm_H

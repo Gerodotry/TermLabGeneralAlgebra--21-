@@ -5,6 +5,11 @@
 #include "algorithms/VectorMultiplication.h"
 #include "GUI/Algorithms/VectorMultiplicationAlgorithm.h"
 #include "GUI/algorithms/NumberAdditionAlgorithm.h"
+#include "GUI/algorithms/NumberSubtractionAlgorithm.h"
+#include "GUI/algorithms/NumberMultiplicationAlgorithm.h"
+#include "GUI/algorithms/NumberGCDAlgorithm.h"
+#include "GUI/algorithms/NumberDivisionAlgorithm.h"
+#include "GUI/algorithms/NumberRemainderAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -48,6 +53,11 @@ int main(int, char**)
 
     Windows.addAlgorithm<VectorMultiplicationAlgorithm>();
     Windows.addAlgorithm<NumberAdditionAlgorithm>();
+    Windows.addAlgorithm<NumberSubtractionAlgorithm>();
+    Windows.addAlgorithm<NumberMultiplicationAlgorithm>();
+    Windows.addAlgorithm<NumberGCDAlgorithm>();
+    Windows.addAlgorithm<NumberDivisionAlgorithm>();
+    Windows.addAlgorithm<NumberRemainderAlgorithm>();
 
     while (!glfwWindowShouldClose(window))
     {

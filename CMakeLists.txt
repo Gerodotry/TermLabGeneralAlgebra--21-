@@ -31,9 +31,26 @@ add_executable(Lab main.cpp
         headers/GUI/algorithms/VectorMultiplicationAlgorithm.h
         headers/GUI/algorithms/NumberAdditionAlgorithm.h
         sources/GUI/algorithms/NumberAdditionAlgorithm.cpp
+        headers/GUI/algorithms/NumberSubtractionAlgorithm.h
+        sources/GUI/algorithms/NumberSubtractionAlgorithm.cpp
+        headers/GUI/algorithms/NumberMultiplicationAlgorithm.h
+        sources/GUI/algorithms/NumberMultiplicationAlgorithm.cpp
+        headers/GUI/algorithms/NumberGCDAlgorithm.h
+        sources/GUI/algorithms/NumberGCDAlgorithm.cpp
+        headers/GUI/algorithms/NumberDivisionAlgorithm.h
+        sources/GUI/algorithms/NumberDivisionAlgorithm.cpp
+        headers/GUI/algorithms/NumberRemainderAlgorithm.h
+        sources/GUI/algorithms/NumberRemainderAlgorithm.cpp
         headers/algorithms/NumberMultiplication.h
         headers/algorithms/NumberAddition.h
         headers/utils/Number.h
+        headers/algorithms/NumberSubtraction.h
+        headers/algorithms/NumberGCD.h
+        sources/algorithms/NumberGCD.cpp
+        sources/algorithms/NumberRemainder.cpp
+        headers/algorithms/NumberRemainder.h
+        sources/algorithms/NumberDivision.cpp
+        headers/algorithms/NumberDivision.h
         headers/algorithms/NumberSubtraction.h
         sources/utils/Number.cpp
         sources/algorithms/NumberAddition.cpp
