@@ -12,7 +12,7 @@ class Int : public Object {
 public:
     Int(int value = 0);
 
-    std::string toString() const override;
+    std::string toString() override;
 
     int get() const;
 

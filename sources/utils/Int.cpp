@@ -7,7 +7,7 @@
 Int::Int(int value): value(value) {
 }
 
-std::string Int::toString() const {
+std::string Int::toString() {
     return std::to_string(value);
 }
 
