@@ -184,6 +184,6 @@ void Number::digitalize(const std::string &string) {
     simplify();
 }
 
-std::string Number::toString() const {
+std::string Number::toString() {
     return toString(false);
 }

@@ -7,6 +7,6 @@
 Float::Float(float value): value(value) {
 }
 
-std::string Float::toString() const {
+std::string Float::toString()  {
     return std::to_string(value);
 }

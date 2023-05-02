@@ -9,7 +9,7 @@
 
 class Object {
 public:
-    virtual std::string toString() const {
+    virtual std::string toString() {
         return "Object";
     }
 };

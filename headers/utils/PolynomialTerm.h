@@ -27,7 +27,7 @@ public:
 
     bool isZero() const;
 
-    std::string toString() const;
+    std::string toString();
 
 private:
     std::string coeffToString() const;

@@ -26,7 +26,7 @@ std::string Polynomial::toString() {
     }
     std::string result;
     sortByDegree();
-    for (const auto& term : terms) {
+    for (auto& term : terms) {
         std::string termString = term.toString();
         result += (termString[0] == '-') ? termString : ("+" + termString);
     }
@@ -38,7 +38,7 @@ Polynomial::Polynomial(const std::initializer_list<PolynomialTerm>& terms): term
 Polynomial::Polynomial(std::vector<Number> degrees, std::vector<Number> coefficients) {
     if (degrees.size() == coefficients.size()) {
         for (int i = 0; i < degrees.size(); i++) {
-            terms[i] = PolynomialTerm({degrees[i], coefficients[i]});
+            terms.push_back(PolynomialTerm(degrees[i], coefficients[i]));
         }
     }
 }
@@ -47,7 +47,7 @@ template<typename T>
 Polynomial::Polynomial(std::vector<T> degrees, std::vector<T> coefficients) {
     if (degrees.size() == coefficients.size()) {
         for (int i = 0; i < degrees.size(); i++) {
-            terms[i] = PolynomialTerm({degrees[i], coefficients[i]});
+            terms.push_back(PolynomialTerm(degrees[i], coefficients[i]));
         }
     }
 }
@@ -68,4 +68,17 @@ void Polynomial::sortByCoefficient(bool ascending) {
         }
         return leftTerm.getCoefficient() < rightTerm.getCoefficient();
     });
+}
+
+Polynomial::Polynomial(const std::vector<std::string> &degrees, const std::vector<std::string> &coefficients) {
+    if (degrees.size() == coefficients.size()) {
+        for (int i = 0; i < degrees.size(); i++) {
+            terms.push_back(PolynomialTerm(Number(degrees[i]), Number(coefficients[i])));
+        }
+    }
+}
+
+Polynomial& Polynomial::operator=(const Polynomial &polynomial) {
+    terms = polynomial.terms;
+    return *this;
 }

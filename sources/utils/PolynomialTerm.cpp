@@ -32,7 +32,7 @@ bool PolynomialTerm::isZero() const {
     return coefficient.isZero();
 }
 
-std::string PolynomialTerm::toString() const {
+std::string PolynomialTerm::toString() {
     std::string coeff = (degree.isZero()) ? coefficient.toString() : coeffToString();
     if (!coefficient.isZero() && !degree.isZero()) {
         std::string term = (degree.toString() == "1") ? "x" : ("x^" + degree.toString());

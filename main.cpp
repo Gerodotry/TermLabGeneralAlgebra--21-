@@ -10,6 +10,9 @@
 #include "GUI/algorithms/NumberGCDAlgorithm.h"
 #include "GUI/algorithms/NumberDivisionAlgorithm.h"
 #include "GUI/algorithms/NumberRemainderAlgorithm.h"
+#include "GUI/algorithms/PolynomialAdditionAlgorithm.h"
+#include "GUI/algorithms/PolynomialSubtractionAlgorithm.h"
+#include "GUI/algorithms/PolynomialMultiplicationAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -57,6 +60,10 @@ int main(int, char**)
     Windows.addAlgorithm<NumberGCDAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
+
+    Windows.addAlgorithm<PolynomialAdditionAlgorithm>("Polynomial");
+    Windows.addAlgorithm<PolynomialSubtractionAlgorithm>("Polynomial");
+    Windows.addAlgorithm<PolynomialMultiplicationAlgorithm>("Polynomial");
 
     while (!glfwWindowShouldClose(window))
     {

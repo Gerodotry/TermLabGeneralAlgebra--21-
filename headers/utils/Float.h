@@ -12,7 +12,7 @@ class Float : public Object {
 public:
     Float(float value = 0);
 
-    std::string toString() const override;
+    std::string toString() override;
 private:
     float value;
 };

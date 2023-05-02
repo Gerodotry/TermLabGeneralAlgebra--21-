@@ -51,7 +51,7 @@ public:
 
     bool isZero() const;
 
-    virtual std::string toString() const override;
+    virtual std::string toString() override;
 
     std::string toString(bool abs) const;
 
