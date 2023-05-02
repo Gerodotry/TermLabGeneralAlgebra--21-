@@ -4,6 +4,7 @@
 #include "GUI/Windows.h"
 #include "algorithms/VectorMultiplication.h"
 #include "GUI/Algorithms/VectorMultiplicationAlgorithm.h"
+#include "GUI/algorithms/NumberAdditionAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -46,6 +47,7 @@ int main(int, char**)
     Windows Windows;
 
     Windows.addAlgorithm<VectorMultiplicationAlgorithm>();
+    Windows.addAlgorithm<NumberAdditionAlgorithm>();
 
     while (!glfwWindowShouldClose(window))
     {

@@ -5,8 +5,9 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include "Object.h"
 
-class Number {
+class Number: public Object {
     friend class NumberAddition;
     friend class NumberSubtraction;
     friend class NumberMultiplication;
@@ -48,7 +49,9 @@ public:
 
     bool isZero() const;
 
-    std::string toString(bool abs = false) const;
+    virtual std::string toString() const override;
+
+    std::string toString(bool abs) const;
 
     void toField(unsigned int modulo);
 

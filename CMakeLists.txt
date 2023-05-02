@@ -29,6 +29,8 @@ add_executable(Lab main.cpp
         headers/GUI/algorithms/Algorithm.h
         sources/GUI/algorithms/VectorMultiplicationAlgorithm.cpp
         headers/GUI/algorithms/VectorMultiplicationAlgorithm.h
+        headers/GUI/algorithms/NumberAdditionAlgorithm.h
+        sources/GUI/algorithms/NumberAdditionAlgorithm.cpp
         headers/algorithms/NumberMultiplication.h
         headers/algorithms/NumberAddition.h
         headers/utils/Number.h
@@ -36,7 +38,24 @@ add_executable(Lab main.cpp
         sources/utils/Number.cpp
         sources/algorithms/NumberAddition.cpp
         sources/algorithms/NumberMultiplication.cpp
-        sources/algorithms/NumberSubtraction.cpp sources/utils/Polynomial.cpp headers/utils/Polynomial.h sources/utils/PolynomialTerm.cpp headers/utils/PolynomialTerm.h headers/algorithms/PolynomialAddition.h sources/algorithms/PolynomialAddition.cpp sources/algorithms/PolynomialSubtraction.cpp headers/algorithms/PolynomialSubtraction.h sources/algorithms/PolynomialMultiplication.cpp headers/algorithms/PolynomialMultiplication.h)
+        sources/algorithms/NumberSubtraction.cpp
+        sources/utils/Polynomial.cpp
+        headers/utils/Polynomial.h
+        sources/utils/PolynomialTerm.cpp
+        headers/utils/PolynomialTerm.h
+        headers/algorithms/PolynomialAddition.h
+        sources/algorithms/PolynomialAddition.cpp
+        sources/algorithms/PolynomialSubtraction.cpp
+        headers/algorithms/PolynomialSubtraction.h
+        sources/algorithms/PolynomialMultiplication.cpp
+        headers/algorithms/PolynomialMultiplication.h
+        headers/GUI/inputComponents/NumberInputComponent.h
+        sources/GUI/inputComponents/NumberInputComponent.cpp
+        sources/GUI/inputComponents/IntInputComponent.cpp
+        headers/GUI/inputComponents/IntInputComponent.h
+        sources/utils/Int.cpp
+        headers/utils/Int.h
+        )
 
 include_directories(h headers)
 include_directories(ImGui imgui)

@@ -175,3 +175,7 @@ void Number::digitalize(const std::string &string) {
     }
     simplify();
 }
+
+std::string Number::toString() const {
+    return toString(false);
+}
