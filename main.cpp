@@ -51,13 +51,12 @@ int main(int, char**)
 
     Windows Windows;
 
-    Windows.addAlgorithm<VectorMultiplicationAlgorithm>();
-    Windows.addAlgorithm<NumberAdditionAlgorithm>();
-    Windows.addAlgorithm<NumberSubtractionAlgorithm>();
-    Windows.addAlgorithm<NumberMultiplicationAlgorithm>();
-    Windows.addAlgorithm<NumberGCDAlgorithm>();
-    Windows.addAlgorithm<NumberDivisionAlgorithm>();
-    Windows.addAlgorithm<NumberRemainderAlgorithm>();
+    Windows.addAlgorithm<NumberAdditionAlgorithm>("Numbers");
+    Windows.addAlgorithm<NumberSubtractionAlgorithm>("Numbers");
+    Windows.addAlgorithm<NumberMultiplicationAlgorithm>("Numbers");
+    Windows.addAlgorithm<NumberGCDAlgorithm>("Numbers");
+    Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
+    Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
 
     while (!glfwWindowShouldClose(window))
     {

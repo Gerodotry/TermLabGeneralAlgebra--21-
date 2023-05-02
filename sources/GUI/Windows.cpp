@@ -15,14 +15,8 @@ void Windows::update() {
     }
 }
 
-void Windows::addAlgorithm(Algorithm *algorithm) {
-    algorithms.push_back(algorithm);
-}
-
-Windows::~Windows() {
-    for (const auto& algorithm: algorithms) {
-        delete algorithm;
-    }
+void Windows::addAlgorithm(const std::string& name, std::shared_ptr<Algorithm> algorithm) {
+    algorithms[name].push_back(algorithm);
 }
 
 bool Windows::algorithmButton(Algorithm *algorithm) {
@@ -60,16 +54,17 @@ void Windows::algorithmInputWindow() {
 }
 
 void Windows::algorithmListWindow() {
-    ImGui::Begin("Algorithms");
 
-    for (const auto &algorithm: algorithms) {
-        if (algorithmButton(algorithm)) {
-            selectedAlgorithm = algorithm;
-            break;
+    for (const auto &[name, list]: algorithms) {
+        ImGui::Begin(name.c_str());
+        for (const auto& algorithm: list) {
+            if (algorithmButton(algorithm.get())) {
+                selectedAlgorithm = algorithm.get();
+                break;
+            }
         }
+        ImGui::End();
     }
-
-    ImGui::End();
 }
 
 bool Windows::isInputValid() {

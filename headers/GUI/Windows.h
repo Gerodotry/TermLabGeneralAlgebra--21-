@@ -7,21 +7,20 @@
 
 #include "algorithms/Algorithm.h"
 #include "imgui.h"
+#include <unordered_map>
 
 class Windows {
 public:
     void update();
 
     template<class T>
-    void addAlgorithm() {
-        algorithms.push_back(new T);
+    void addAlgorithm(const std::string& name) {
+        algorithms[name].push_back(std::make_shared<T>());
     }
 
-    void addAlgorithm(Algorithm* algorithm);
-
-    ~Windows();
+    void addAlgorithm(const std::string& name, std::shared_ptr<Algorithm> algorithm);
 private:
-    std::vector<Algorithm*> algorithms;
+    std::unordered_map<std::string, std::vector<std::shared_ptr<Algorithm>>> algorithms;
 
     Algorithm* selectedAlgorithm = nullptr;
 
