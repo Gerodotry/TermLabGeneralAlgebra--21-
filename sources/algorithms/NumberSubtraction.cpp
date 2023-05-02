@@ -3,9 +3,6 @@
 Number NumberSubtraction::run(Number a, Number b, unsigned int modulo) {
     a.toField(modulo);
     b.toField(modulo);
-    if (a < b) {
-        std::swap(a, b);
-    }
     return subtract(a, b, modulo);
 }
 
@@ -19,7 +16,7 @@ Number NumberSubtraction::subtract(Number& a, Number& b, unsigned int modulo) {
             digitDifference = int(a.digits[i] - b.digits[i] - borrow);
             borrow = digitDifference < 0;
         } else {
-            digitDifference = int(10 - b.digits[i] - borrow);
+            digitDifference = int(modulo - b.digits[i] - borrow);
             borrow = true;
         }
         difference.digits.push_back(digitDifference + modulo * borrow);
@@ -30,7 +27,7 @@ Number NumberSubtraction::subtract(Number& a, Number& b, unsigned int modulo) {
             digitDifference = int(a.digits[i] - borrow);
             borrow = digitDifference < 0;
         } else {
-            digitDifference = 10 - borrow;
+            digitDifference = modulo - borrow;
             borrow = true;
         }
         difference.digits.push_back(digitDifference + modulo * borrow);

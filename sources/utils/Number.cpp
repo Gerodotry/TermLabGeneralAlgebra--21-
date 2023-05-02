@@ -134,12 +134,16 @@ void Number::toField(unsigned int modulo) {
     for (int i = int(digits.size() - 1); i >= 0; --i) {
         value = (value * 10 + digits[i]) % modulo;
     }
+    digits.clear();
+    if (!value) {
+        digits.push_back(0);
+        return;
+    }
     if (!isPositive) {
         value = modulo - value;
         isPositive = true;
     }
     // Convert the value back to digits
-    digits.clear();
     int nDigits = int(floor(log10(value)) + 1);
     for (int i = 0; i < nDigits; ++i) {
         digits.push_back(value % 10);
