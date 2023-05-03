@@ -187,8 +187,3 @@ void Number::digitalize(const std::string &string) {
 std::string Number::toString() {
     return toString(false);
 }
-
-std::ostream &operator << (std::ostream &os, const Number &number) {
-    os << number.toString(false);
-    return os;
-}
