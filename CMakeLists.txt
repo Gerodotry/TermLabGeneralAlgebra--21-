@@ -62,16 +62,16 @@ add_executable(Lab main.cpp
         sources/algorithms/NumberAddition.cpp
         sources/algorithms/NumberMultiplication.cpp
         sources/algorithms/NumberSubtraction.cpp
-        sources/utils/Polynomial.cpp
-        headers/utils/Polynomial.h
+        sources/utils/RingPolynomial.cpp
+        headers/utils/RingPolynomial.h
         sources/utils/PolynomialTerm.cpp
         headers/utils/PolynomialTerm.h
-        headers/algorithms/PolynomialAddition.h
-        sources/algorithms/PolynomialAddition.cpp
-        sources/algorithms/PolynomialSubtraction.cpp
-        headers/algorithms/PolynomialSubtraction.h
-        sources/algorithms/PolynomialMultiplication.cpp
-        headers/algorithms/PolynomialMultiplication.h
+        headers/algorithms/RingPolynomialAddition.h
+        sources/algorithms/RingPolynomialAddition.cpp
+        sources/algorithms/RingPolynomialSubtraction.cpp
+        headers/algorithms/RingPolynomialSubtraction.h
+        sources/algorithms/RingPolynomialMultiplication.cpp
+        headers/algorithms/RingPolynomialMultiplication.h
         headers/GUI/inputComponents/NumberInputComponent.h
         sources/GUI/inputComponents/NumberInputComponent.cpp
         headers/GUI/inputComponents/PolynomialInputComponent.h

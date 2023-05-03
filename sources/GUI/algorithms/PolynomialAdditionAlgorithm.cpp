@@ -5,18 +5,18 @@
 #include "GUI/Algorithms/PolynomialAdditionAlgorithm.h"
 #include "GUI/inputComponents/IntInputComponent.h"
 #include "utils/Int.h"
-#include "algorithms/PolynomialAddition.h"
+#include "algorithms/RingPolynomialAddition.h"
 #include "GUI/inputComponents/PolynomialInputComponent.h"
 
 std::string PolynomialAdditionAlgorithm::getName() const {
-    return "Polynomial addition";
+    return "RingPolynomial addition";
 }
 
 Object *PolynomialAdditionAlgorithm::run() {
-    Polynomial *polynomialA = dynamic_cast<Polynomial *>(dataTypes[0]->getObject());
-    Polynomial *polynomialB = dynamic_cast<Polynomial *>(dataTypes[1]->getObject());
+    RingPolynomial *polynomialA = dynamic_cast<RingPolynomial *>(dataTypes[0]->getObject());
+    RingPolynomial *polynomialB = dynamic_cast<RingPolynomial *>(dataTypes[1]->getObject());
     int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
-    result = PolynomialAddition::run(*polynomialA, *polynomialB, module);
+    result = RingPolynomialAddition::run(*polynomialA, *polynomialB, module);
     return &result;
 }
 

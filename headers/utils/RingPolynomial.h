@@ -1,10 +1,10 @@
-#ifndef LAB_POLYNOMIAL_H
-#define LAB_POLYNOMIAL_H
+#ifndef LAB_RINGPOLYNOMIAL_H
+#define LAB_RINGPOLYNOMIAL_H
 
 #include <vector>
 #include "PolynomialTerm.h"
 
-class Polynomial: public Object {
+class RingPolynomial: public Object {
     friend class PolynomialTerm;
     friend class PolynomialAddition;
     friend class PolynomialSubtraction;
@@ -12,20 +12,20 @@ class Polynomial: public Object {
 
 public:
     // TODO: Maybe, it is better to use templates for constructors
-    Polynomial() = default;
+    RingPolynomial() = default;
 
-    Polynomial(const std::initializer_list<PolynomialTerm>& terms);
+    RingPolynomial(const std::initializer_list<PolynomialTerm>& terms);
 
-    Polynomial(const std::vector<std::string>& degrees, const std::vector<std::string>& coefficients);
+    RingPolynomial(const std::vector<std::string>& degrees, const std::vector<std::string>& coefficients);
 
-    Polynomial(std::vector<Number> degrees, std::vector<Number> coefficients);
+    RingPolynomial(std::vector<Number> degrees, std::vector<Number> coefficients);
 
     template<typename T>
-    Polynomial(std::vector<T> degrees, std::vector<T> coefficients);
+    RingPolynomial(std::vector<T> degrees, std::vector<T> coefficients);
 
     virtual std::string toString() override;
 
-    Polynomial& operator = (const Polynomial& polynomial);
+    RingPolynomial& operator = (const RingPolynomial& polynomial);
 protected:
     std::vector<PolynomialTerm> terms;
 
@@ -39,4 +39,4 @@ private:
     void dropZeroes();
 };
 
-#endif //LAB_POLYNOMIAL_H
+#endif //LAB_RINGPOLYNOMIAL_H

@@ -7,7 +7,7 @@
 
 #include "Algorithm.h"
 #include "utils/Number.h"
-#include "utils/Polynomial.h"
+#include "utils/RingPolynomial.h"
 
 class PolynomialAdditionAlgorithm : public Algorithm {
 public:
@@ -17,7 +17,7 @@ public:
 
     virtual Object* run() override;
 private:
-    Polynomial result;
+    RingPolynomial result;
 };
 
 

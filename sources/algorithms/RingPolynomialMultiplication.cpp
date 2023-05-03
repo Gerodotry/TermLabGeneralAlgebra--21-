@@ -1,14 +1,14 @@
-#include "algorithms/PolynomialMultiplication.h"
+#include "algorithms/RingPolynomialMultiplication.h"
 #include "algorithms/NumberMultiplication.h"
 
-Polynomial PolynomialMultiplication::run(Polynomial a, Polynomial b, unsigned int modulo) {
+RingPolynomial RingPolynomialMultiplication::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
     a.toField(modulo);
     b.toField(modulo);
     return multiply(a, b, modulo);
 }
 
-Polynomial PolynomialMultiplication::multiply(const Polynomial& a, const Polynomial& b, unsigned int modulo) {
-    Polynomial product;
+RingPolynomial RingPolynomialMultiplication::multiply(const RingPolynomial& a, const RingPolynomial& b, unsigned int modulo) {
+    RingPolynomial product;
     // Multiply each term of a with each term of b and add the results to the product polynomial
     for (const auto& termA : a.terms) {
         for (const auto& termB : b.terms) {

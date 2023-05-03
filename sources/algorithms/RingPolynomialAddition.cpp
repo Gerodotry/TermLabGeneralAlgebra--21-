@@ -1,14 +1,14 @@
-#include "algorithms/PolynomialAddition.h"
+#include "algorithms/RingPolynomialAddition.h"
 #include "algorithms/NumberAddition.h"
 
-Polynomial PolynomialAddition::run(Polynomial a, Polynomial b, unsigned int modulo) {
+RingPolynomial RingPolynomialAddition::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
     a.toField(modulo);
     b.toField(modulo);
     return add(a, b, modulo);
 }
 
-Polynomial PolynomialAddition::add(const Polynomial& a, const Polynomial& b, unsigned int modulo) {
-    Polynomial sum;
+RingPolynomial RingPolynomialAddition::add(const RingPolynomial& a, const RingPolynomial& b, unsigned int modulo) {
+    RingPolynomial sum;
     // Iterate over the terms of both polynomials and add them together
     int i = 0, j = 0;
     while (i < a.terms.size() && j < b.terms.size()) {
