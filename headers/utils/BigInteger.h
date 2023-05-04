@@ -1,3 +1,5 @@
+#ifndef LAB_BIGINTEGER_H
+#define LAB_BIGINTEGER_H
 #pragma once
 #include <string>
 #include <iomanip>
@@ -411,3 +413,4 @@ namespace BigInt
 		}
 	};
 }
+#endif //LAB_BIGINTEGER_H

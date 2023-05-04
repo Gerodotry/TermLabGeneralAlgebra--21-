@@ -1,3 +1,6 @@
+#ifndef LAB_MILLERRABINTEST_H
+#define LAB_MILLERRABINTEST_H
+
 #pragma once
 #include"utils/BigInteger.h"
 
@@ -13,3 +16,4 @@ public:
 	// Main function to run algorithm. By default iterationsNumber is 1.
 	static bool run(bigint numberToCheckIsPrime, int iterationsNumber);
 };
+#endif //
