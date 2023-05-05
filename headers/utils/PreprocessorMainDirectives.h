@@ -2,8 +2,8 @@
 /*
 	MAIN - main cpp
 	MILLERRABIN_UNIT_TESTS - Unit tests of Miller Rabin Test algorithm
-	IRREDUCIBILITY_UNIT_TESTS - Unit tests of IRREDUCIBILITY
+	GCP_UNIT_TESTS - Unit tests of GCP
 */
 
 
-#define MAIN //which main you want to start 
+#define MAIN //which main you want to start
