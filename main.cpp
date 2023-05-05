@@ -61,9 +61,9 @@ int main(int, char**)
     Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
 
-    Windows.addAlgorithm<PolynomialAdditionAlgorithm>("Polynomial");
-    Windows.addAlgorithm<PolynomialSubtractionAlgorithm>("Polynomial");
-    Windows.addAlgorithm<PolynomialMultiplicationAlgorithm>("Polynomial");
+    Windows.addAlgorithm<PolynomialAdditionAlgorithm>("RingPolynomial");
+    Windows.addAlgorithm<PolynomialSubtractionAlgorithm>("RingPolynomial");
+    Windows.addAlgorithm<PolynomialMultiplicationAlgorithm>("RingPolynomial");
 
     while (!glfwWindowShouldClose(window))
     {

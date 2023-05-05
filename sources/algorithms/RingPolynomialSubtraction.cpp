@@ -1,14 +1,14 @@
-#include "algorithms/PolynomialSubtraction.h"
+#include "algorithms/RingPolynomialSubtraction.h"
 #include "algorithms/NumberSubtraction.h"
 
-Polynomial PolynomialSubtraction::run(Polynomial a, Polynomial b, unsigned int modulo) {
+RingPolynomial RingPolynomialSubtraction::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
     a.toField(modulo);
     b.toField(modulo);
     return subtract(a, b, modulo);
 }
 
-Polynomial PolynomialSubtraction::subtract(const Polynomial& a, const Polynomial& b, unsigned int modulo) {
-    Polynomial difference;
+RingPolynomial RingPolynomialSubtraction::subtract(const RingPolynomial& a, const RingPolynomial& b, unsigned int modulo) {
+    RingPolynomial difference;
     // Iterate over the terms of both polynomials and subtract them
     int i = 0, j = 0;
     while (i < a.terms.size() && j < b.terms.size()) {

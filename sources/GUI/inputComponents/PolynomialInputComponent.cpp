@@ -18,7 +18,7 @@ void PolynomialInputComponent::createInputWindow() {
 Object* PolynomialInputComponent::getObject() {
     std::vector<std::string> degreesList = parseNumbers(degrees);
     std::vector<std::string> coefficientsList = parseNumbers(coefficients);
-    polynomial = Polynomial(degreesList, coefficientsList);
+    polynomial = RingPolynomial(degreesList, coefficientsList);
     return &polynomial;
 }
 

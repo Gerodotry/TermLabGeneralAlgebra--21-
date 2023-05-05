@@ -8,7 +8,7 @@
 
 #include "InputComponent.h"
 #include "utils/Int.h"
-#include "utils/Polynomial.h"
+#include "utils/RingPolynomial.h"
 
 class PolynomialInputComponent: public InputComponent {
 public:
@@ -25,7 +25,7 @@ private:
     std::string degrees = std::string(2048, '.');
     std::string coefficients = std::string(2048, '.');
 
-    Polynomial polynomial;
+    RingPolynomial polynomial;
 
     std::vector<std::string> parseNumbers(const std::string& string);
 };
