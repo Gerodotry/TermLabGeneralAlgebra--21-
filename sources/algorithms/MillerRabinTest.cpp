@@ -27,7 +27,7 @@ bool MillerRabinTest::miillerTest(bigint d, bigint n)
     //Потрібно взяти випадкове число в діапазоні [2..,n - 2)
     bigint a;
     while (a < 2 || a >= n - 2)
-        a = (2 + rand()) % (n.longValue() - 4);
+        a = 2 + rand() % n.longValue() - 4;
 
     // Обчислюється a^d % n за допмогою модульного пiднесення до степеня
     bigint x = modPow(a, d, n);
@@ -45,7 +45,7 @@ bool MillerRabinTest::miillerTest(bigint d, bigint n)
         x = (x * x) % n;
         d *= 2;
 
-        if (x == 1)      return false; //повертається "складове"
+        if (x == 1)      return false; //повертається "складове", тобто число непросте
         if (x == n - 1)    return true;//перехід на наступну ітерацію цикла
     }
 
