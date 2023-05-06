@@ -2,7 +2,7 @@
 #define LAB_MILLERRABINTEST_H
 
 #pragma once
-#include"utils/BigInteger.h"
+#include"utils/BigInt.h"
 
 using namespace BigInt;
 class MillerRabinTest
