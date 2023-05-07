@@ -1,8 +1,6 @@
 #include"headers/utils/PreprocessorMainDirectives.h"
 #ifdef MAIN
 
-/*
-
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -106,8 +104,7 @@ int main(int, char**)
 
     return 0;
 }
-*/
-
+/*
 #include <iostream>
 #include "algorithms/MillerRabinTest.h"
 #include "algorithms/Gcd.h"
@@ -168,5 +165,5 @@ int main() {
 
     return 0;
 }
-
+*/
 #endif
