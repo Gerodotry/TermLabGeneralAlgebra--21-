@@ -5,12 +5,14 @@
 #include "algorithms/NumberSubtraction.h"
 
 Number NumberRemainder::run(Number a, Number b, unsigned int modulo) {
-    a.toField(modulo);
-    b.toField(modulo);
+    if (modulo) {
+        a.toField(modulo);
+        b.toField(modulo);
+    }
     return remainder(a, b, modulo);
 }
 
-Number NumberRemainder::remainder(const Number &a, const Number &b, unsigned int modulo) {
+Number NumberRemainder::remainder(Number &a, Number &b, unsigned int modulo) {
     // Check for division by zero
     if (b.isZero()) {
         throw std::invalid_argument("Division by zero");
@@ -20,6 +22,8 @@ Number NumberRemainder::remainder(const Number &a, const Number &b, unsigned int
     quotient = NumberDivision::run(a, b, modulo);
     remainder = NumberMultiplication::run(quotient, b, modulo);
     remainder = NumberSubtraction::run(a, remainder, modulo);
-    remainder.toField(modulo);
+    if (modulo) {
+        remainder.toField(modulo);
+    }
     return remainder;
 }

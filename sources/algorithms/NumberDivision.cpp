@@ -4,50 +4,58 @@
 #include "algorithms/NumberMultiplication.h"
 
 Number NumberDivision::run(Number a, Number b, unsigned int modulo) {
-    a.toField(modulo);
-    b.toField(modulo);
+    if (modulo) {
+        a.toField(modulo);
+        b.toField(modulo);
+    }
     return divide(a, b, modulo);
 }
 
 Number NumberDivision::divide(const Number& a, const Number& b, unsigned int modulo) {
-    if (b.isZero()) {
+    if (b == 0) {
         throw std::invalid_argument("Division by zero");
     }
     if (a < b) {
         return Number(0);
     }
-    int i = int(b.digits.size() - 1);
-    Number part(std::vector<unsigned int>(a.digits.rbegin(), a.digits.rbegin() + i+1));
+    int i = b.digits.size();
+
+    Number part;
+    for (int j = 0; j < i; ++j) {
+        part.digits.push_back(a.digits[j + a.digits.size() - i]);
+    }
+
     std::vector<unsigned int> result;
-    while (i < a.digits.size()) {
+    while (i <= a.digits.size()) {
         if (part < b) {
-            i++;
             if (i >= a.digits.size()) {
-                return Number(result);
+                break;
             }
             else {
-                part.digits.insert(part.digits.begin(), a.digits.end()[-i - 1]);
+                part.digits.insert(part.digits.begin(), a.digits[a.digits.size() - i - 1]);
                 part.simplify();
             }
+            i++;
         }
         while (part < b) {
-            i++;
             if (i >= a.digits.size()) {
                 result.push_back(0);
-                return Number(result);
+                break;
             }
             else {
                 result.push_back(0);
-                part.digits.insert(part.digits.begin(), a.digits.end()[-i - 1]);
+                part.digits.insert(part.digits.begin(), a.digits[a.digits.size() - i - 1]);
                 part.simplify();
             }
+            i++;
         }
         int j = 0;
         while (part >= b) {
             j++;
-            part = NumberSubtraction::run(part, b, modulo);
+            part = NumberSubtraction::run(part, b, 0);
         }
         result.push_back(j);
     }
-    return Number(0);
+    std::reverse(result.begin(), result.end());
+    return Number(result);
 }

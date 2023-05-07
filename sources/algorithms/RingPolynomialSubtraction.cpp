@@ -2,8 +2,10 @@
 #include "algorithms/NumberSubtraction.h"
 
 RingPolynomial RingPolynomialSubtraction::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
-    a.toField(modulo);
-    b.toField(modulo);
+    if (modulo) {
+        a.toField(modulo);
+        b.toField(modulo);
+    }
     return subtract(a, b, modulo);
 }
 
@@ -15,7 +17,7 @@ RingPolynomial RingPolynomialSubtraction::subtract(const RingPolynomial& a, cons
         Number aDegree = a.terms[i].getDegree(), bDegree = b.terms[i].getDegree();
         Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[i].getCoefficient();
         if (aDegree == bDegree) {
-            Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, modulo);
+            Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, 0);
             PolynomialTerm term({aDegree, coefficientsDifference});
             difference.terms.push_back(term);
             ++i;
@@ -39,6 +41,8 @@ RingPolynomial RingPolynomialSubtraction::subtract(const RingPolynomial& a, cons
         difference.terms.push_back(b.terms[j]);
         j++;
     }
-    difference.toField(modulo);
+    if (modulo) {
+        difference.toField(modulo);
+    }
     return difference;
 }

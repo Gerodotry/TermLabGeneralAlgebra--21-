@@ -8,7 +8,7 @@ public:
     static Number run(Number a, Number b, unsigned int modulo);
 
 private:
-    static Number remainder(const Number& a, const Number& b, unsigned int modulo);
+    static Number remainder(Number& a, Number& b, unsigned int modulo);
 };
 
 
