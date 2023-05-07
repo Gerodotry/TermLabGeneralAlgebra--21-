@@ -6,10 +6,9 @@
 
 class RingPolynomial: public Object {
     friend class PolynomialTerm;
-    friend class PolynomialAddition;
-    friend class PolynomialSubtraction;
-    friend class PolynomialMultiplication;
-
+    friend class RingPolynomialAddition;
+    friend class RingPolynomialSubtraction;
+    friend class RingPolynomialMultiplication;
 public:
     // TODO: Maybe, it is better to use templates for constructors
     RingPolynomial() = default;
@@ -25,7 +24,7 @@ public:
 
     virtual std::string toString() override;
 
-    RingPolynomial& operator = (const RingPolynomial& polynomial);
+    RingPolynomial& operator=(const RingPolynomial& polynomial);
 protected:
     std::vector<PolynomialTerm> terms;
 
@@ -34,7 +33,6 @@ protected:
     void sortByDegree(bool ascending = true);
 
     void sortByCoefficient(bool ascending = true);
-
 private:
     void dropZeroes();
 };

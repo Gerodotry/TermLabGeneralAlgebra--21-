@@ -5,11 +5,11 @@
 #include "Number.h"
 
 class PolynomialTerm {
-    friend class Polynomial;
+    friend class RingPolynomial;
 public:
     PolynomialTerm();
 
-    PolynomialTerm(Number degree, Number  coefficient);
+    PolynomialTerm(Number degree, Number coefficient);
 
     PolynomialTerm(int degree, int coefficient);
 
