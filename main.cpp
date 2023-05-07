@@ -1,8 +1,9 @@
-#pragma once
 #include"headers/utils/PreprocessorMainDirectives.h"
 #include <iostream>
 #include "algorithms/MillerRabinTest.h"
 #include "algorithms/Gcd.h"
+#include "algorithms/Remainder.h"
+#include "algorithms/Division.h"
 #include <cmath>
 #include <vector>
 
@@ -11,10 +12,7 @@ using namespace std;
 #ifdef MAIN
 
 
-
-
-int main()
-{
+int main() {
     //unsigned int k = 8;  // Number of iterations
     //bigint n = 87178291199;
 
@@ -23,12 +21,12 @@ int main()
     //else
     //    cout << "Number " << n << " is not prime\n";
 
-    vector<int> a = { 3,0,0,0,2,1,5};
-    vector<int> b = { 6, 1,0,2,4};
-    int mod =7;
-    vector<int> g = Gcd::gcd(a, b,mod);
-    vector<int>remainder=Gcd::subtract_polys(a, b,mod);
-    vector<int>div=Gcd::division(a, b,mod);
+    vector<int> a = {3, 0, 0, 0, 2, 1, 5};
+    vector<int> b = {6, 1, 0, 2, 4};
+    int mod = 7;
+    vector<int> g = Gcd::run(a, b, mod);
+    vector<int> remainder = Remainder::run(a, b, mod);
+    vector<int> div = Division::run(a, b, mod);
     cout << "Gcd(";
     for (int i = 0; i < a.size(); i++) {
         cout << a[i] << "x^" << a.size() - i - 1;
@@ -46,14 +44,14 @@ int main()
     }
     cout << endl;
 
-    cout<<"Remainder: ";
+    cout << "Remainder: ";
     for (int i = 0; i < remainder.size(); i++) {
         cout << remainder[i] << "x^" << remainder.size() - i - 1;
         if (i < remainder.size() - 1) cout << " + ";
     }
     cout << endl;
 
-    cout<<"Division result: ";
+    cout << "Division result: ";
     for (int i = 0; i < div.size(); i++) {
         cout << div[i] << "x^" << div.size() - i - 1;
         if (i < div.size() - 1) cout << " + ";
@@ -62,4 +60,5 @@ int main()
 
     return 0;
 }
+
 #endif // MAIN

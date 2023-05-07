@@ -16,6 +16,7 @@ public:
     static vector<int> gcd(vector<int> a, vector<int> b,int mod);
     static vector<int>division( vector<int> poly1, vector<int> poly2, int mod);
     static vector<int>divisionCoefs;
+    static vector<int> run(vector<int> a, vector<int> b,int mod);
 };
 
 
