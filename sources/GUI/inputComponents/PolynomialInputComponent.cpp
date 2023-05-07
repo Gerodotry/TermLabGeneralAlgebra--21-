@@ -34,6 +34,7 @@ std::vector<std::string> PolynomialInputComponent::parseNumbers(const std::strin
     std::vector<std::string> results;
     std::string tmp;
     for (const char& c: string) {
+        if (c == ' ') continue;
         if (c >= '0' && c <= '9') {
             tmp += c;
         } else {
