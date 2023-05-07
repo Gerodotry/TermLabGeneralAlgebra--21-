@@ -50,6 +50,8 @@ add_executable(Lab main.cpp
         headers/algorithms/NumberMultiplication.h
         headers/algorithms/NumberAddition.h
         headers/utils/Number.h
+        headers/utils/Polynomial.h
+        sources/utils/Polynomial.cpp
         headers/algorithms/NumberSubtraction.h
         headers/algorithms/NumberGCD.h
         sources/algorithms/NumberGCD.cpp
@@ -64,6 +66,8 @@ add_executable(Lab main.cpp
         sources/algorithms/NumberSubtraction.cpp
         sources/utils/RingPolynomial.cpp
         headers/utils/RingPolynomial.h
+        sources/utils/FieldPolynomial.cpp
+        headers/utils/FieldPolynomial.h
         sources/utils/PolynomialTerm.cpp
         headers/utils/PolynomialTerm.h
         headers/algorithms/RingPolynomialAddition.h
@@ -79,8 +83,7 @@ add_executable(Lab main.cpp
         sources/GUI/inputComponents/IntInputComponent.cpp
         headers/GUI/inputComponents/IntInputComponent.h
         sources/utils/Int.cpp
-        headers/utils/Int.h
-        )
+        headers/utils/Int.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)

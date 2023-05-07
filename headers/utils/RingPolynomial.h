@@ -2,39 +2,22 @@
 #define LAB_RINGPOLYNOMIAL_H
 
 #include <vector>
-#include "PolynomialTerm.h"
+#include "Polynomial.h"
 
-class RingPolynomial: public Object {
-    friend class PolynomialTerm;
-    friend class RingPolynomialAddition;
-    friend class RingPolynomialSubtraction;
-    friend class RingPolynomialMultiplication;
+class RingPolynomial: public Polynomial {
 public:
     // TODO: Maybe, it is better to use templates for constructors
     RingPolynomial() = default;
 
     RingPolynomial(const std::initializer_list<PolynomialTerm>& terms);
 
+    RingPolynomial(const std::vector<PolynomialTerm>& terms);
+
     RingPolynomial(const std::vector<std::string>& degrees, const std::vector<std::string>& coefficients);
 
-    RingPolynomial(std::vector<Number> degrees, std::vector<Number> coefficients);
+    RingPolynomial(const std::vector<Number>& degrees, const std::vector<Number>& coefficients);
 
-    template<typename T>
-    RingPolynomial(std::vector<T> degrees, std::vector<T> coefficients);
-
-    virtual std::string toString() override;
-
-    RingPolynomial& operator=(const RingPolynomial& polynomial);
-protected:
-    std::vector<PolynomialTerm> terms;
-
-    void toField(unsigned int modulo);
-
-    void sortByDegree(bool ascending = true);
-
-    void sortByCoefficient(bool ascending = true);
-private:
-    void dropZeroes();
+    virtual void toField(unsigned int modulo) override;
 };
 
 #endif //LAB_RINGPOLYNOMIAL_H

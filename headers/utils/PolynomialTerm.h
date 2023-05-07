@@ -7,6 +7,9 @@
 class PolynomialTerm {
     friend class RingPolynomial;
 public:
+    Number degree;
+    Number coefficient;
+
     PolynomialTerm();
 
     PolynomialTerm(Number degree, Number coefficient);
@@ -29,14 +32,9 @@ public:
 
     std::string toString();
 
+    void toField(unsigned int modulo);
 private:
     std::string coeffToString() const;
-
-protected:
-    Number degree;
-    Number coefficient;
-
-    void toField(unsigned int modulo);
 };
 
 #endif //LAB_POLYNOMIALTERM_H
