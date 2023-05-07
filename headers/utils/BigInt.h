@@ -20,7 +20,9 @@ namespace BigInt
 		int size();
 
 		bigint operator ^(const bigint& v);
+
 		string to_string();
+
 		int sumof();
 		/*</arpa>*/
 		bigint();

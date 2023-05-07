@@ -62,7 +62,7 @@ bool MillerRabinTest::run(bigint numberToCheckIsPrime,  int iterationsNumber)
     if (numberToCheckIsPrime <= 1 || numberToCheckIsPrime == 4)  return false;
     if (numberToCheckIsPrime <= 3) return true;
 
-    // Зайти таке d, що n = 2*d + 1, d - непросте
+    // Зайти таке d, що n = 2^r*d + 1, де d - непросте, r - якесь додатнє число 
     bigint d = numberToCheckIsPrime - 1;
     while (d % 2 == 0)
         d /= 2;
