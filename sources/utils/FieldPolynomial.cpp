@@ -4,8 +4,16 @@
 
 void FieldPolynomial::toField(unsigned int modulo) {
     dropZeroes();
-    for (auto term : terms) {
-        term.toField(modulo);
+    for (auto& term : terms) {
+        term.toField(modulo, false);
+    }
+    sortByDegree();
+    for (auto it = terms.begin(); it != terms.end(); ) {
+        if (it->isZero()) {
+            it = terms.erase(it);
+        } else {
+            ++it;
+        }
     }
 }
 

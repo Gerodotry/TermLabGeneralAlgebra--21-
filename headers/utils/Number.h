@@ -49,11 +49,11 @@ public:
 
     Number& operator = (const Number& other);
 
-    bool isZero() const;
+    bool isZero();
 
     virtual std::string toString() override;
 
-    std::string toString(bool abs) const;
+    std::string toString(bool abs);
 
     void toField(unsigned int modulo);
 

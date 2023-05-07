@@ -4,10 +4,10 @@
 #include <initializer_list>
 
 void RingPolynomial::toField(unsigned int modulo) {
-    dropZeroes();
-    for (auto term : terms) {
-        term.toField(modulo);
+    for (auto& term : terms) {
+        term.toField(modulo, false);
     }
+    dropZeroes();
 }
 
 RingPolynomial::RingPolynomial(const std::initializer_list<PolynomialTerm> &terms) : Polynomial(terms) {

@@ -28,13 +28,13 @@ public:
 
     void setCoefficient(const Number& coefficient);
 
-    bool isZero() const;
+    bool isZero();
 
     std::string toString();
 
-    void toField(unsigned int modulo);
+    void toField(unsigned int modulo, bool isRing);
 private:
-    std::string coeffToString() const;
+    std::string coeffToString();
 };
 
 #endif //LAB_POLYNOMIALTERM_H

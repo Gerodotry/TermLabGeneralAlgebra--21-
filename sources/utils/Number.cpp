@@ -109,11 +109,12 @@ Number &Number::operator = (const Number &other) {
     return *this;
 }
 
-bool Number::isZero() const {
+bool Number::isZero() {
+    simplify();
     return digits.empty();
 }
 
-std::string Number::toString(bool abs) const {
+std::string Number::toString(bool abs) {
     if (isZero()) {
         return "0";
     }
@@ -124,9 +125,6 @@ std::string Number::toString(bool abs) const {
 }
 
 void Number::simplify() {
-    if (isZero()) {
-        isPositive = true;
-    }
     while (!digits.empty() && digits.back() == 0) {
         digits.pop_back();
     }
@@ -134,9 +132,10 @@ void Number::simplify() {
 
 void Number::toField(unsigned int modulo) {
     // Compute the value of the number in the given field
-    unsigned int value = 0;
-    for (int i = int(digits.size() - 1); i >= 0; --i) {
-        value = (value * 10 + digits[i]) % modulo;
+    long long value = 0, pow = 1;
+    for (int i = 0; i < digits.size(); ++i) {
+        value = (value + pow * digits[i]) % modulo;
+        pow = (pow * 10) % modulo;
     }
     digits.clear();
     if (!value) {
@@ -159,13 +158,17 @@ int Number::compareDigits(const Number &other) const {
     if (isPositive != other.isPositive) {
         // If the signs are different, return -1 if this number is negative,
         // and return 1 if this number is positive.
-        return isPositive ? -1 : 1;
+        return isPositive ? 1 : -1;
     }
     // If the signs are the same, compare the absolute values of the numbers.
     if (digits.size() != other.digits.size()) {
-        return digits.size() < other.digits.size() ? -1 : 1;
+        if (isPositive) {
+            return digits.size() < other.digits.size() ? -1 : 1;
+        } else {
+            return digits.size() < other.digits.size() ? 1 : -1;
+        }
     }
-    for (int i = int(digits.size() - 1); i >= 0; --i) {
+    for (int i = digits.size() - 1; i >= 0; --i) {
         if (digits[i] < other.digits[i]) {
             return isPositive ? -1 : 1;
         }
