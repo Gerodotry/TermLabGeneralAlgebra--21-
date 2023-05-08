@@ -93,7 +93,7 @@ add_executable(Lab main.cpp
         headers/GUI/inputComponents/IntInputComponent.h
         sources/utils/Int.cpp
         headers/utils/Int.h
-        sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp headers/algorithms/PolynomialFastPowering.h)
+        sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp headers/algorithms/PolynomialFastPowering.h sources/utils/RawPolynomial.cpp headers/utils/RawPolynomial.h sources/GUI/inputComponents/RawPolynomialInputComponent.cpp headers/GUI/inputComponents/RawPolynomialInputComponent.h headers/utils/Parser.cpp headers/utils/Parser.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)

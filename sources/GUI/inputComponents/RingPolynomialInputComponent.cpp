@@ -6,6 +6,7 @@
 #include "imgui.h"
 #include "utils/Number.h"
 #include "utils/Int.h"
+#include "utils/Parser.h"
 
 void RingPolynomialInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
@@ -16,8 +17,8 @@ void RingPolynomialInputComponent::createInputWindow() {
 }
 
 Object* RingPolynomialInputComponent::getObject() {
-    std::vector<std::string> degreesList = parseNumbers(degrees);
-    std::vector<std::string> coefficientsList = parseNumbers(coefficients);
+    std::vector<std::string> degreesList = Parser::parseNumbers(degrees);
+    std::vector<std::string> coefficientsList = Parser::parseNumbers(coefficients);
     polynomial = RingPolynomial(degreesList, coefficientsList);
     return &polynomial;
 }
@@ -28,20 +29,4 @@ RingPolynomialInputComponent::RingPolynomialInputComponent(const std::string &na
 
 bool RingPolynomialInputComponent::isInputValid() {
     return true;
-}
-
-std::vector<std::string> RingPolynomialInputComponent::parseNumbers(const std::string &string) {
-    std::vector<std::string> results;
-    std::string tmp;
-    for (const char& c: string) {
-        if (c == ' ') continue;
-        if (c >= '0' && c <= '9' || c == '-') {
-            tmp += c;
-        } else {
-            results.push_back(tmp);
-            tmp.clear();
-        }
-        if (c == '\00') break;
-    }
-    return results;
 }

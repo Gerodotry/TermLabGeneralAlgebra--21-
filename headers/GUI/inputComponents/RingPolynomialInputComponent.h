@@ -26,8 +26,6 @@ private:
     std::string coefficients = std::string(2048, '.');
 
     RingPolynomial polynomial;
-
-    std::vector<std::string> parseNumbers(const std::string& string);
 };
 
 
