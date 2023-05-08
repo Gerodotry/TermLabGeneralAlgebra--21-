@@ -33,6 +33,8 @@ public:
     std::string toString();
 
     void toField(unsigned int modulo);
+
+    bool operator==(const PolynomialTerm& term) const;
 private:
     std::string coeffToString();
 };

@@ -97,3 +97,7 @@ Polynomial::Polynomial(int n) {
         terms.push_back({i, 0});
     }
 }
+
+bool Polynomial::operator==(const Polynomial &polynomial) const {
+    return polynomial.terms == terms;
+}

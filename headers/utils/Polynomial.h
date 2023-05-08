@@ -30,6 +30,8 @@ public:
 
     Polynomial& operator=(const Polynomial &polynomial);
 
+    bool operator==(const Polynomial& polynomial) const;
+
     void sortByDegree(bool ascending = true);
 
     void sortByCoefficient(bool ascending = true);
