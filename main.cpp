@@ -13,9 +13,13 @@
 #include "GUI/algorithms/NumberGCDAlgorithm.h"
 #include "GUI/algorithms/NumberDivisionAlgorithm.h"
 #include "GUI/algorithms/NumberRemainderAlgorithm.h"
-#include "GUI/algorithms/PolynomialAdditionAlgorithm.h"
-#include "GUI/algorithms/PolynomialSubtractionAlgorithm.h"
-#include "GUI/algorithms/PolynomialMultiplicationAlgorithm.h"
+#include "GUI/algorithms/RingPolynomialAdditionAlgorithm.h"
+#include "GUI/algorithms/RingPolynomialSubtractionAlgorithm.h"
+#include "GUI/algorithms/RingPolynomialMultiplicationAlgorithm.h"
+#include "algorithms/PolynomialAddition.h"
+#include "GUI/algorithms/FieldPolynomialAdditionAlgorithm.h"
+#include "GUI/algorithms/FieldPolynomialSubtractionAlgorithm.h"
+#include "GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -64,9 +68,13 @@ int main(int, char**)
     Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
 
-    Windows.addAlgorithm<PolynomialAdditionAlgorithm>("RingPolynomial");
-    Windows.addAlgorithm<PolynomialSubtractionAlgorithm>("RingPolynomial");
-    Windows.addAlgorithm<PolynomialMultiplicationAlgorithm>("RingPolynomial");
+    Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<RingPolynomialMultiplicationAlgorithm>("Ring polynomial");
+
+    Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
+    Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
+    Windows.addAlgorithm<FieldPolynomialMultiplicationAlgorithm>("Field polynomial");
 
     while (!glfwWindowShouldClose(window))
     {
