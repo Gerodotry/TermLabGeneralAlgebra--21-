@@ -21,6 +21,8 @@ public:
     RawPolynomial(const std::vector<int>& degrees, const std::vector<int>& coefs);
 
     std::string toString() override;
+
+    RawPolynomial& operator=(const RawPolynomial& polynomial);
 private:
     void add(const std::vector<int>& degrees, const std::vector<int>& coefs);
 };

@@ -35,8 +35,8 @@ void RawPolynomial::add(const std::vector<int>& degrees, const std::vector<int>&
         max = std::max(max, degree);
     }
 
-    coefficients.reserve(max);
-    for (int i = 0; i < max; ++i) {
+    coefficients.reserve(max + 1);
+    for (int i = 0; i <= max; ++i) {
         coefficients.push_back(0);
     }
 
@@ -51,6 +51,11 @@ std::string RawPolynomial::toString() {
         if (coefficients[i]) {
             std::string termString = std::to_string(coefficients[i]);
             result += (termString[0] == '-') ? termString : ("+" + termString);
+            if (i > 1) {
+                result += "x^" + std::to_string(i);
+            } else if (i == 1) {
+                result += "x";
+            }
         }
     }
     return result.substr(1);
@@ -58,4 +63,8 @@ std::string RawPolynomial::toString() {
 
 RawPolynomial::RawPolynomial(const std::vector<int> &coefficients): coefficients(coefficients) {
 
+}
+
+RawPolynomial &RawPolynomial::operator=(const RawPolynomial &polynomial) {
+    coefficients = polynomial.coefficients;
 }
