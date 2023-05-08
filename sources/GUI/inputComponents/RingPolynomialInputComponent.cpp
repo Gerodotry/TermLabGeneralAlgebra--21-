@@ -35,7 +35,7 @@ std::vector<std::string> RingPolynomialInputComponent::parseNumbers(const std::s
     std::string tmp;
     for (const char& c: string) {
         if (c == ' ') continue;
-        if (c >= '0' && c <= '9') {
+        if (c >= '0' && c <= '9' || c == '-') {
             tmp += c;
         } else {
             results.push_back(tmp);
