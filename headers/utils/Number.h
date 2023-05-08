@@ -23,6 +23,8 @@ public:
 
     explicit Number(unsigned int number);
 
+    explicit Number(long long number);
+
     explicit Number(int number);
 
     unsigned int& operator [] (int i);
@@ -41,11 +43,19 @@ public:
 
     bool operator > (const Number& other) const;
 
+    bool operator > (long long other) const;
+
     bool operator >= (const Number& other) const;
+
+    bool operator >= (long long other) const;
 
     bool operator < (const Number& other) const;
 
+    bool operator < (long long other) const;
+
     bool operator <= (const Number& other) const;
+
+    bool operator <= (long long other) const;
 
     Number& operator = (const Number& other);
 
@@ -56,6 +66,8 @@ public:
     std::string toString(bool abs);
 
     void toField(unsigned int modulo);
+
+    long long get();
 
 protected:
     bool isPositive = true;

@@ -190,3 +190,35 @@ void Number::digitalize(const std::string &string) {
 std::string Number::toString() {
     return toString(false);
 }
+
+Number::Number(long long number) {
+    while (number > 0) {
+        digits.push_back(number % 10);
+        number /= 10;
+    }
+    simplify();
+}
+
+bool Number::operator>(long long other) const {
+    return *this > Number(other);
+}
+
+bool Number::operator>=(long long other) const {
+    return *this >= Number(other);
+}
+
+bool Number::operator<(long long other) const {
+    return *this < Number(other);
+}
+
+bool Number::operator<=(long long other) const {
+    return *this <= Number(other);
+}
+
+long long Number::get() {
+    long long value = 0;
+    for (auto& digit: digits) {
+        value = value * 10 + digit;
+    }
+    return value;
+}
