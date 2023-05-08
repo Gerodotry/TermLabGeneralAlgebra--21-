@@ -26,6 +26,8 @@ private:
 
     Object* Result = nullptr;
 
+    std::string resultString;
+
     bool algorithmButton(Algorithm* algorithm);
 
     void resultsWindow();

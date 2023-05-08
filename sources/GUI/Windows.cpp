@@ -26,7 +26,7 @@ bool Windows::algorithmButton(Algorithm *algorithm) {
 void Windows::resultsWindow() {
     ImGui::Begin("Results");
 
-    ImGui::Text(Result->toString().c_str());
+    ImGui::Text(resultString.c_str());
     if (ImGui::Button("Back")) {
         Result = nullptr;
     }
@@ -45,6 +45,7 @@ void Windows::algorithmInputWindow() {
         ImGui::Text("Input is invalid");
     } else if (ImGui::Button("Run")) {
         Result = selectedAlgorithm->run();
+        resultString = Result->toString();
     }
 
     if (ImGui::Button("Back")) {
