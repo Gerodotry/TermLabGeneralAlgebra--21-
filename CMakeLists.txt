@@ -47,6 +47,10 @@ add_executable(Lab main.cpp
         sources/GUI/algorithms/RingPolynomialMultiplicationAlgorithm.cpp
         headers/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h
         sources/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.cpp
+        headers/GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.h
+        sources/GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.cpp
+        headers/GUI/algorithms/RingPolynomialFastPoweringAlgorithm.h
+        sources/GUI/algorithms/RingPolynomialFastPoweringAlgorithm.cpp
         headers/GUI/algorithms/NumberGCDAlgorithm.h
         sources/GUI/algorithms/NumberGCDAlgorithm.cpp
         headers/GUI/algorithms/NumberDivisionAlgorithm.h
@@ -89,7 +93,7 @@ add_executable(Lab main.cpp
         headers/GUI/inputComponents/IntInputComponent.h
         sources/utils/Int.cpp
         headers/utils/Int.h
-        sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp       )
+        sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp headers/algorithms/PolynomialFastPowering.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)

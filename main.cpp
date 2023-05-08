@@ -19,6 +19,8 @@
 #include "GUI/algorithms/FieldPolynomialAdditionAlgorithm.h"
 #include "GUI/algorithms/FieldPolynomialSubtractionAlgorithm.h"
 #include "GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h"
+#include "GUI/algorithms/RingPolynomialFastPoweringAlgorithm.h"
+#include "GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -70,10 +72,12 @@ int main(int, char**)
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialMultiplicationAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<RingPolynomialFastPoweringAlgorithm>("Ring polynomial");
 
     Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialMultiplicationAlgorithm>("Field polynomial");
+    Windows.addAlgorithm<FieldPolynomialFastPoweringAlgorithm>("Field polynomial");
 
     while (!glfwWindowShouldClose(window))
     {
