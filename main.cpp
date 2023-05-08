@@ -145,7 +145,7 @@ int main() {
     //BigInt n = 87178291199;
 
     //if (MillerRabinTest::run(n, k))
-    //     cout <<"Number "<< n<<" is prime\n";  
+    //     cout <<"Number "<< n<<" is prime\n";
     //else
     //    cout << "Number " << n << " is not prime\n";
 
