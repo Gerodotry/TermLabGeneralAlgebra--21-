@@ -2,46 +2,33 @@
 #include "algorithms/PolynomialMultiplication.h"
 #include "algorithms/PolynomialAddition.h"
 #include "algorithms/PolynomialSubtraction.h"
-#include <utility>
 #include <initializer_list>
 #include <cmath>
 
 void FieldPolynomial::toField(int modulo) {
     dropZeroes();
 
-    long long degree = 0;
+    if (getDegree() > modulo) {
+        long long R = (2 << (int) log2(modulo)) + 1;
+        long long U = calculateU(R, modulo);
 
-    for (auto &term: terms) {
-        degree = std::max(degree, term.degree.get());
-    }
+        FieldPolynomial g = FieldPolynomial(terms);
 
-    if (degree <= modulo) {
-        for (auto &term: terms) {
-            term.toField(modulo);
+        for (auto &term: g.terms) {
+            term.coefficient = NumberMultiplication::run(term.coefficient, Number(R), 0);
         }
-        dropZeroes();
-        return;
+
+        FieldPolynomial h(g.terms);
+        for (int i = h.getDegree().get() - 1; i >= 0 && h.getDegree() > modulo; --i) {
+            h = PolyDiv(h, { { i, 1 }, { 0, 1 } });
+        }
+
+        for (auto& term: h.terms) {
+            term.coefficient = NumberMultiplication::run(term.coefficient, Number(U), modulo);
+        }
+
+        terms = h.terms;
     }
-
-    long long R = (2 << (int) log2(modulo)) + 1;
-    long long U = calculateU(R, modulo);
-
-    FieldPolynomial g = FieldPolynomial(terms);
-
-    for (auto &term: g.terms) {
-        term.coefficient = NumberMultiplication::run(term.coefficient, Number(R), 0);
-    }
-
-    FieldPolynomial h(g.terms);
-    for (int i = degree - 1; i >= 0 && h.getDegree() > modulo; --i) {
-        h = PolyDiv(h, { { i, 1 }, { 0, 1 } });
-    }
-
-    for (auto& term: h.terms) {
-        term.coefficient = NumberMultiplication::run(term.coefficient, Number(U), modulo);
-    }
-
-    terms = h.terms;
 
     for (auto& term : terms) {
         term.toField(modulo);
