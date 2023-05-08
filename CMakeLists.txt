@@ -74,6 +74,8 @@ add_executable(Lab main.cpp
         sources/algorithms/NumberAddition.cpp
         sources/algorithms/NumberMultiplication.cpp
         sources/algorithms/NumberSubtraction.cpp
+        sources/algorithms/NumberSqrt.cpp
+        headers/algorithms/NumberSqrt.h
         sources/utils/RingPolynomial.cpp
         headers/utils/RingPolynomial.h
         sources/utils/FieldPolynomial.cpp
@@ -93,7 +95,7 @@ add_executable(Lab main.cpp
         headers/GUI/inputComponents/IntInputComponent.h
         sources/utils/Int.cpp
         headers/utils/Int.h
-        sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp headers/algorithms/PolynomialFastPowering.h)
+        sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp headers/algorithms/PolynomialFastPowering.h sources/algorithms/NumberSqrt.cpp headers/algorithms/NumberSqrt.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)
