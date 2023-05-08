@@ -6,9 +6,9 @@
 
 class Naive {
 public:
-    static vector<Number> run(Number a, unsigned int modulo);
+    static std::vector<Number> run(Number a, unsigned int modulo);
 
 private:
-    static vector<Number> naive_factorization(Number& a,unsigned int modulo);
+    static std::vector<Number> naive_factorization(Number& a,unsigned int modulo);
 
 #endif //LAB_NAIVE_H
