@@ -14,10 +14,13 @@ public:
 
     RawPolynomial();
 
+    RawPolynomial(const std::vector<int>& coefficients);
+
     RawPolynomial(const std::vector<std::string>& degrees, const std::vector<std::string>& coefs);
 
     RawPolynomial(const std::vector<int>& degrees, const std::vector<int>& coefs);
 
+    std::string toString() override;
 private:
     void add(const std::vector<int>& degrees, const std::vector<int>& coefs);
 };

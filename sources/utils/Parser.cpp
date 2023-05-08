@@ -2,7 +2,7 @@
 // Created by Dklishch on 5/8/2023.
 //
 
-#include "Parser.h"
+#include "utils/Parser.h"
 
 std::vector<std::string> Parser::parseNumbers(const std::string &string) {
     std::vector<std::string> results;

@@ -44,3 +44,18 @@ void RawPolynomial::add(const std::vector<int>& degrees, const std::vector<int>&
         coefficients[degrees[i]] = coefs[i];
     }
 }
+
+std::string RawPolynomial::toString() {
+    std::string result;
+    for (int i = coefficients.size() - 1; i >= 0; --i) {
+        if (coefficients[i]) {
+            std::string termString = std::to_string(coefficients[i]);
+            result += (termString[0] == '-') ? termString : ("+" + termString);
+        }
+    }
+    return result.substr(1);
+}
+
+RawPolynomial::RawPolynomial(const std::vector<int> &coefficients): coefficients(coefficients) {
+
+}

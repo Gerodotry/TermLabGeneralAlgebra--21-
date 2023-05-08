@@ -21,6 +21,10 @@
 #include "GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h"
 #include "GUI/algorithms/RingPolynomialFastPoweringAlgorithm.h"
 #include "GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.h"
+#include "GUI/algorithms/GcdAlgorithm.h"
+#include "GUI/algorithms/MillerRabinTestAlgorithm.h"
+#include "GUI/algorithms/DivisionAlgorithm.h"
+#include "GUI/algorithms/RemainderAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -68,11 +72,15 @@ int main(int, char**)
     Windows.addAlgorithm<NumberGCDAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
+    Windows.addAlgorithm<MillerRabinTestAlgorithm>("Numbers");
 
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialMultiplicationAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialFastPoweringAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<DivisionAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<RemainderAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<GcdAlgorithm>("Ring polynomial");
 
     Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
