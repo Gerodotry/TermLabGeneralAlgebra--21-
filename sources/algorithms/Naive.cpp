@@ -6,19 +6,23 @@
 #include "algorithms/NumberRemainder.h"
 
 vector<Number> Naive::run(Number a, unsigned int modulo) {
-    a.toField(modulo);
+    if (modulo) {
+        a.toField(modulo);
+    }
     return naive_factorization(a, modulo);
 }
 
-vector<Number> Naive::naive_factorization(Number& a,unsigned int modulo) {
+vector<Number> Naive::naive_factorization(Number& a,unsigned int modulo) 
+{
     vector<Number> b;
-    for (Number i = 2; i <= NumberMultiplication::run(a,a,modulo); i++) {
-        while (NumberRemainder::run(a,i,modulo) == 0) {
+    for (Number i = Number(2); i <= NumberMultiplication::run(a,a,modulo); NumberAddition::run(i,Number(1),modulo)) 
+    {
+        while (NumberRemainder::run(a,i,modulo) == Number(0)) {
             b.push_back(i);
-            n = NumberSubtraction::run(n,i,modulo);
+            a = NumberSubtraction::run(a,i,modulo);
         }
     }
-    if (a > 1) {
+    if (a > Number(1)) {
         b.push_back(a);
     }
     return b;

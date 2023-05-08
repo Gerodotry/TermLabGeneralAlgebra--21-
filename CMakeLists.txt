@@ -70,7 +70,11 @@ add_executable(Lab main.cpp
         sources/algorithms/NumberDivision.cpp
         headers/algorithms/NumberDivision.h
         headers/algorithms/NumberSubtraction.h
+        headers/algorithms/Pollard.h
+        headers/algorithms/Naive.h
         sources/utils/Number.cpp
+        sources/algorithms/Pollard.cpp
+        sources/algorithms/Naive.cpp
         sources/algorithms/NumberAddition.cpp
         sources/algorithms/NumberMultiplication.cpp
         sources/algorithms/NumberSubtraction.cpp
