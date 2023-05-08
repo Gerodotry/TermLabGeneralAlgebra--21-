@@ -16,7 +16,6 @@
 #include "GUI/algorithms/RingPolynomialAdditionAlgorithm.h"
 #include "GUI/algorithms/RingPolynomialSubtractionAlgorithm.h"
 #include "GUI/algorithms/RingPolynomialMultiplicationAlgorithm.h"
-#include "algorithms/PolynomialAddition.h"
 #include "GUI/algorithms/FieldPolynomialAdditionAlgorithm.h"
 #include "GUI/algorithms/FieldPolynomialSubtractionAlgorithm.h"
 #include "GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h"
