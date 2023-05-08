@@ -68,3 +68,32 @@ void Polynomial::dropZeroes() {
         }
     }
 }
+
+Number Polynomial::getDegree() {
+    Number degree(0);
+    for (auto& term: terms) {
+        if (degree < term.degree && !term.coefficient.isZero()) {
+            degree = term.degree;
+        }
+    }
+    return degree;
+}
+
+Number Polynomial::getCoefficient(int degree) {
+    for (auto &term: terms) {
+        if (term.degree == degree) {
+            return term.coefficient;
+        }
+    }
+    return Number(0);
+}
+
+void Polynomial::toField(int modulo) {
+
+}
+
+Polynomial::Polynomial(int n) {
+    for (int i = 0; i < n; ++i) {
+        terms.push_back({i, 0});
+    }
+}

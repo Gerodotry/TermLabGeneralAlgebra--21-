@@ -3,20 +3,34 @@
 
 #include "Polynomial.h"
 #include "PolynomialTerm.h"
+#include "algorithms/NumberSubtraction.h"
+#include "algorithms/NumberDivision.h"
+#include "algorithms/NumberMultiplication.h"
 
-class FieldPolynomial: public Polynomial {
+class FieldPolynomial : public Polynomial {
 public:
     FieldPolynomial() = default;
 
-    FieldPolynomial(const std::initializer_list<PolynomialTerm>& terms);
+    explicit FieldPolynomial(int n);
 
-    FieldPolynomial(const std::vector<PolynomialTerm>& terms);
+    FieldPolynomial(const std::initializer_list<PolynomialTerm> &terms);
 
-    FieldPolynomial(const std::vector<std::string>& degrees, const std::vector<std::string>& coefficients);
+    FieldPolynomial(const std::vector<PolynomialTerm> &terms);
 
-    FieldPolynomial(const std::vector<Number>& degrees, const std::vector<Number>& coefficients);
+    FieldPolynomial(const std::vector<std::string> &degrees, const std::vector<std::string> &coefficients);
 
-    virtual void toField(unsigned int modulo) override;
+    FieldPolynomial(const std::vector<Number> &degrees, const std::vector<Number> &coefficients);
+
+    virtual void toField(int modulo) override;
+
+private:
+    int calculateBitsNumber(int number);
+
+    long long calculateValue(long long t, long long module);
+
+    static long long calculateU(long long R, long long module);
+
+    static FieldPolynomial PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor);
 };
 
 #endif //LAB_FieldPolynomial_H

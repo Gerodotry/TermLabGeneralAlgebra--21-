@@ -14,6 +14,8 @@ public:
 
     Polynomial() = default;
 
+    explicit Polynomial(int n);
+
     Polynomial(const std::initializer_list<PolynomialTerm>& terms);
 
     Polynomial(const std::vector<PolynomialTerm>& terms);
@@ -24,7 +26,7 @@ public:
 
     virtual std::string toString() override;
 
-    virtual void toField(unsigned int modulo) = 0;
+    virtual void toField(int modulo);
 
     Polynomial& operator=(const Polynomial &polynomial);
 
@@ -33,6 +35,10 @@ public:
     void sortByCoefficient(bool ascending = true);
 
     void dropZeroes();
+
+    Number getDegree();
+
+    Number getCoefficient(int degree);
 };
 
 #endif //LAB_POLYNOMIAL_H

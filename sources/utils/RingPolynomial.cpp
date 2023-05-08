@@ -3,9 +3,9 @@
 #include <utility>
 #include <initializer_list>
 
-void RingPolynomial::toField(unsigned int modulo) {
+void RingPolynomial::toField(int modulo) {
     for (auto& term : terms) {
-        term.toField(modulo, false);
+        term.toField(modulo);
     }
     dropZeroes();
 }
