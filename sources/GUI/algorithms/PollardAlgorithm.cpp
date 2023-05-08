@@ -7,6 +7,7 @@
 #include "algorithms/NaiveFactorization.h"
 #include "GUI/inputComponents/NumberInputComponent.h"
 #include "GUI/inputComponents/IntInputComponent.h"
+#include "algorithms/Pollard.h"
 
 
 std::string PollardAlgorithm::getName() const {
@@ -16,7 +17,7 @@ std::string PollardAlgorithm::getName() const {
 Object *PollardAlgorithm::run() {
     Number *numberA = dynamic_cast<Number *>(dataTypes[0]->getObject());
     int module = dynamic_cast<Int *>(dataTypes[1]->getObject())->get();
-    result = NaiveFactorization::run(*numberA, module);
+    result = Pollard::run(*numberA, module);
     return &result;
 }
 

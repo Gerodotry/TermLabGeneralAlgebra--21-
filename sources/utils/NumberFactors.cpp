@@ -10,9 +10,12 @@ std::string NumberFactors::toString() {
         result += number.toString() + ", ";
     }
 
-    result.pop_back();
-    result.pop_back();
-
+    if (result.empty()) {
+        result = "1";
+    } else {
+        result.pop_back();
+        result.pop_back();
+    }
     return result;
 }
 

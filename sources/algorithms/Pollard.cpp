@@ -29,5 +29,10 @@ std::vector<Number> Pollard::pollard_factorization(Number &a, unsigned int modul
         n.push_back(d);
         b = NumberSubtraction::run(b, d, modulo);
     }
+
+    if (n.empty()) {
+        n.push_back(Number(1));
+    }
+
     return n;
 }
