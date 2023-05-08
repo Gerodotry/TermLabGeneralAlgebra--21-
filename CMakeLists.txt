@@ -35,12 +35,18 @@ add_executable(Lab main.cpp
         sources/GUI/algorithms/NumberSubtractionAlgorithm.cpp
         headers/GUI/algorithms/NumberMultiplicationAlgorithm.h
         sources/GUI/algorithms/NumberMultiplicationAlgorithm.cpp
-        headers/GUI/algorithms/PolynomialAdditionAlgorithm.h
-        sources/GUI/algorithms/PolynomialAdditionAlgorithm.cpp
-        headers/GUI/algorithms/PolynomialSubtractionAlgorithm.h
-        sources/GUI/algorithms/PolynomialSubtractionAlgorithm.cpp
-        headers/GUI/algorithms/PolynomialMultiplicationAlgorithm.h
-        sources/GUI/algorithms/PolynomialMultiplicationAlgorithm.cpp
+        headers/GUI/algorithms/RingPolynomialAdditionAlgorithm.h
+        sources/GUI/algorithms/RingPolynomialAdditionAlgorithm.cpp
+        headers/GUI/algorithms/FieldPolynomialAdditionAlgorithm.h
+        sources/GUI/algorithms/FieldPolynomialAdditionAlgorithm.cpp
+        headers/GUI/algorithms/RingPolynomialSubtractionAlgorithm.h
+        sources/GUI/algorithms/RingPolynomialSubtractionAlgorithm.cpp
+        headers/GUI/algorithms/FieldPolynomialSubtractionAlgorithm.h
+        sources/GUI/algorithms/FieldPolynomialSubtractionAlgorithm.cpp
+        headers/GUI/algorithms/RingPolynomialMultiplicationAlgorithm.h
+        sources/GUI/algorithms/RingPolynomialMultiplicationAlgorithm.cpp
+        headers/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h
+        sources/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.cpp
         headers/GUI/algorithms/NumberGCDAlgorithm.h
         sources/GUI/algorithms/NumberGCDAlgorithm.cpp
         headers/GUI/algorithms/NumberDivisionAlgorithm.h
@@ -70,16 +76,15 @@ add_executable(Lab main.cpp
         headers/utils/FieldPolynomial.h
         sources/utils/PolynomialTerm.cpp
         headers/utils/PolynomialTerm.h
-        headers/algorithms/RingPolynomialAddition.h
-        sources/algorithms/RingPolynomialAddition.cpp
-        sources/algorithms/RingPolynomialSubtraction.cpp
-        headers/algorithms/RingPolynomialSubtraction.h
-        sources/algorithms/RingPolynomialMultiplication.cpp
-        headers/algorithms/RingPolynomialMultiplication.h
+        headers/algorithms/PolynomialAddition.h
+        headers/algorithms/PolynomialSubtraction.h
+        headers/algorithms/PolynomialMultiplication.h
         headers/GUI/inputComponents/NumberInputComponent.h
         sources/GUI/inputComponents/NumberInputComponent.cpp
-        headers/GUI/inputComponents/PolynomialInputComponent.h
-        sources/GUI/inputComponents/PolynomialInputComponent.cpp
+        headers/GUI/inputComponents/FieldPolynomialInputComponent.h
+        sources/GUI/inputComponents/FieldPolynomialInputComponent.cpp
+        headers/GUI/inputComponents/RingPolynomialInputComponent.h
+        sources/GUI/inputComponents/RingPolynomialInputComponent.cpp
         sources/GUI/inputComponents/IntInputComponent.cpp
         headers/GUI/inputComponents/IntInputComponent.h
         sources/utils/Int.cpp
