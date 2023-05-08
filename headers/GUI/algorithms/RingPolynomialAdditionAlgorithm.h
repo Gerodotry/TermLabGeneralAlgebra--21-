@@ -2,16 +2,16 @@
 // Created by Dklishch on 4/24/2023.
 //
 
-#ifndef MAIN_CPP_PolynomialAdditionAlgorithm_H
-#define MAIN_CPP_PolynomialAdditionAlgorithm_H
+#ifndef MAIN_CPP_RingPolynomialAdditionAlgorithm_H
+#define MAIN_CPP_RingPolynomialAdditionAlgorithm_H
 
 #include "Algorithm.h"
 #include "utils/Number.h"
 #include "utils/RingPolynomial.h"
 
-class PolynomialAdditionAlgorithm : public Algorithm {
+class RingPolynomialAdditionAlgorithm : public Algorithm {
 public:
-    PolynomialAdditionAlgorithm();
+    RingPolynomialAdditionAlgorithm();
 
     std::string getName() const override;
 
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //MAIN_CPP_PolynomialAdditionAlgorithm_H
+#endif //MAIN_CPP_RingPolynomialAdditionAlgorithm_H

@@ -5,11 +5,11 @@
 #include "GUI/algorithms/RingPolynomialMultiplicationAlgorithm.h"
 #include "utils/Int.h"
 #include "algorithms/PolynomialMultiplication.h"
-#include "GUI/inputComponents/PolynomialInputComponent.h"
 #include "GUI/inputComponents/IntInputComponent.h"
+#include "GUI/inputComponents/RingPolynomialInputComponent.h"
 
 std::string RingPolynomialMultiplicationAlgorithm::getName() const {
-    return "RingPolynomial multiplication";
+    return "Ring polynomial multiplication";
 }
 
 Object *RingPolynomialMultiplicationAlgorithm::run() {
@@ -22,8 +22,8 @@ Object *RingPolynomialMultiplicationAlgorithm::run() {
 
 RingPolynomialMultiplicationAlgorithm::RingPolynomialMultiplicationAlgorithm() {
     dataTypes = {
-            std::make_shared<PolynomialInputComponent>("PolynomialA"),
-            std::make_shared<PolynomialInputComponent>("PolynomialB"),
+            std::make_shared<RingPolynomialInputComponent>("PolynomialA"),
+            std::make_shared<RingPolynomialInputComponent>("PolynomialB"),
             std::make_shared<IntInputComponent>("Module")
     };
 }

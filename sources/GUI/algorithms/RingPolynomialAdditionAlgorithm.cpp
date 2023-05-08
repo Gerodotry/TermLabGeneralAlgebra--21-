@@ -6,10 +6,10 @@
 #include "GUI/inputComponents/IntInputComponent.h"
 #include "utils/Int.h"
 #include "algorithms/PolynomialAddition.h"
-#include "GUI/inputComponents/PolynomialInputComponent.h"
+#include "GUI/inputComponents/RingPolynomialInputComponent.h"
 
 std::string RingPolynomialAdditionAlgorithm::getName() const {
-    return "RingPolynomial addition";
+    return "Ring polynomial addition";
 }
 
 Object *RingPolynomialAdditionAlgorithm::run() {
@@ -22,8 +22,8 @@ Object *RingPolynomialAdditionAlgorithm::run() {
 
 RingPolynomialAdditionAlgorithm::RingPolynomialAdditionAlgorithm() {
     dataTypes = {
-            std::make_shared<PolynomialInputComponent>("PolynomialA"),
-            std::make_shared<PolynomialInputComponent>("PolynomialB"),
+            std::make_shared<RingPolynomialInputComponent>("PolynomialA"),
+            std::make_shared<RingPolynomialInputComponent>("PolynomialB"),
             std::make_shared<IntInputComponent>("Module")
     };
 }

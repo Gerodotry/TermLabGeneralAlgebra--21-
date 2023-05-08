@@ -2,16 +2,16 @@
 // Created by Dklishch on 4/24/2023.
 //
 
-#ifndef MAIN_CPP_PolynomialMultiplicationAlgorithm_H
-#define MAIN_CPP_PolynomialMultiplicationAlgorithm_H
+#ifndef MAIN_CPP_RingPolynomialMultiplicationAlgorithm_H
+#define MAIN_CPP_RingPolynomialMultiplicationAlgorithm_H
 
 #include "Algorithm.h"
 #include "utils/Number.h"
 #include "utils/RingPolynomial.h"
 
-class PolynomialMultiplicationAlgorithm : public Algorithm {
+class RingPolynomialMultiplicationAlgorithm : public Algorithm {
 public:
-    PolynomialMultiplicationAlgorithm();
+    RingPolynomialMultiplicationAlgorithm();
 
     std::string getName() const override;
 
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //MAIN_CPP_PolynomialMultiplicationAlgorithm_H
+#endif //MAIN_CPP_RingPolynomialMultiplicationAlgorithm_H
