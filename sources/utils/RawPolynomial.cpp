@@ -68,4 +68,5 @@ RawPolynomial::RawPolynomial(const std::vector<int> &coefficients): coefficients
 
 RawPolynomial &RawPolynomial::operator=(const RawPolynomial &polynomial) {
     coefficients = polynomial.coefficients;
+    return *this;
 }
