@@ -32,7 +32,7 @@ public:
 
     std::string toString();
 
-    void toField(unsigned int modulo, bool isRing);
+    void toField(unsigned int modulo);
 private:
     std::string coeffToString();
 };

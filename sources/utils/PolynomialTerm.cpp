@@ -23,10 +23,7 @@ PolynomialTerm::PolynomialTerm(const std::string& degree, const std::string& coe
     degree(degree),
     coefficient(coefficient) {}
 
-void PolynomialTerm::toField(unsigned int modulo, bool isRing) {
-    if (!isRing) {
-        degree.toField(modulo);
-    }
+void PolynomialTerm::toField(unsigned int modulo) {
     coefficient.toField(modulo);
 }
 
