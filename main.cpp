@@ -25,6 +25,8 @@
 #include "GUI/algorithms/MillerRabinTestAlgorithm.h"
 #include "GUI/algorithms/DivisionAlgorithm.h"
 #include "GUI/algorithms/RemainderAlgorithm.h"
+#include "GUI/algorithms/NaiveFactorizationAlgorithm.h"
+#include "GUI/algorithms/PollardAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -73,6 +75,8 @@ int main(int, char**)
     Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
     Windows.addAlgorithm<MillerRabinTestAlgorithm>("Numbers");
+    Windows.addAlgorithm<NaiveFactorizationAlgorithm>("Numbers");
+    Windows.addAlgorithm<PollardAlgorithm>("Numbers");
 
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");

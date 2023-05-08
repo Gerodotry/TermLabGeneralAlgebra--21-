@@ -14,8 +14,7 @@ std::vector<Number> NaiveFactorization::run(Number a, unsigned int modulo) {
 
 std::vector<Number> NaiveFactorization::naive_factorization(Number &a, unsigned int modulo) {
     std::vector<Number> b;
-    for (Number i = Number(2);
-         i <= NumberMultiplication::run(a, a, modulo); NumberAddition::run(i, Number(1), modulo)) {
+    for (Number i = Number(2); i <= NumberMultiplication::run(a, a, modulo); NumberAddition::run(i, Number(1), modulo)) {
         while (NumberRemainder::run(a, i, modulo) == Number(0)) {
             b.push_back(i);
             a = NumberSubtraction::run(a, i, modulo);
