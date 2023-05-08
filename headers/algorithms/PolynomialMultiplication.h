@@ -1,16 +1,30 @@
-#include "algorithms/RingPolynomialMultiplication.h"
-#include "algorithms/NumberMultiplication.h"
+#ifndef LAB_POLYNOMIALMULTIPLICATION_H
+#define LAB_POLYNOMIALMULTIPLICATION_H
 
-RingPolynomial RingPolynomialMultiplication::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
+#include "utils/RingPolynomial.h"
+#include "NumberAddition.h"
+#include "NumberMultiplication.h"
+
+class PolynomialMultiplication {
+public:
+    template<class T>
+    static T run(T a, T b, unsigned int modulo);
+private:
+    template<class T>
+    static T multiply(const T& a, const T& b, unsigned int modulo);
+};
+
+template<class T>
+T PolynomialMultiplication::run(T a, T b, unsigned int modulo) {
     if (modulo) {
         a.toField(modulo);
         b.toField(modulo);
     }
     return multiply(a, b, modulo);
 }
-
-RingPolynomial RingPolynomialMultiplication::multiply(const RingPolynomial& a, const RingPolynomial& b, unsigned int modulo) {
-    RingPolynomial product;
+template<class T>
+T PolynomialMultiplication::multiply(const T& a, const T& b, unsigned int modulo) {
+    T product;
     // Multiply each term of a with each term of b and add the results to the product polynomial
     for (const auto& termA : a.terms) {
         for (const auto& termB : b.terms) {
@@ -35,3 +49,4 @@ RingPolynomial RingPolynomialMultiplication::multiply(const RingPolynomial& a, c
     return product;
 }
 
+#endif //LAB_POLYNOMIALMULTIPLICATION_H

@@ -8,11 +8,11 @@
 
 #include "InputComponent.h"
 #include "utils/Int.h"
-#include "utils/RingPolynomial.h"
+#include "utils/FieldPolynomial.h"
 
-class PolynomialInputComponent: public InputComponent {
+class FieldPolynomialInputComponent: public InputComponent {
 public:
-    explicit PolynomialInputComponent(const std::string& name);
+    explicit FieldPolynomialInputComponent(const std::string& name);
 
     virtual void createInputWindow() override;
 
@@ -25,7 +25,7 @@ private:
     std::string degrees = std::string(2048, '.');
     std::string coefficients = std::string(2048, '.');
 
-    RingPolynomial polynomial;
+    FieldPolynomial polynomial;
 
     std::vector<std::string> parseNumbers(const std::string& string);
 };

@@ -1,7 +1,21 @@
-#include "algorithms/RingPolynomialSubtraction.h"
-#include "algorithms/NumberSubtraction.h"
+#ifndef LAB_POLYNOMIALSUBTRACTION_H
+#define LAB_POLYNOMIALSUBTRACTION_H
 
-RingPolynomial RingPolynomialSubtraction::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
+#include "utils/RingPolynomial.h"
+#include "NumberSubtraction.h"
+
+class PolynomialSubtraction {
+public:
+    template<class T>
+    static T run(T a, T b, unsigned int modulo);
+
+private:
+    template<class T>
+    static T subtract(const T& a, const T& b, unsigned int modulo);
+};
+
+template<class T>
+T PolynomialSubtraction::run(T a, T b, unsigned int modulo) {
     if (modulo) {
         a.toField(modulo);
         b.toField(modulo);
@@ -9,13 +23,14 @@ RingPolynomial RingPolynomialSubtraction::run(RingPolynomial a, RingPolynomial b
     return subtract(a, b, modulo);
 }
 
-RingPolynomial RingPolynomialSubtraction::subtract(const RingPolynomial& a, const RingPolynomial& b, unsigned int modulo) {
-    RingPolynomial difference;
+template<class T>
+T PolynomialSubtraction::subtract(const T& a, const T& b, unsigned int modulo) {
+    T difference;
     // Iterate over the terms of both polynomials and subtract them
     int i = 0, j = 0;
     while (i < a.terms.size() && j < b.terms.size()) {
-        Number aDegree = a.terms[i].getDegree(), bDegree = b.terms[i].getDegree();
-        Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[i].getCoefficient();
+        Number aDegree = a.terms[i].getDegree(), bDegree = b.terms[j].getDegree();
+        Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[j].getCoefficient();
         if (aDegree == bDegree) {
             Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, 0);
             PolynomialTerm term({aDegree, coefficientsDifference});
@@ -46,3 +61,6 @@ RingPolynomial RingPolynomialSubtraction::subtract(const RingPolynomial& a, cons
     }
     return difference;
 }
+
+
+#endif //LAB_POLYNOMIALSUBTRACTION_H

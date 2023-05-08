@@ -1,7 +1,20 @@
-#include "algorithms/RingPolynomialAddition.h"
-#include "algorithms/NumberAddition.h"
+#ifndef LAB_POLYNOMIALADDITION_H
+#define LAB_POLYNOMIALADDITION_H
 
-RingPolynomial RingPolynomialAddition::run(RingPolynomial a, RingPolynomial b, unsigned int modulo) {
+#include "utils/RingPolynomial.h"
+#include "NumberAddition.h"
+
+class PolynomialAddition {
+public:
+    template<class T>
+    static T run(T a, T b, unsigned int modulo);
+private:
+    template<class T>
+    static T add(const T& a, const T& b, unsigned int modulo);
+};
+
+template<class T>
+T PolynomialAddition::run(T a, T b, unsigned int modulo) {
     if (modulo) {
         a.toField(modulo);
         b.toField(modulo);
@@ -9,8 +22,9 @@ RingPolynomial RingPolynomialAddition::run(RingPolynomial a, RingPolynomial b, u
     return add(a, b, modulo);
 }
 
-RingPolynomial RingPolynomialAddition::add(const RingPolynomial& a, const RingPolynomial& b, unsigned int modulo) {
-    RingPolynomial sum;
+template<class T>
+T PolynomialAddition::add(const T& a, const T& b, unsigned int modulo) {
+    T sum;
     // Iterate over the terms of both polynomials and add them together
     int i = 0, j = 0;
     while (i < a.terms.size() && j < b.terms.size()) {
@@ -46,3 +60,4 @@ RingPolynomial RingPolynomialAddition::add(const RingPolynomial& a, const RingPo
     }
     return sum;
 }
+#endif //LAB_POLYNOMIALADDITION_H

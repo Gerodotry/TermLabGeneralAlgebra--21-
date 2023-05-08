@@ -7,7 +7,7 @@
 #include "utils/Number.h"
 #include "utils/Int.h"
 
-void PolynomialInputComponent::createInputWindow() {
+void FieldPolynomialInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
     ImGui::InputText("Degrees", &degrees[0], 2048); //TODO: check if have changed to avoid reparsing same string again
     ImGui::InputText("Coefficients", &coefficients[0], 2048);
@@ -15,22 +15,22 @@ void PolynomialInputComponent::createInputWindow() {
     ImGui::End();
 }
 
-Object* PolynomialInputComponent::getObject() {
+Object* FieldPolynomialInputComponent::getObject() {
     std::vector<std::string> degreesList = parseNumbers(degrees);
     std::vector<std::string> coefficientsList = parseNumbers(coefficients);
-    polynomial = RingPolynomial(degreesList, coefficientsList);
+    polynomial = FieldPolynomial(degreesList, coefficientsList);
     return &polynomial;
 }
 
-PolynomialInputComponent::PolynomialInputComponent(const std::string &name): InputComponent(name){
+FieldPolynomialInputComponent::FieldPolynomialInputComponent(const std::string &name): InputComponent(name){
 
 }
 
-bool PolynomialInputComponent::isInputValid() {
+bool FieldPolynomialInputComponent::isInputValid() {
     return true;
 }
 
-std::vector<std::string> PolynomialInputComponent::parseNumbers(const std::string &string) {
+std::vector<std::string> FieldPolynomialInputComponent::parseNumbers(const std::string &string) {
     std::vector<std::string> results;
     std::string tmp;
     for (const char& c: string) {
