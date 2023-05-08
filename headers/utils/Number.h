@@ -8,6 +8,7 @@
 #include "Object.h"
 
 class Number: public Object {
+public:
     bool isPositive = true;
     std::vector<unsigned int> digits;
 
