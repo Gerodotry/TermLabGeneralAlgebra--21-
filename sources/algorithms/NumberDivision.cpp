@@ -11,7 +11,7 @@ Number NumberDivision::run(Number a, Number b, unsigned int modulo) {
     return divide(a, b, modulo);
 }
 
-Number NumberDivision::divide(const Number& a, const Number& b, unsigned int modulo) {
+Number NumberDivision::divide(const Number &a, const Number &b, unsigned int modulo) {
     if (b == 0) {
         throw std::invalid_argument("Division by zero");
     }
@@ -26,36 +26,35 @@ Number NumberDivision::divide(const Number& a, const Number& b, unsigned int mod
     }
 
     std::vector<unsigned int> result;
-    while (i <= a.digits.size()) {
+    do {
         if (part < b) {
             if (i >= a.digits.size()) {
                 break;
-            }
-            else {
+            } else {
                 part.digits.insert(part.digits.begin(), a.digits[a.digits.size() - i - 1]);
                 part.simplify();
             }
             i++;
         }
-        while (part < b) {
+        while (part < b && i < a.digits.size()) {
             if (i >= a.digits.size()) {
                 result.push_back(0);
                 break;
-            }
-            else {
+            } else {
                 result.push_back(0);
                 part.digits.insert(part.digits.begin(), a.digits[a.digits.size() - i - 1]);
                 part.simplify();
             }
             i++;
         }
+
         int j = 0;
         while (part >= b) {
             j++;
             part = NumberSubtraction::run(part, b, 0);
         }
         result.push_back(j);
-    }
+    } while (i < a.digits.size());
     std::reverse(result.begin(), result.end());
     return Number(result);
 }
