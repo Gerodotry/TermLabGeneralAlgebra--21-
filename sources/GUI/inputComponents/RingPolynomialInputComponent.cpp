@@ -2,12 +2,12 @@
 // Created by Dklishch on 3/26/2023.
 //
 
-#include "GUI/InputComponents/FieldPolynomialInputComponent.h"
+#include "GUI/InputComponents/RingPolynomialInputComponent.h"
 #include "imgui.h"
 #include "utils/Number.h"
 #include "utils/Int.h"
 
-void FieldPolynomialInputComponent::createInputWindow() {
+void RingPolynomialInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
     ImGui::InputText("Degrees", &degrees[0], 2048); //TODO: check if have changed to avoid reparsing same string again
     ImGui::InputText("Coefficients", &coefficients[0], 2048);
@@ -15,22 +15,22 @@ void FieldPolynomialInputComponent::createInputWindow() {
     ImGui::End();
 }
 
-Object* FieldPolynomialInputComponent::getObject() {
+Object* RingPolynomialInputComponent::getObject() {
     std::vector<std::string> degreesList = parseNumbers(degrees);
     std::vector<std::string> coefficientsList = parseNumbers(coefficients);
-    polynomial = FieldPolynomial(degreesList, coefficientsList);
+    polynomial = RingPolynomial(degreesList, coefficientsList);
     return &polynomial;
 }
 
-FieldPolynomialInputComponent::FieldPolynomialInputComponent(const std::string &name): InputComponent(name){
+RingPolynomialInputComponent::RingPolynomialInputComponent(const std::string &name): InputComponent(name){
 
 }
 
-bool FieldPolynomialInputComponent::isInputValid() {
+bool RingPolynomialInputComponent::isInputValid() {
     return true;
 }
 
-std::vector<std::string> FieldPolynomialInputComponent::parseNumbers(const std::string &string) {
+std::vector<std::string> RingPolynomialInputComponent::parseNumbers(const std::string &string) {
     std::vector<std::string> results;
     std::string tmp;
     for (const char& c: string) {
