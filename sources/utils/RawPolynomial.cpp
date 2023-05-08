@@ -47,13 +47,14 @@ void RawPolynomial::add(const std::vector<int>& degrees, const std::vector<int>&
 
 std::string RawPolynomial::toString() {
     std::string result;
-    for (int i = coefficients.size() - 1; i >= 0; --i) {
+    for (int i = 0; i < coefficients.size(); ++i) {
         if (coefficients[i]) {
             std::string termString = std::to_string(coefficients[i]);
             result += (termString[0] == '-') ? termString : ("+" + termString);
-            if (i > 1) {
-                result += "x^" + std::to_string(i);
-            } else if (i == 1) {
+            int degree = coefficients.size() - i - 1;
+            if (degree > 1) {
+                result += "x^" + std::to_string(degree);
+            } else if (degree == 1) {
                 result += "x";
             }
         }
