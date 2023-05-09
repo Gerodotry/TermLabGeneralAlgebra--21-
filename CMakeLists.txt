@@ -47,6 +47,8 @@ add_executable(Lab main.cpp
         sources/GUI/algorithms/RingPolynomialMultiplicationAlgorithm.cpp
         headers/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h
         sources/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.cpp
+        headers/GUI/algorithms/FieldPolynomialDivisionAlgorithm.h
+        sources/GUI/algorithms/FieldPolynomialDivisionAlgorithm.cpp
         headers/GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.h
         sources/GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.cpp
         headers/GUI/algorithms/RingPolynomialFastPoweringAlgorithm.h
@@ -88,6 +90,7 @@ add_executable(Lab main.cpp
         sources/utils/PolynomialTerm.cpp
         headers/utils/PolynomialTerm.h
         headers/algorithms/PolynomialAddition.h
+        headers/algorithms/PolynomialDivision.h
         headers/algorithms/PolynomialSubtraction.h
         headers/algorithms/PolynomialMultiplication.h
         headers/GUI/inputComponents/NumberInputComponent.h
