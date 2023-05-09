@@ -1,13 +1,12 @@
 #include "algorithms/PolynomialGeneratorCheck.h"
 #include <vector>
-/*
 
 bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& poly, int field_size) {
     std::vector<int> powers(field_size - 1, 0);
     int x = 1;
     for (int i = 0; i < field_size - 2; i++) {
         powers[x] = i + 1;
-        x = multiply_polynomials(x, poly, field_size);
+        x = multiply_polynomials({ x }, poly, field_size)[0];
     }
 
     for (int i = 1; i < field_size; i++) {
@@ -23,7 +22,7 @@ int PolynomialGeneratorCheck::run(const std::vector<int>& poly, int field_size) 
     int x = 1;
     for (int i = 0; i < field_size - 2; i++) {
         powers[x] = i + 1;
-        x = multiply_polynomials(x, poly, field_size);
+        x = multiply_polynomials({ x }, poly, field_size)[0];
     }
 
     for (int i = 1; i < field_size; i++) {
@@ -46,4 +45,4 @@ std::vector<int> PolynomialGeneratorCheck::multiply_polynomials(const std::vecto
         result.pop_back();
     }
     return result;
-}*/
+}
