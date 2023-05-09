@@ -137,6 +137,16 @@ long long FieldPolynomial::calculateU(long long R, long long module) {
     return u;
 }
 
+bool FieldPolynomial::isZero() {
+    for (auto& term : terms) {
+        if (term.coefficient.isZero()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 FieldPolynomial::FieldPolynomial(int n) : Polynomial(n) {
 
 }

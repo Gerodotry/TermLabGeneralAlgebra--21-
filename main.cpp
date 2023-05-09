@@ -28,6 +28,7 @@
 #include "GUI/algorithms/NaiveFactorizationAlgorithm.h"
 #include "GUI/algorithms/PollardAlgorithm.h"
 #include "GUI/algorithms/NumberSqrtAlgorithm.h"
+#include "GUI/algorithms/EuclidAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -92,6 +93,7 @@ int main(int, char**)
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialMultiplicationAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialFastPoweringAlgorithm>("Field polynomial");
+    Windows.addAlgorithm<EuclidAlgorithm>("Field polynomial");
 
     while (!glfwWindowShouldClose(window))
     {
@@ -147,7 +149,7 @@ int main() {
     //BigInt n = 87178291199;
 
     //if (MillerRabinTest::run(n, k))
-    //     cout <<"Number "<< n<<" is prime\n";  
+    //     cout <<"Number "<< n<<" is prime\n";
     //else
     //    cout << "Number " << n << " is not prime\n";
 

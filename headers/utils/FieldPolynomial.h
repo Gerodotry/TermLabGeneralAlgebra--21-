@@ -23,6 +23,10 @@ public:
 
     virtual void toField(int modulo) override;
 
+    static FieldPolynomial PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor);
+
+    bool isZero();
+
 private:
     int calculateBitsNumber(int number);
 
@@ -30,7 +34,6 @@ private:
 
     static long long calculateU(long long R, long long module);
 
-    static FieldPolynomial PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor);
 };
 
 #endif //LAB_FieldPolynomial_H
