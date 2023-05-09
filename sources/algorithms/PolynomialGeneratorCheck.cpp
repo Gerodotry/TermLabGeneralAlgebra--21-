@@ -1,7 +1,8 @@
-#include "algorithms/PolynomialGenerateorCheck.h"
+#include "algorithms/PolynomialGeneratorCheck.h"
 #include <vector>
+/*
 
-PolynomialGeneratorCheck::is_generator(const std::vector<int>& poly, int field_size) {
+bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& poly, int field_size) {
     std::vector<int> powers(field_size - 1, 0);
     int x = 1;
     for (int i = 0; i < field_size - 2; i++) {
@@ -17,8 +18,7 @@ PolynomialGeneratorCheck::is_generator(const std::vector<int>& poly, int field_s
     return true;
 }
 
-
-PolynomialGeneratorCheck::run(const std::vector<int>& poly, int field_size) {
+int PolynomialGeneratorCheck::run(const std::vector<int>& poly, int field_size) {
     std::vector<int> powers(field_size - 1, 0);
     int x = 1;
     for (int i = 0; i < field_size - 2; i++) {
@@ -34,7 +34,7 @@ PolynomialGeneratorCheck::run(const std::vector<int>& poly, int field_size) {
     return field_size - 1;
 }
 
-PolynomialGeneratorCheck::multiply_polynomials(const std::vector<int>& a, const std::vector<int>& b, int field_size) {
+std::vector<int> PolynomialGeneratorCheck::multiply_polynomials(const std::vector<int>& a, const std::vector<int>& b, int field_size) {
     std::vector<int> result(a.size() + b.size() - 1, 0);
     for (int i = 0; i < a.size(); i++) {
         for (int j = 0; j < b.size(); j++) {
@@ -46,5 +46,4 @@ PolynomialGeneratorCheck::multiply_polynomials(const std::vector<int>& a, const 
         result.pop_back();
     }
     return result;
-}
-};
+}*/
