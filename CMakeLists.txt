@@ -47,8 +47,6 @@ add_executable(Lab main.cpp
         sources/GUI/algorithms/RingPolynomialMultiplicationAlgorithm.cpp
         headers/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h
         sources/GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.cpp
-        headers/GUI/algorithms/FieldPolynomialDivisionAlgorithm.h
-        sources/GUI/algorithms/FieldPolynomialDivisionAlgorithm.cpp
         headers/GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.h
         sources/GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.cpp
         headers/GUI/algorithms/RingPolynomialFastPoweringAlgorithm.h
@@ -90,7 +88,6 @@ add_executable(Lab main.cpp
         sources/utils/PolynomialTerm.cpp
         headers/utils/PolynomialTerm.h
         headers/algorithms/PolynomialAddition.h
-        headers/algorithms/PolynomialDivision.h
         headers/algorithms/PolynomialSubtraction.h
         headers/algorithms/PolynomialMultiplication.h
         headers/GUI/inputComponents/NumberInputComponent.h
@@ -104,7 +101,7 @@ add_executable(Lab main.cpp
         sources/utils/Int.cpp
         headers/utils/Int.h
         sources/algorithms/MillerRabinTest.cpp tests/MillerRabinTestTests.cpp  headers/algorithms/Gcd.h sources/algorithms/Gcd.cpp sources/algorithms/Gcd.cpp tests/GcdTests.cpp sources/algorithms/Remainder.cpp headers/algorithms/Remainder.h sources/algorithms/Division.cpp headers/algorithms/Division.h sources/utils/BigInt.cpp headers/algorithms/PolynomialFastPowering.h sources/utils/RawPolynomial.cpp headers/utils/RawPolynomial.h sources/GUI/inputComponents/RawPolynomialInputComponent.cpp headers/GUI/inputComponents/RawPolynomialInputComponent.h sources/utils/Parser.cpp headers/utils/Parser.h sources/GUI/algorithms/MillerRabinTestAlgorithm.cpp headers/GUI/algorithms/MillerRabinTestAlgorithm.h sources/utils/Bool.cpp headers/utils/Bool.h sources/GUI/inputComponents/BigIntInputComponent.cpp headers/GUI/inputComponents/BigIntInputComponent.h sources/GUI/algorithms/RmainderAlgorithm.cpp headers/GUI/algorithms/RemainderAlgorithm.h sources/GUI/algorithms/GcdAlgorithm.cpp headers/GUI/algorithms/GcdAlgorithm.h sources/GUI/algorithms/DivisionAlgorithm.cpp headers/GUI/algorithms/DivisionAlgorithm.h sources/GUI/algorithms/NaiveFactorizationAlgorithm.cpp headers/GUI/algorithms/NaiveFactorizationAlgorithm.h sources/utils/NumberFactors.cpp headers/utils/NumberFactors.h sources/GUI/algorithms/PollardAlgorithm.cpp headers/GUI/algorithms/PollardAlgorithm.h tests/FieldPolynomialsAdditionTests.cpp tests/FieldPolynomialsSubtractionTests.cpp headers/algorithms/PolynomialGeneratorCheck.h sources/algorithms/PolynomialGeneratorCheck.cpp
-        tests/FieldPolynomialMultiplication.cpp sources/algorithms/NumberSqrt.cpp headers/algorithms/NumberSqrt.h sources/algorithms/NumberSqrtAlgorithm.cpp headers/GUI/algorithms/NumberSqrtAlgorithm.h  headers/algorithms/Euclid.h sources/algorithms/Euclid.cpp sources/algorithms/EuclidAlgorithm.cpp headers/GUI/algorithms/EuclidAlgorithm.h sources/utils/EuclidResult.cpp headers/utils/EuclidResult.h headers/algorithms/PolynomialRemainder.h)
+        tests/FieldPolynomialMultiplication.cpp sources/algorithms/NumberSqrt.cpp headers/algorithms/NumberSqrt.h sources/algorithms/NumberSqrtAlgorithm.cpp headers/GUI/algorithms/NumberSqrtAlgorithm.h  headers/algorithms/Euclid.h sources/algorithms/Euclid.cpp sources/algorithms/EuclidAlgorithm.cpp headers/GUI/algorithms/EuclidAlgorithm.h sources/utils/EuclidResult.cpp headers/utils/EuclidResult.h)
 
 include_directories(h headers)
 include_directories(ImGui imgui)
