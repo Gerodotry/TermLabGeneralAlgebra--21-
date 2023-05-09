@@ -1,5 +1,7 @@
 #ifndef LAB_EUCLID_H
 #define LAB_EUCLID_H
+#include <vector>
+#include "utils/FieldPolynomial.h"
 
 class Euclid {
 public:

@@ -1,5 +1,6 @@
 ﻿#include <algorithms/PolynomialMultiplication.h>
 #include <algorithms/PolynomialSubtraction.h>
+#include <stdexcept>
 #include "utils/FieldPolynomial.h"
 #include "algorithms/Euclid.h"
 
@@ -21,25 +22,34 @@ std::vector<FieldPolynomial> Euclid::euclid_inversion(FieldPolynomial &r1, Field
 
     euclid(r1, r2, gcd, a, b, modulo);
 
-    e.push_back(r1);
-    e.push_back(r2);
+    e.push_back(gcd);
+    e.push_back(a);
+    e.push_back(b);
 
     return e;
 }
 
-void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2, FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b, unsigned int modulo){
+void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2, FieldPolynomial& gcd, FieldPolynomial& a, FieldPolynomial& b, unsigned int modulo) {
+    FieldPolynomial zeroPoly({{0, 0}});
 
-    FieldPolynomial r3 = PolynomialSubtraction::run(r1 , PolynomialMultiplication::run (r2, FieldPolynomial::PolyDiv(r1, r2), modulo), modulo);
-    FieldPolynomial x3 = PolynomialSubtraction::run(x1 , PolynomialMultiplication::run (x2, FieldPolynomial::PolyDiv(r1, r2), modulo), modulo);
-    FieldPolynomial y3 = PolynomialSubtraction::run(y1 , PolynomialMultiplication::run (y2, FieldPolynomial::PolyDiv(r1, r2), modulo), modulo);
+    while (!r2.isZero()) {
+        FieldPolynomial quotient = FieldPolynomial::PolyDiv(r1, r2);
 
-    if (!(r3.isZero()))
-        inversion(r2, r3, x2, x3, y2, y3, gcd, a, b, modulo);
-    else {
-        gcd = r2;
-        a = x2;
-        b = y2;
+        FieldPolynomial r3 = PolynomialSubtraction::run(r1, PolynomialMultiplication::run(r2, quotient, modulo), modulo);
+        FieldPolynomial x3 = PolynomialSubtraction::run(x1, PolynomialMultiplication::run(x2, quotient, modulo), modulo);
+        FieldPolynomial y3 = PolynomialSubtraction::run(y1, PolynomialMultiplication::run(y2, quotient, modulo), modulo);
+
+        r1 = r2;
+        r2 = r3;
+        x1 = x2;
+        x2 = x3;
+        y1 = y2;
+        y2 = y3;
     }
+
+    gcd = r1;
+    a = x1;
+    b = y1;
 }
 
 void Euclid::euclid(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b, unsigned int modulo) {

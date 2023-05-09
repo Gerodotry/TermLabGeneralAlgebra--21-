@@ -25,7 +25,7 @@ public:
 
     static FieldPolynomial PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor);
 
-    bool isZero() const;
+    bool isZero();
 
 private:
     int calculateBitsNumber(int number);
