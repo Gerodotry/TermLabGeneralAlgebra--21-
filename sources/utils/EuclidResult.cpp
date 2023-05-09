@@ -7,9 +7,7 @@
 std::string EuclidResult::toString() {
     std::string result;
 
-    result += "gcd: " + gcd.toString() + "\n";
     result += "a: " + a.toString() + "\n";
-    result += "b: " + b.toString() + "\n";
 
     return result;
 }

@@ -4,6 +4,7 @@
 #include "algorithms/PolynomialSubtraction.h"
 #include <initializer_list>
 #include <cmath>
+#include <stdexcept>
 
 void FieldPolynomial::toField(int modulo) {
     dropZeroes();
@@ -81,7 +82,11 @@ long long FieldPolynomial::calculateValue(long long int t, long long int module)
     return result;
 }
 
-FieldPolynomial FieldPolynomial::PolyDiv(const FieldPolynomial &dividend, FieldPolynomial divisor) {
+FieldPolynomial FieldPolynomial::PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor) {
+    if (divisor.isZero()) {
+        throw std::invalid_argument("Division by zero");
+    }
+
     FieldPolynomial quotient;
     FieldPolynomial remainder(dividend);
 
@@ -93,26 +98,26 @@ FieldPolynomial FieldPolynomial::PolyDiv(const FieldPolynomial &dividend, FieldP
             remainder.terms.erase(remainder.terms.begin());
         }
 
-        //if (remainder.terms.front().degree < divisor.terms.front().degree)
-
         Number degree_diff = NumberSubtraction::run(remainder.terms.front().degree, divisor.terms.front().degree, 0);
         Number coeff_ratio = NumberDivision::run(remainder.terms.front().coefficient, divisor.terms.front().coefficient, 0);
 
-        for (auto& term: divisor.terms) {
+        for (auto& term : divisor.terms) {
             term.coefficient = NumberMultiplication::run(term.coefficient, coeff_ratio, 0);
             term.degree = NumberAddition::run(term.degree, degree_diff, 0);
         }
 
         remainder = PolynomialSubtraction::run(remainder, divisor, 0);
 
-        for (auto& term: divisor.terms) {
+        for (auto& term : divisor.terms) {
             term.coefficient = NumberDivision::run(term.coefficient, coeff_ratio, 0);
             term.degree = NumberSubtraction::run(term.degree, degree_diff, 0);
         }
     }
 
-    return remainder.terms.empty() ? FieldPolynomial({{0, 0}}) : remainder;
+    return remainder.terms.empty() ? FieldPolynomial({ {0, 0} }) : remainder;
 }
+
+
 
 long long FieldPolynomial::calculateU(long long R, long long module) {
     long long u = 1;
