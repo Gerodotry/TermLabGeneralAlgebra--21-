@@ -35,7 +35,7 @@ T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) 
         const auto& leadingTermDividend = remainder.terms.front();
         const auto& leadingTermDivisor = divisor.terms.front();
 
-        Number degreeDifference = NumberSubtraction::run(leadingTermDividend.getDegree(), leadingTermDivisor.getDegree(), 0);
+        Number degreeDifference = NumberSubtraction::run(leadingTermDividend.getDegree(), leadingTermDivisor.getDegree(), modulo);
         Number coefficientQuotient = NumberDivision::run(leadingTermDividend.getCoefficient(), leadingTermDivisor.getCoefficient(), modulo);
 
         PolynomialTerm term({degreeDifference, coefficientQuotient});
