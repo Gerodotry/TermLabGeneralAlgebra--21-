@@ -1,14 +1,18 @@
-#ifndef LAB_POLYNOMIALDIVISION_H
-#define LAB_POLYNOMIALDIVISION_H
+//
+// Created by Dklishch on 5/10/2023.
+//
 
-#include "utils/RingPolynomial.h"
+#ifndef LAB_POLYNOMIALREMAINDER_H
+#define LAB_POLYNOMIALREMAINDER_H
+
+#include <stdexcept>
+#include "utils/Number.h"
+#include "NumberSubtraction.h"
 #include "NumberDivision.h"
 #include "NumberMultiplication.h"
-#include "PolynomialMultiplication.h"
 #include "PolynomialSubtraction.h"
-#include <stdexcept>
 
-class PolynomialDivision {
+class PolynomialRemainder {
 public:
     template<class T>
     static T run(T dividend, T divisor, unsigned int modulo);
@@ -18,7 +22,7 @@ private:
 };
 
 template<class T>
-T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
+T PolynomialRemainder::run(T dividend, T divisor, unsigned int modulo) {
     if (modulo) {
         dividend.toField(modulo);
         divisor.toField(modulo);
@@ -27,7 +31,7 @@ T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) {
+T PolynomialRemainder::divide(const T& dividend, T divisor, unsigned int modulo) {
     if (divisor.isZero()) {
         throw std::invalid_argument("Division by zero");
     }
@@ -51,7 +55,6 @@ T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) 
             term.degree = NumberAddition::run(term.degree, degree_diff, 0);
         }
 
-        quotient.terms.push_back( { degree_diff, coeff_ratio } );
         remainder = PolynomialSubtraction::run(remainder, divisor, 0);
 
         for (auto& term : divisor.terms) {
@@ -60,7 +63,7 @@ T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) 
         }
     }
 
-    return quotient.terms.empty() ? T({ {0, 0} }) : quotient;
+    return remainder.terms.empty() ? T({ {0, 0} }) : remainder;
 }
 
-#endif // LAB_POLYNOMIALDIVISION_H
+#endif //LAB_POLYNOMIALREMAINDER_H

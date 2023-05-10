@@ -23,14 +23,10 @@ public:
 
     virtual void toField(int modulo) override;
 
-    static FieldPolynomial PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor);
-
     bool isZero();
 
 private:
     int calculateBitsNumber(int number);
-
-    long long calculateValue(long long t, long long module);
 
     static long long calculateU(long long R, long long module);
 

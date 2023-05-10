@@ -2,6 +2,8 @@
 #include "algorithms/PolynomialMultiplication.h"
 #include "algorithms/PolynomialAddition.h"
 #include "algorithms/PolynomialSubtraction.h"
+#include "algorithms/PolynomialDivision.h"
+#include "algorithms/PolynomialRemainder.h"
 #include <initializer_list>
 #include <cmath>
 #include <stdexcept>
@@ -21,7 +23,7 @@ void FieldPolynomial::toField(int modulo) {
 
         FieldPolynomial h(g.terms);
         for (int i = h.getDegree().get() - 1; i >= 0 && h.getDegree() > modulo; --i) {
-            h = PolyDiv(h, { { i, 1 }, { 0, 1 } });
+            h = PolynomialRemainder::run(h, { { i, 1 }, { 0, 1 } }, 0);
         }
 
         for (auto& term: h.terms) {
@@ -63,61 +65,6 @@ int FieldPolynomial::calculateBitsNumber(int number) {
     }
     return result;
 }
-
-long long FieldPolynomial::calculateValue(long long int t, long long int module) {
-    long long result = 0;
-    for (auto term: terms) {
-
-        long long tmp = 1;
-        for (int i = 0; term.degree > i; ++i) {
-            tmp = (tmp * t) % module;
-        }
-
-        term.coefficient.toField(module);
-        tmp = (tmp * term.coefficient.get()) % module;
-
-        result = (result + tmp) % module;
-    }
-
-    return result;
-}
-
-FieldPolynomial FieldPolynomial::PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor) {
-    if (divisor.isZero()) {
-        throw std::invalid_argument("Division by zero");
-    }
-
-    FieldPolynomial quotient;
-    FieldPolynomial remainder(dividend);
-
-    remainder.sortByDegree();
-    divisor.sortByDegree();
-
-    while (remainder.getDegree() >= divisor.getDegree()) {
-        while (!remainder.terms.empty() && remainder.terms.front().coefficient.isZero()) {
-            remainder.terms.erase(remainder.terms.begin());
-        }
-
-        Number degree_diff = NumberSubtraction::run(remainder.terms.front().degree, divisor.terms.front().degree, 0);
-        Number coeff_ratio = NumberDivision::run(remainder.terms.front().coefficient, divisor.terms.front().coefficient, 0);
-
-        for (auto& term : divisor.terms) {
-            term.coefficient = NumberMultiplication::run(term.coefficient, coeff_ratio, 0);
-            term.degree = NumberAddition::run(term.degree, degree_diff, 0);
-        }
-
-        remainder = PolynomialSubtraction::run(remainder, divisor, 0);
-
-        for (auto& term : divisor.terms) {
-            term.coefficient = NumberDivision::run(term.coefficient, coeff_ratio, 0);
-            term.degree = NumberSubtraction::run(term.degree, degree_diff, 0);
-        }
-    }
-
-    return remainder.terms.empty() ? FieldPolynomial({ {0, 0} }) : remainder;
-}
-
-
 
 long long FieldPolynomial::calculateU(long long R, long long module) {
     long long u = 1;
