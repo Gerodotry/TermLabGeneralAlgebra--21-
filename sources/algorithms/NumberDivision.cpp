@@ -11,8 +11,8 @@ Number NumberDivision::run(Number a, Number b, unsigned int modulo) {
     return divide(a, b, modulo);
 }
 
-Number NumberDivision::divide(const Number &a, const Number &b, unsigned int modulo) {
-    if (b == 0) {
+Number NumberDivision::divide( Number &a, Number &b, unsigned int modulo) {
+    if (b.isZero()) {
         throw std::invalid_argument("Division by zero");
     }
     if (a < b) {
@@ -56,5 +56,11 @@ Number NumberDivision::divide(const Number &a, const Number &b, unsigned int mod
         result.push_back(j);
     } while (i < a.digits.size());
     std::reverse(result.begin(), result.end());
-    return Number(result);
+
+    Number numberResult(result);
+    if (modulo) {
+        numberResult.toField(modulo);
+    }
+
+    return numberResult;
 }
