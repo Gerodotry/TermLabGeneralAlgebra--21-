@@ -11,7 +11,7 @@ class FieldPolynomial : public Polynomial {
 public:
     FieldPolynomial() = default;
 
-    explicit FieldPolynomial(int n);
+    explicit FieldPolynomial(int n, int value = 0);
 
     FieldPolynomial(const std::initializer_list<PolynomialTerm> &terms);
 

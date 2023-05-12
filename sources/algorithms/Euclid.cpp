@@ -10,7 +10,6 @@ FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2, FieldPolynom
         r1.toField(modulo);
         r2.toField(modulo);
     }
-
     return euclid_inversion(r1, r2, a, b, modulo);
 }
 
@@ -47,6 +46,6 @@ void Euclid::euclid(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial &gcd
     Number d1 = r1.getDegree();
     Number d2 = r2.getDegree();
 
-    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1),FieldPolynomial(0), FieldPolynomial(0), FieldPolynomial(1), gcd, d1 > d2 ? a : b,d1 < d2 ? a : b, modulo);
+    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1, 1), FieldPolynomial(1), FieldPolynomial(1), FieldPolynomial(1, 1), gcd, d1 > d2 ? a : b, d1 < d2 ? a : b, modulo);
 }
 

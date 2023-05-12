@@ -14,7 +14,7 @@ public:
 
     Polynomial() = default;
 
-    explicit Polynomial(int n);
+    explicit Polynomial(int n, int value = 0);
 
     Polynomial(const std::initializer_list<PolynomialTerm>& terms);
 
