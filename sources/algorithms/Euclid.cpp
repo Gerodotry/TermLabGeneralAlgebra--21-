@@ -2,25 +2,26 @@
 #include <algorithms/PolynomialSubtraction.h>
 #include <stdexcept>
 #include <algorithms/PolynomialDivision.h>
+#include <algorithms/PolynomialRemainder.h>
 #include "utils/FieldPolynomial.h"
 #include "algorithms/Euclid.h"
 
-FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2) 
-{ 
+FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2)
+{
     FieldPolynomial a, gcd, b, result;
 
     Number d1 = r1.getDegree();
     Number d2 = r2.getDegree();
 
-    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1),FieldPolynomial(0), FieldPolynomial(0), FieldPolynomial(1), gcd, d1 > d2 ? a : b,d1 < d2 ? a : b, modulo);
-    
-    result = PolynomialRamainder::run(a, b, 0); // a mod(b)
+    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1), FieldPolynomial(0), FieldPolynomial(0), FieldPolynomial(1), gcd, d1 > d2 ? a : b, d1 < d2 ? a : b);
+
+    result = PolynomialRemainder::run(a, b, 0); // a mod(b)
 
     return result;
 }
 
 void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2,
-                       FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b) {
+    FieldPolynomial& gcd, FieldPolynomial& a, FieldPolynomial& b) {
 
     FieldPolynomial q = PolynomialDivision::run(r1, r2, 0);
 
@@ -29,12 +30,14 @@ void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x
     FieldPolynomial y3 = PolynomialSubtraction::run(y1, PolynomialMultiplication::run(y2, q, 0), 0);
 
     if (!r3.isZero()) {
-        inversion(r2, r3, x2, x3, y2, y3, gcd, a, b, 0);
-    } else {
+        inversion(r2, r3, x2, x3, y2, y3, gcd, a, b);
+    }
+    else {
         gcd = r2;
         a = x2;
         b = y2;
     }
 }
+
 
 
