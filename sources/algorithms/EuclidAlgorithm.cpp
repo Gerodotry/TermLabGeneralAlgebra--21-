@@ -3,10 +3,8 @@
 //
 
 #include "GUI/algorithms/EuclidAlgorithm.h"
-#include "utils/Int.h"
 #include "algorithms/Euclid.h"
 #include "GUI/inputComponents/FieldPolynomialInputComponent.h"
-#include "GUI/inputComponents/IntInputComponent.h"
 
 
 std::string EuclidAlgorithm::getName() const {

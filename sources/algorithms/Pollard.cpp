@@ -1,38 +1,47 @@
-﻿#include "algorithms/Pollard.h"
+﻿#include <algorithms/NumberSqrt.h>
+#include "algorithms/Pollard.h"
 #include "algorithms/NumberDivision.h"
 #include "algorithms/NumberAddition.h"
 #include "algorithms/NumberGCD.h"
-#include "algorithms/NumberMultiplication.h"
 #include "algorithms/NumberSubtraction.h"
 #include "algorithms/NumberRemainder.h"
 
-std::vector<Number> Pollard::run(Number a, unsigned int modulo) {
-    if (modulo) {
-        a.toField(modulo);
-    }
-    return pollard_factorization(a, modulo);
+std::vector<Number> Pollard::run(Number a) {
+
+    return pollard_factorization(a);
 }
 
-std::vector<Number> Pollard::pollard_factorization(Number &a, unsigned int modulo) {
-    std::vector<Number> n;
-    Number b = a;
-    while (b > Number(1)) {
-        Number x = Number(2);
-        Number y = Number(2);
-        Number d = Number(1);
-        while (d == Number(1)) {
-            x = NumberRemainder::run(NumberMultiplication::run(x, NumberAddition::run(x, Number(1), modulo), modulo), b, modulo);
-            y = NumberRemainder::run(NumberMultiplication::run(y, NumberAddition::run(y, Number(1), modulo), modulo), b, modulo);
-            y = NumberRemainder::run(NumberMultiplication::run(y, NumberAddition::run(y, Number(1), modulo), modulo), b, modulo);
-            d = NumberGCD::run(NumberDivision::run(x, y, modulo), b, modulo);
-        }
-        n.push_back(d);
-        b = NumberSubtraction::run(b, d, modulo);
+std::vector<Number> Pollard::pollard_factorization(Number n) {
+
+    std::vector<Number> factors;
+    Number x = Number(2);
+    Number y = Number(2);
+    Number d = Number(1);
+
+    while (d == 1) {
+        x = NumberRemainder::run(NumberAddition::run(NumberSqrt::run(x, 0), Number(1), 0), n, 0);
+
+        y = NumberRemainder::run(NumberAddition::run(NumberSqrt::run(y, 0), Number(1), 0), n, 0);
+        y = NumberRemainder::run(NumberAddition::run(NumberSqrt::run(y, 0), Number(1), 0), n, 0);
+
+        d = NumberGCD::run(abs(NumberSubtraction::run(x, y, 0)), n, 0);
     }
 
-    if (n.empty()) {
-        n.push_back(Number(1));
+    if (d != n) {
+        factors.push_back(d);
+        std::vector<Number> remainingFactors = pollard_factorization(NumberDivision::run(n, d, 0));
+        factors.insert(factors.end(), remainingFactors.begin(), remainingFactors.end());
+    } else {
+        factors.push_back(n);
     }
 
-    return n;
+    return factors;
+}
+
+Number Pollard::abs(const Number& num) {
+    if (num < 0) {
+        return NumberSubtraction::run(Number(0), num, 0);
+    } else {
+        return num;
+    }
 }

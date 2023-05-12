@@ -16,8 +16,7 @@ std::string PollardAlgorithm::getName() const {
 
 Object *PollardAlgorithm::run() {
     Number *numberA = dynamic_cast<Number *>(dataTypes[0]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[1]->getObject())->get();
-    result = Pollard::run(*numberA, module);
+    result = Pollard::run(*numberA);
     return &result;
 }
 

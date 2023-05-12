@@ -14,8 +14,7 @@ std::string NaiveFactorizationAlgorithm::getName() const {
 
 Object *NaiveFactorizationAlgorithm::run() {
     Number *numberA = dynamic_cast<Number *>(dataTypes[0]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[1]->getObject())->get();
-    result = NaiveFactorization::run(*numberA, module);
+    result = NaiveFactorization::run(*numberA);
     return &result;
 }
 

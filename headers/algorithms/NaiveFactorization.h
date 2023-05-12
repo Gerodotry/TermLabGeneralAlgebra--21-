@@ -6,10 +6,10 @@
 
 class NaiveFactorization {
 public:
-    static std::vector<Number> run(Number a, unsigned int modulo);
+    static std::vector<Number> run(Number a);
 
 private:
-    static std::vector<Number> naive_factorization(Number &a, unsigned int modulo);
+    static std::vector<Number> naive_factorization(Number &a);
 };
 
 #endif //LAB_NAIVEFACTORIZATION_H
