@@ -14,7 +14,7 @@ FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2)
     Number d1 = r1.getDegree();
     Number d2 = r2.getDegree();
 
-    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1), FieldPolynomial(0), FieldPolynomial(0), FieldPolynomial(1), gcd, d1 > d2 ? a : b, d1 < d2 ? a : b);
+    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1, 1), FieldPolynomial(1), FieldPolynomial(1), FieldPolynomial(1, 1), gcd, d1 > d2 ? a : b, d1 < d2 ? a : b);
 
     result = PolynomialRemainder::run(a, b, 0); // a mod(b)
 
