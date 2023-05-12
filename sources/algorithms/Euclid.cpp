@@ -5,34 +5,31 @@
 #include "utils/FieldPolynomial.h"
 #include "algorithms/Euclid.h"
 
-FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2,unsigned int modulo) 
+FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2) 
 { 
-    FieldPolynomial a,FieldPolynomial gcd, FieldPolynomial b;
-
-    if (modulo) {
-        r1.toField(modulo);
-        r2.toField(modulo);
-    }
+    FieldPolynomial a, gcd, b, result;
 
     Number d1 = r1.getDegree();
     Number d2 = r2.getDegree();
 
     inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1),FieldPolynomial(0), FieldPolynomial(0), FieldPolynomial(1), gcd, d1 > d2 ? a : b,d1 < d2 ? a : b, modulo);
     
-    return a;
+    result = PolynomialRamainder::run(a, b, 0); // a mod(b)
+
+    return result;
 }
 
 void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2,
-                       FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b, unsigned int modulo) {
+                       FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b) {
 
-    FieldPolynomial q = PolynomialDivision::run(r1, r2, modulo);
+    FieldPolynomial q = PolynomialDivision::run(r1, r2, 0);
 
-    FieldPolynomial r3 = PolynomialSubtraction::run(r1, PolynomialMultiplication::run(r2, q, modulo), modulo);
-    FieldPolynomial x3 = PolynomialSubtraction::run(x1, PolynomialMultiplication::run(x2, q, modulo), modulo);
-    FieldPolynomial y3 = PolynomialSubtraction::run(y1, PolynomialMultiplication::run(y2, q, modulo), modulo);
+    FieldPolynomial r3 = PolynomialSubtraction::run(r1, PolynomialMultiplication::run(r2, q, 0), 0);
+    FieldPolynomial x3 = PolynomialSubtraction::run(x1, PolynomialMultiplication::run(x2, q, 0), 0);
+    FieldPolynomial y3 = PolynomialSubtraction::run(y1, PolynomialMultiplication::run(y2, q, 0), 0);
 
     if (!r3.isZero()) {
-        inversion(r2, r3, x2, x3, y2, y3, gcd, a, b, modulo);
+        inversion(r2, r3, x2, x3, y2, y3, gcd, a, b, 0);
     } else {
         gcd = r2;
         a = x2;
