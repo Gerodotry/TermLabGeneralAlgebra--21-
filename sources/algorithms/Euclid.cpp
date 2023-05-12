@@ -6,6 +6,7 @@
 #include "utils/FieldPolynomial.h"
 #include "algorithms/Euclid.h"
 
+
 FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2)
 {
     FieldPolynomial a, gcd, b, result;

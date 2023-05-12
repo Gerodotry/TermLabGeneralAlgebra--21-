@@ -1,3 +1,4 @@
+
 #ifndef LAB_EUCLID_H
 #define LAB_EUCLID_H
 #include <vector>
