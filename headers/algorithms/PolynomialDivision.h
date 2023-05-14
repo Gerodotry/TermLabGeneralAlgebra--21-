@@ -14,7 +14,7 @@ public:
     static T run(T dividend, T divisor, unsigned int modulo);
 private:
     template<class T>
-    static T divide(const T& dividend, T divisor, unsigned int modulo);
+    static T divide(T& dividend, T divisor, unsigned int modulo);
 };
 
 template<class T>
@@ -27,7 +27,7 @@ T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) {
+T PolynomialDivision::divide(T& dividend, T divisor, unsigned int modulo) {
     if (divisor.isZero()) {
         throw std::invalid_argument("Division by zero");
     }
@@ -38,6 +38,9 @@ T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) 
     remainder.sortByDegree();
     divisor.sortByDegree();
 
+    dividend.dropZeroes();
+    divisor.dropZeroes();
+
     while (remainder.getDegree() >= divisor.getDegree()) {
         while (!remainder.terms.empty() && remainder.terms.front().coefficient.isZero()) {
             remainder.terms.erase(remainder.terms.begin());
@@ -47,6 +50,8 @@ T PolynomialDivision::divide(const T& dividend, T divisor, unsigned int modulo) 
 
         Number degree_diff = NumberSubtraction::run(remainder.terms.front().degree, divisor.terms.front().degree, 0);
         Number coeff_ratio = NumberDivision::run(remainder.terms.front().coefficient, divisor.terms.front().coefficient, 0);
+
+        if (degree_diff.isZero() && coeff_ratio.isZero()) break;
 
         for (auto& term : divisor.terms) {
             term.coefficient = NumberMultiplication::run(term.coefficient, coeff_ratio, 0);
