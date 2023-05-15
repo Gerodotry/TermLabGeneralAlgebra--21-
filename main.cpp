@@ -30,6 +30,8 @@
 #include "GUI/algorithms/PollardAlgorithm.h"
 #include "GUI/algorithms/NumberSqrtAlgorithm.h"
 #include "GUI/algorithms/EuclidAlgorithm.h"
+#include "GUI/algorithms/PolynomialValueAlgorithm.h"
+#include "GUI/algorithms/PolynomialDerivativeAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -90,6 +92,8 @@ int main(int, char**)
     Windows.addAlgorithm<DivisionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RemainderAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<GcdAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialDerivativeAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialValueAlgorithm>("Ring polynomial");
 
     Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
