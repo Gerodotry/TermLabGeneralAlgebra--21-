@@ -44,6 +44,7 @@ T PolynomialSubtraction::subtract(const T& a, const T& b, unsigned int modulo) {
         }
         else {
             difference.terms.push_back(b.terms[j]);
+            difference.terms.back().coefficient.isPositive = !difference.terms.back().coefficient.isPositive;
             ++j;
         }
     }
