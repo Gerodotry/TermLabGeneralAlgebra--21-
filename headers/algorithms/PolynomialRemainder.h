@@ -47,6 +47,8 @@ T PolynomialRemainder::divide(const T& dividend, T divisor, unsigned int modulo)
             remainder.terms.erase(remainder.terms.begin());
         }
 
+        if (remainder.terms.empty()) break;
+
         Number degree_diff = NumberSubtraction::run(remainder.terms.front().degree, divisor.terms.front().degree, 0);
         Number coeff_ratio = NumberDivision::run(remainder.terms.front().coefficient, divisor.terms.front().coefficient, 0);
 

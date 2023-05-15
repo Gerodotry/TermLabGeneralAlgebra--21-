@@ -26,6 +26,11 @@ Number NumberMultiplication::multiply(const Number &a, const Number &b, unsigned
     }
 
     product.simplify();
+
+    if ((a.isPositive + b.isPositive) % 2) {
+        product.isPositive = false;
+    }
+
     if (modulo) {
         product.toField(modulo);
     }

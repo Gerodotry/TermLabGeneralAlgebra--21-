@@ -16,8 +16,7 @@ std::string EuclidAlgorithm::getName() const {
 Object *EuclidAlgorithm::run() {
     FieldPolynomial *polynomialA = dynamic_cast<FieldPolynomial *>(dataTypes[0]->getObject());
     FieldPolynomial *polynomialB = dynamic_cast<FieldPolynomial *>(dataTypes[1]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
-    result.a = Euclid::run(*polynomialA, *polynomialB, result.a, result.b, module);
+    result.a = Euclid::run(*polynomialA, *polynomialB);
     return &result;
 }
 
@@ -25,6 +24,5 @@ EuclidAlgorithm::EuclidAlgorithm() {
     dataTypes = {
             std::make_shared<FieldPolynomialInputComponent>("PolynomialA"),
             std::make_shared<FieldPolynomialInputComponent>("PolynomialB"),
-            std::make_shared<IntInputComponent>("Module")
     };
 }

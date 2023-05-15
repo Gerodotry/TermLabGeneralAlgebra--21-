@@ -99,6 +99,6 @@ bool FieldPolynomial::isZero() {
 }
 
 
-FieldPolynomial::FieldPolynomial(int n) : Polynomial(n) {
+FieldPolynomial::FieldPolynomial(int n, int value) : Polynomial(n, value) {
 
 }
