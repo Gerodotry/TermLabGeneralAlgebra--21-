@@ -6,10 +6,12 @@
 
 class Pollard {
 public:
-    static std::vector<Number> run(Number a, unsigned int modulo);
+    static std::vector<Number> run(Number a);
 
 private:
-    static std::vector<Number> pollard_factorization(Number &a, unsigned int modulo);
+    static std::vector<Number> pollard_factorization(Number a);
+
+    static Number sub(Number x, Number y);
 };
 
 #endif //LAB_POLLARD_H
