@@ -11,7 +11,7 @@ public:
 private:
     static std::vector<Number> pollard_factorization(Number a);
 
-    static Number abs(const Number &num);
+    static Number sub(Number x, Number y);
 };
 
 #endif //LAB_POLLARD_H

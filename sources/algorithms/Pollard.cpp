@@ -29,27 +29,22 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
         std::cout << x.toString();
         std::cout << "\n";
         std::cout << y.toString();
+        std::cout << "\n";
 
-
-
-        d = NumberGCD::run(abs(NumberSubtraction::run(x, y, 0)), n, 0);
+        d = NumberGCD::run(sub(x, y), n, UINT_MAX);
     }
 
-    if (d != n) {
-        factors.push_back(d);
-        std::vector<Number> remainingFactors = pollard_factorization(NumberDivision::run(n, d, 0));
-        factors.insert(factors.end(), remainingFactors.begin(), remainingFactors.end());
-    } else {
+    if (d == n)
+        factors.push_back(Number(-1));
+    else
         factors.push_back(n);
-    }
 
     return factors;
 }
 
-Number Pollard::abs(const Number& num) {
-    if (num < 0) {
-        return NumberSubtraction::run(Number(0), num, 0);
-    } else {
-        return num;
-    }
+Number Pollard::sub(Number x, Number y) {
+    if (!NumberSubtraction::run(x, y, 0).isPositive){
+        return NumberSubtraction::run(y, x, 0);
+    }else
+        return NumberSubtraction::run(x, y, 0);
 }
