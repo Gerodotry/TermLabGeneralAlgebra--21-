@@ -26,11 +26,6 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
         y = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(y, y, 0), Number(1), 0), n, 0);
         y = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(y, y, 0), Number(1), 0), n, 0);
 
-        std::cout << x.toString();
-        std::cout << "\n";
-        std::cout << y.toString();
-        std::cout << "\n";
-
         d = NumberGCD::run(sub(x, y), n, UINT_MAX);
     }
 
