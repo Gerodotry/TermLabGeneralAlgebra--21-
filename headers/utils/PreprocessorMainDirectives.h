@@ -6,6 +6,8 @@
     FIELD_POLYNOMIAL_ADDITION_UNIT_TESTS - Field polynomials addition tests
     FIELD_POLYNOMIAL_SUBTRACTION_UNIT_TESTS - Field subtraction polynomials tests
     FIELD_POLYNOMIAL_MULTIPLICATION_UNIT_TESTS - Field multiplication polynomials tests
+    POLLARD_UNIT_TESTS - Pollard factorization tests
+    NAIVE_UNIT_TESTS - Pollard factorization tests
 */
 
 
