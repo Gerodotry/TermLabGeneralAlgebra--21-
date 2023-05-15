@@ -30,7 +30,7 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
         std::cout << "\n";
         std::cout << y.toString();
         std::cout << "\n";
-        "Pollard and Naive algorithms are ready to go. Tests are added. Interface updates are needed for Pollard algorithm.";
+
         d = NumberGCD::run(sub(x, y), n, UINT_MAX);
     }
 
