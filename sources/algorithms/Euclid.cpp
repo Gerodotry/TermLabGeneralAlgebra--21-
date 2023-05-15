@@ -1,4 +1,5 @@
 ﻿#include <algorithms/PolynomialMultiplication.h>
+#include <algorithms/PolynomialAddition.h>
 #include <algorithms/PolynomialSubtraction.h>
 #include <algorithms/PolynomialDivision.h>
 #include "utils/FieldPolynomial.h"
@@ -7,18 +8,20 @@
 
 FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2)
 {
-    FieldPolynomial a, gcd, b, result;
+    FieldPolynomial a, gcd, b, result,mod;
+
+    mod = r2;
 
     Number d1 = r1.getDegree();
     Number d2 = r2.getDegree();
 
     inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1, 1), FieldPolynomial(1), FieldPolynomial(1), FieldPolynomial(1, 1), gcd, d1 > d2 ? a : b, d1 < d2 ? a : b);
 
-    return a;
+    return PolynomialAddition::run(a,mod,0);
 }
 
 void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2,
-    FieldPolynomial& gcd, FieldPolynomial& a, FieldPolynomial& b) {
+                       FieldPolynomial& gcd, FieldPolynomial& a, FieldPolynomial& b) {
 
     FieldPolynomial q = PolynomialDivision::run(r1, r2, 0);
 
@@ -35,6 +38,3 @@ void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x
         b = y2;
     }
 }
-
-
-

@@ -1,4 +1,6 @@
 ﻿#include <algorithms/NumberSqrt.h>
+#include <iostream>
+#include <algorithms/NumberMultiplication.h>
 #include "algorithms/Pollard.h"
 #include "algorithms/NumberDivision.h"
 #include "algorithms/NumberAddition.h"
@@ -19,10 +21,16 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
     Number d = Number(1);
 
     while (d == 1) {
-        x = NumberRemainder::run(NumberAddition::run(NumberSqrt::run(x, 0), Number(1), 0), n, 0);
+        x = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(x, x, 0), Number(1), 0), n, 0);
 
-        y = NumberRemainder::run(NumberAddition::run(NumberSqrt::run(y, 0), Number(1), 0), n, 0);
-        y = NumberRemainder::run(NumberAddition::run(NumberSqrt::run(y, 0), Number(1), 0), n, 0);
+        y = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(y, y, 0), Number(1), 0), n, 0);
+        y = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(y, y, 0), Number(1), 0), n, 0);
+
+        std::cout << x.toString();
+        std::cout << "\n";
+        std::cout << y.toString();
+
+
 
         d = NumberGCD::run(abs(NumberSubtraction::run(x, y, 0)), n, 0);
     }
