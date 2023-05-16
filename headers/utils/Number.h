@@ -64,6 +64,8 @@ public:
 
     void toField(unsigned int modulo);
 
+    void toField(const Number& modulo);
+
     long long get();
 
     void simplify();
