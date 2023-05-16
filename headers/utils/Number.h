@@ -57,6 +57,7 @@ public:
     Number& operator = (const Number& other);
 
     friend Number operator/(Number a, Number b);
+    friend Number operator%(Number a, Number b);
 
     bool isZero();
 

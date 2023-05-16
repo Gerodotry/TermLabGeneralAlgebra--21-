@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include "../../headers/utils/Number.h"
 #include "algorithms/NumberSubtraction.h"
+#include "algorithms/NumberMultiplication.h"
 
 Number::Number(const std::vector<unsigned int>& number) {
     digits = number;
@@ -284,4 +285,18 @@ Number operator/(Number a, Number b) {
     }
 
     return numberResult;
+}
+
+Number operator%(Number a, Number b) {
+    if (b.isZero()) {
+        throw std::invalid_argument("Division by zero");
+    }
+
+    Number quotient, remainder;
+    quotient = a / b;
+
+    remainder = NumberMultiplication::run(quotient, b, 0);
+    remainder = NumberSubtraction::run(a, remainder, 0);
+
+    return remainder;
 }
