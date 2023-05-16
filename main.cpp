@@ -32,6 +32,7 @@
 #include "GUI/algorithms/EuclidAlgorithm.h"
 #include "GUI/algorithms/PolynomialValueAlgorithm.h"
 #include "GUI/algorithms/PolynomialDerivativeAlgorithm.h"
+#include "GUI/algorithms/PolynomialGeneratorCheckAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -94,6 +95,7 @@ int main(int, char**)
     Windows.addAlgorithm<GcdAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<PolynomialDerivativeAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<PolynomialValueAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialGeneratorCheckAlgorithm>("Ring polynomial");
 
     Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
