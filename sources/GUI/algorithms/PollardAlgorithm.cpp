@@ -22,7 +22,6 @@ Object *PollardAlgorithm::run() {
 
 PollardAlgorithm::PollardAlgorithm() {
     dataTypes = {
-            std::make_shared<NumberInputComponent>("Number"),
-            std::make_shared<IntInputComponent>("Module")
+        std::make_shared<NumberInputComponent>("Number")
     };
 }

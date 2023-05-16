@@ -25,10 +25,14 @@
 #include "GUI/algorithms/MillerRabinTestAlgorithm.h"
 #include "GUI/algorithms/DivisionAlgorithm.h"
 #include "GUI/algorithms/RemainderAlgorithm.h"
+#include "GUI/algorithms/InverseAlgorithm.h"
 #include "GUI/algorithms/NaiveFactorizationAlgorithm.h"
 #include "GUI/algorithms/PollardAlgorithm.h"
 #include "GUI/algorithms/NumberSqrtAlgorithm.h"
 #include "GUI/algorithms/EuclidAlgorithm.h"
+#include "GUI/algorithms/PolynomialValueAlgorithm.h"
+#include "GUI/algorithms/PolynomialDerivativeAlgorithm.h"
+#include "GUI/algorithms/PolynomialGeneratorCheckAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -60,6 +64,7 @@ int main(int, char**)
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.FontGlobalScale = 2;
 
     ImGui::StyleColorsDark();
 
@@ -80,6 +85,7 @@ int main(int, char**)
     Windows.addAlgorithm<NaiveFactorizationAlgorithm>("Numbers");
     Windows.addAlgorithm<PollardAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberSqrtAlgorithm>("Numbers");
+     Windows.addAlgorithm<InverseAlgorithm>("Numbers");
 
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");
@@ -88,6 +94,9 @@ int main(int, char**)
     Windows.addAlgorithm<DivisionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RemainderAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<GcdAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialDerivativeAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialValueAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialGeneratorCheckAlgorithm>("Ring polynomial");
 
     Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
