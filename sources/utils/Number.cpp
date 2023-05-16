@@ -225,9 +225,10 @@ bool Number::operator<=(long long other) const {
 
 long long Number::get() const {
     long long value = 0;
-    for (auto& digit: digits) {
-        value = value * 10 + digit;
+    for (int i = digits.size() - 1; i >= 0; --i) {
+        value = value * 10 + digits[i];
     }
+    if (!isPositive) value *= -1;
     return value;
 }
 
