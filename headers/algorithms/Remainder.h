@@ -14,7 +14,7 @@ public:
 private:
     static int sub_poly(int *p, int *q, int len, int mod);
 
-    static std::vector<int> subtract_polys(std::vector<int> poly1, std::vector<int> poly2, int mod);
+    static std::vector<int> subtract_polys(const std::vector<int>& poly1, const std::vector<int>& poly2, int mod);
 };
 
 

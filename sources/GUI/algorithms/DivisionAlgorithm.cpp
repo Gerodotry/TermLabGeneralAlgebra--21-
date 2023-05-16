@@ -16,6 +16,7 @@ Object *DivisionAlgorithm::run() {
     RawPolynomial *polynomialA = dynamic_cast<RawPolynomial *>(dataTypes[0]->getObject());
     RawPolynomial *polynomialB = dynamic_cast<RawPolynomial *>(dataTypes[1]->getObject());
     int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
+
     std::vector<int> coefficients = Division::run(polynomialA->coefficients, polynomialB->coefficients, module);
     result = RawPolynomial(coefficients);
     return &result;
