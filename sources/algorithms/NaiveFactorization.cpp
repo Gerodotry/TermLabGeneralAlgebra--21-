@@ -11,6 +11,11 @@ std::vector<Number> NaiveFactorization::run(Number a) {
 std::vector<Number> NaiveFactorization::naive_factorization(Number& n) {
     std::vector<Number> factors;
 
+    if (!n.isPositive){
+        factors.push_back(n);
+        return factors;
+    }
+
     for (Number i = Number(2); i <= NumberDivision::run(n, i, 0); i = NumberAddition::run(i, Number(1), 0)) {
         while (NumberRemainder::run(n, i, 0).isZero()) {
             factors.push_back(i);
