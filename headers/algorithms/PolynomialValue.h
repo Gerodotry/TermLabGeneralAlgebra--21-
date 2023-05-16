@@ -7,9 +7,9 @@
 
 class PolynomialValue{
 public:
-	static Number run(RingPolynomial polynomial, Number point, unsigned int modulo);
+	static Number run(RingPolynomial polynomial, Number point, Number modulo);
 private:
-	static Number getValue(RingPolynomial& polynomial, Number& point, unsigned int modulo);
+	static Number getValue(RingPolynomial& polynomial, Number& point, Number& modulo);
 };
 
 #endif //LAB_POLYNOMIALVALUE_H

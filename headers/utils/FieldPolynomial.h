@@ -23,6 +23,8 @@ public:
 
     virtual void toField(int modulo) override;
 
+    virtual void toField(const Number& modulo) override;
+
     bool isZero();
 
 private:

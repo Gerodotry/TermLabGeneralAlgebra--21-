@@ -10,6 +10,13 @@ void RingPolynomial::toField(int modulo) {
     dropZeroes();
 }
 
+void RingPolynomial::toField(const Number& modulo) {
+    for (auto& term : terms) {
+        term.toField(modulo);
+    }
+    dropZeroes();
+}
+
 RingPolynomial::RingPolynomial(const std::initializer_list<PolynomialTerm> &terms) : Polynomial(terms) {
 
 }

@@ -1,14 +1,14 @@
 #include "algorithms/PolynomialDerivative.h"
 
-RingPolynomial PolynomialDerivative::run(RingPolynomial p, unsigned int modulo) {
-	if (modulo) {
-		p.toField(modulo);		
+RingPolynomial PolynomialDerivative::run(RingPolynomial p, Number modulo) {
+    if (!modulo.isZero()) {
+        p.toField(modulo);
 	}
 
 	return getDerivative(p, modulo);
 }
 
-RingPolynomial PolynomialDerivative::getDerivative(RingPolynomial& p, unsigned int modulo) {
+RingPolynomial PolynomialDerivative::getDerivative(RingPolynomial& p, Number& modulo) {
 	RingPolynomial derivative;
 
 	for (int i = 0; i < p.terms.size(); i++) {

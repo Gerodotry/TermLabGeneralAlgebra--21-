@@ -9,10 +9,10 @@ using huge = unsigned long long int;
 
 class NumberMultiplication {
 public:
-    static Number run(Number a, Number b, unsigned int modulo);
+    static Number run(Number a, Number b, Number modulo);
 
 private:
-    static Number multiply(const Number& a, const Number& b, unsigned int modulo);
+    static Number multiply(Number& a, Number& b, Number& modulo);
 };
 
 #endif //LAB_NUMBERMULTIPLICATION_H

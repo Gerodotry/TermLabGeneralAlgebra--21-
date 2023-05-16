@@ -11,15 +11,15 @@
 class PolynomialDivision {
 public:
     template<class T>
-    static T run(T dividend, T divisor, unsigned int modulo);
+    static T run(T dividend, T divisor, Number modulo);
 private:
     template<class T>
-    static T divide(T& dividend, T divisor, unsigned int modulo);
+    static T divide(T& dividend, T divisor, Number& modulo);
 };
 
 template<class T>
-T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
-    if (modulo) {
+T PolynomialDivision::run(T dividend, T divisor, Number modulo) {
+    if (!modulo.isZero()) {
         dividend.toField(modulo);
         divisor.toField(modulo);
     }
@@ -27,7 +27,7 @@ T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialDivision::divide(T& dividend, T divisor, unsigned int modulo) {
+T PolynomialDivision::divide(T& dividend, T divisor, Number& modulo) {
     if (divisor.isZero()) {
         throw std::invalid_argument("Division by zero");
     }

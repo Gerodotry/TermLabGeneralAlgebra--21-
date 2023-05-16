@@ -2,15 +2,15 @@
 #include "algorithms/NumberSubtraction.h"
 #include "algorithms/NumberRemainder.h"
 
-Number NumberGCD::run(Number a, Number b, unsigned int modulo) {
-    if (modulo) {
+Number NumberGCD::run(Number a, Number b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
     }
     return gcd(a, b, modulo);
 }
 
-Number NumberGCD::gcd(Number& a, Number& b, unsigned int modulo) {
+Number NumberGCD::gcd(Number& a, Number& b, Number& modulo) {
     if (a == 0) return b;
     if (b == 0) return a;
 
@@ -22,7 +22,7 @@ Number NumberGCD::gcd(Number& a, Number& b, unsigned int modulo) {
             b = NumberRemainder::run(b, a, modulo);
         }
     }
-    if (modulo) {
+    if (!modulo.isZero()) {
         if (a.isZero()) {
             b.toField(modulo);
         } else {

@@ -7,9 +7,9 @@
 
 class PolynomialDerivative {
 public:
-	static RingPolynomial run(RingPolynomial p, unsigned int modulo);
+	static RingPolynomial run(RingPolynomial p, Number modulo);
 private:
-	static RingPolynomial getDerivative(RingPolynomial& p, unsigned int modulo);
+	static RingPolynomial getDerivative(RingPolynomial& p, Number& modulo);
 };
 
 #endif //LAB_POLYNOMIALDERIVATIVE_H

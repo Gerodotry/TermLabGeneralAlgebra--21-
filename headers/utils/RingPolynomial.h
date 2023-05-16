@@ -18,6 +18,8 @@ public:
     RingPolynomial(const std::vector<Number>& degrees, const std::vector<Number>& coefficients);
 
     virtual void toField(int modulo) override;
+
+    virtual void toField(const Number& modulo) override;
 };
 
 #endif //LAB_RINGPOLYNOMIAL_H

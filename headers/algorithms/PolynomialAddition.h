@@ -7,15 +7,15 @@
 class PolynomialAddition {
 public:
     template<class T>
-    static T run(T a, T b, unsigned int modulo);
+    static T run(T a, T b, Number modulo);
 private:
     template<class T>
-    static T add(const T& a, const T& b, unsigned int modulo);
+    static T add(const T& a, const T& b, Number& modulo);
 };
 
 template<class T>
-T PolynomialAddition::run(T a, T b, unsigned int modulo) {
-    if (modulo) {
+T PolynomialAddition::run(T a, T b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
     }
@@ -23,7 +23,7 @@ T PolynomialAddition::run(T a, T b, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialAddition::add(const T& a, const T& b, unsigned int modulo) {
+T PolynomialAddition::add(const T& a, const T& b, Number& modulo) {
     T sum;
     // Iterate over the terms of both polynomials and add them together
     int i = 0, j = 0;
@@ -55,7 +55,7 @@ T PolynomialAddition::add(const T& a, const T& b, unsigned int modulo) {
         sum.terms.push_back(b.terms[j]);
         j++;
     }
-    if (modulo) {
+    if (!modulo.isZero()) {
         sum.toField(modulo);
     }
     return sum;

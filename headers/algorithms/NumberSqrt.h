@@ -9,9 +9,9 @@
 
 class NumberSqrt {
 public:
-    static Number run(Number a, unsigned int modulo);
+    static Number run(Number a, Number modulo);
 private:
-    static Number sqrt(const Number& a, unsigned int modulo);
+    static Number sqrt(Number& a, Number& modulo);
 };
 
 #endif //LAB_NUMBERSQRT_H

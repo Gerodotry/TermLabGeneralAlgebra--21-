@@ -15,15 +15,15 @@
 class PolynomialRemainder {
 public:
     template<class T>
-    static T run(T dividend, T divisor, unsigned int modulo);
+    static T run(T dividend, T divisor, Number modulo);
 private:
     template<class T>
-    static T divide(const T& dividend, T divisor, unsigned int modulo);
+    static T divide(const T& dividend, T divisor, Number& modulo);
 };
 
 template<class T>
-T PolynomialRemainder::run(T dividend, T divisor, unsigned int modulo) {
-    if (modulo) {
+T PolynomialRemainder::run(T dividend, T divisor, Number modulo) {
+    if (!modulo.isZero()) {
         dividend.toField(modulo);
         divisor.toField(modulo);
     }
@@ -31,7 +31,7 @@ T PolynomialRemainder::run(T dividend, T divisor, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialRemainder::divide(const T& dividend, T divisor, unsigned int modulo) {
+T PolynomialRemainder::divide(const T& dividend, T divisor, Number& modulo) {
     if (divisor.isZero()) {
         throw std::invalid_argument("Division by zero");
     }

@@ -15,14 +15,14 @@ std::string NumberSqrtAlgorithm::getName() const {
 
 Object *NumberSqrtAlgorithm::run() {
     Number *numberA = dynamic_cast<Number *>(dataTypes[0]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[1]->getObject())->get();
-    result = NumberSqrt::run(*numberA, module);
+    Number *module = dynamic_cast<Number *>(dataTypes[1]->getObject());
+    result = NumberSqrt::run(*numberA, *module);
     return &result;
 }
 
 NumberSqrtAlgorithm::NumberSqrtAlgorithm() {
     dataTypes = {
             std::make_shared<NumberInputComponent>("Number"),
-            std::make_shared<IntInputComponent>("Module")
+            std::make_shared<NumberInputComponent>("Module")
     };
 }

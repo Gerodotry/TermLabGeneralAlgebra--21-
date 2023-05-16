@@ -7,16 +7,16 @@
 class PolynomialSubtraction {
 public:
     template<class T>
-    static T run(T a, T b, unsigned int modulo);
+    static T run(T a, T b, Number modulo);
 
 private:
     template<class T>
-    static T subtract(const T& a, const T& b, unsigned int modulo);
+    static T subtract(const T& a, const T& b, Number& modulo);
 };
 
 template<class T>
-T PolynomialSubtraction::run(T a, T b, unsigned int modulo) {
-    if (modulo) {
+T PolynomialSubtraction::run(T a, T b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
     }
@@ -24,7 +24,7 @@ T PolynomialSubtraction::run(T a, T b, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialSubtraction::subtract(const T& a, const T& b, unsigned int modulo) {
+T PolynomialSubtraction::subtract(const T& a, const T& b, Number& modulo) {
     T difference;
     // Iterate over the terms of both polynomials and subtract them
     int i = 0, j = 0;
@@ -32,7 +32,7 @@ T PolynomialSubtraction::subtract(const T& a, const T& b, unsigned int modulo) {
         Number aDegree = a.terms[i].getDegree(), bDegree = b.terms[j].getDegree();
         Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[j].getCoefficient();
         if (aDegree == bDegree) {
-            Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, 0);
+            Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, Number(0));
             PolynomialTerm term({aDegree, coefficientsDifference});
             difference.terms.push_back(term);
             ++i;
@@ -57,7 +57,7 @@ T PolynomialSubtraction::subtract(const T& a, const T& b, unsigned int modulo) {
         difference.terms.push_back(b.terms[j]);
         j++;
     }
-    if (modulo) {
+    if (!modulo.isZero()) {
         difference.toField(modulo);
     }
     return difference;

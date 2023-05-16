@@ -3,15 +3,15 @@
 #include "algorithms/NumberSubtraction.h"
 #include "algorithms/NumberMultiplication.h"
 
-Number NumberDivision::run(Number a, Number b, unsigned int modulo) {
-    if (modulo) {
+Number NumberDivision::run(Number a, Number b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
     }
     return divide(a, b, modulo);
 }
 
-Number NumberDivision::divide( Number &a, Number &b, unsigned int modulo) {
+Number NumberDivision::divide( Number &a, Number &b, Number& modulo) {
     if (b.isZero()) {
         throw std::invalid_argument("Division by zero");
     }
@@ -69,7 +69,7 @@ Number NumberDivision::divide( Number &a, Number &b, unsigned int modulo) {
         numberResult.isPositive = false;
     }
 
-    if (modulo) {
+    if (!modulo.isZero()) {
         numberResult.toField(modulo);
     }
 

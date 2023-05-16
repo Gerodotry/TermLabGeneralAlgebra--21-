@@ -18,11 +18,11 @@ public:
 
     explicit Number(const std::string& number);
 
-    explicit Number(unsigned int number);
+    Number(unsigned int number);
 
-    explicit Number(long long number);
+    Number(long long number);
 
-    explicit Number(int number);
+    Number(int number);
 
     unsigned int& operator [] (int i);
 
@@ -69,7 +69,7 @@ public:
 
     void toField(const Number& modulo);
 
-    long long get();
+    long long get() const;
 
     void simplify();
 

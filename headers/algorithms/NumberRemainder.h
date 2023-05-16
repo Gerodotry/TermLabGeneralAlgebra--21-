@@ -5,10 +5,10 @@
 
 class NumberRemainder {
 public:
-    static Number run(Number a, Number b, unsigned int modulo);
+    static Number run(Number a, Number b, Number modulo);
 
 private:
-    static Number remainder(Number& a, Number& b, unsigned int modulo);
+    static Number remainder(Number& a, Number& b, Number& modulo);
 };
 
 

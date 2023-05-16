@@ -4,10 +4,10 @@
 
 class NumberAddition {
 public:
-    static Number run(Number a, Number b, unsigned int modulo);
+    static Number run(Number a, Number b, Number modulo);
 
 private:
-    static Number add(const Number& a, const Number& b, unsigned int modulo);
+    static Number add(Number& a, Number& b, Number& modulo);
 };
 
 #endif //LAB_NUMBERADDITION_H

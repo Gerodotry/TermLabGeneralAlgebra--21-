@@ -1,14 +1,14 @@
 #include "algorithms/NumberSubtraction.h"
 
-Number NumberSubtraction::run(Number a, Number b, unsigned int modulo) {
-    if (modulo) {
+Number NumberSubtraction::run(Number a, Number b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
     }
     return subtract(a, b, modulo);
 }
 
-Number NumberSubtraction::subtract(Number& a, Number& b, unsigned int modulo) {
+Number NumberSubtraction::subtract(Number& a, Number& b, Number& modulo) {
     Number result;
     if (a < b) {
         std::swap(a, b);
@@ -33,7 +33,7 @@ Number NumberSubtraction::subtract(Number& a, Number& b, unsigned int modulo) {
     }
 
     result.simplify();
-    if (modulo) {
+    if (!modulo.isZero()) {
         result.toField(modulo);
     }
     return result;

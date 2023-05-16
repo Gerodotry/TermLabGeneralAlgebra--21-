@@ -223,7 +223,7 @@ bool Number::operator<=(long long other) const {
     return *this <= Number(other);
 }
 
-long long Number::get() {
+long long Number::get() const {
     long long value = 0;
     for (auto& digit: digits) {
         value = value * 10 + digit;

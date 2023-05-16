@@ -8,15 +8,15 @@
 #include <cmath>
 #include <stdexcept>
 
-Number NumberSqrt::run(Number a, unsigned int modulo) {
-    if (modulo) {
+Number NumberSqrt::run(Number a, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
     }
 
     return sqrt(a, modulo);
 }
 
-Number NumberSqrt::sqrt(const Number &a, unsigned int modulo) {
+Number NumberSqrt::sqrt(Number &a, Number &modulo) {
     if (!a.isPositive) {
         throw std::invalid_argument("Division by zero");
     }
