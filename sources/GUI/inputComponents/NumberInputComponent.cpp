@@ -8,7 +8,7 @@
 
 void NumberInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
-    ImGui::InputText("Value", &numberString[0], 1024);
+    ImGui::InputText("Value", &numberString[0], 1024, ImGuiInputTextFlags_CharsDecimal | ImGuiInputTextFlags_AutoSelectAll);
     ImGui::End();
 }
 

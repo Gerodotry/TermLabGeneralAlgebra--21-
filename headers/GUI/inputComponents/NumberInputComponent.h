@@ -21,7 +21,7 @@ public:
 private:
     Number number;
 
-    std::string numberString = std::string(1024, '.');
+    std::string numberString = std::string(1024, 0);
 };
 
 
