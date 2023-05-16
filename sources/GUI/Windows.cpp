@@ -25,8 +25,7 @@ bool Windows::algorithmButton(Algorithm *algorithm) {
 
 void Windows::resultsWindow() {
     ImGui::Begin("Results");
-
-    ImGui::Text(resultString.c_str());
+    ImGui::InputText(" ", &resultString[0], resultString.size(), ImGuiInputTextFlags_ReadOnly);
     if (ImGui::Button("Back")) {
         Result = nullptr;
     }
