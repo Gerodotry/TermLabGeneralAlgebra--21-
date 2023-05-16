@@ -1,4 +1,5 @@
 #include "../../headers/utils/Number.h"
+#include "../../headers/algorithms/NumberRemainder.h"
 
 Number::Number(const std::vector<unsigned int>& number) {
     digits = number;
@@ -152,6 +153,10 @@ void Number::toField(unsigned int modulo) {
         digits.push_back(value % 10);
         value /= 10;
     }
+}
+
+void Number::toField(const Number &modulo) {
+    *this = NumberRemainder::run(*this, modulo, INT_MAX);
 }
 
 int Number::compareDigits(const Number &other) const {
