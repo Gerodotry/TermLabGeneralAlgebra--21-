@@ -20,6 +20,11 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
     Number y = Number(2);
     Number d = Number(1);
 
+    if (!n.isPositive){
+        factors.push_back(n);
+        return factors;
+    }
+
     while (d == 1) {
         x = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(x, x, 0), Number(1), 0), n, 0);
 
