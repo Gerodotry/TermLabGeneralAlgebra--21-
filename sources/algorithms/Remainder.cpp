@@ -2,6 +2,7 @@
 // Created by Sasha on 07.05.2023.
 //
 
+#include <algorithm>
 #include "algorithms/Remainder.h"
 
 int Remainder::sub_poly(int *p, int *q, int len, int mod) {
@@ -23,7 +24,7 @@ int Remainder::sub_poly(int *p, int *q, int len, int mod) {
     return zero_count;
 }
 
-std::vector<int> Remainder::subtract_polys(std::vector<int> poly1, std::vector<int> poly2, int mod) {
+std::vector<int> Remainder::subtract_polys(const std::vector<int>& poly1, const std::vector<int>& poly2, int mod) {
     int len1 = poly1.size();
     int len2 = poly2.size();
     int *poly11 = new int[len1];
@@ -50,6 +51,8 @@ std::vector<int> Remainder::subtract_polys(std::vector<int> poly1, std::vector<i
 }
 
 std::vector<int> Remainder::run(std::vector<int> poly1, std::vector<int> poly2, int mod) {
+    std::reverse(poly1.begin(), poly1.end());
+    std::reverse(poly2.begin(), poly2.end());
     std::vector<int> remainder = subtract_polys(poly1, poly2, mod);
     return remainder;
 }

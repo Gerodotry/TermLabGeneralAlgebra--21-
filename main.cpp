@@ -85,7 +85,7 @@ int main(int, char**)
     Windows.addAlgorithm<NaiveFactorizationAlgorithm>("Numbers");
     Windows.addAlgorithm<PollardAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberSqrtAlgorithm>("Numbers");
-     Windows.addAlgorithm<InverseAlgorithm>("Numbers");
+    Windows.addAlgorithm<InverseAlgorithm>("Numbers");
 
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");

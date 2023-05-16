@@ -59,7 +59,7 @@ std::string RawPolynomial::toString() {
             }
         }
     }
-    return result.substr(1);
+    return result.size() ? result.substr(1) : "0";
 }
 
 RawPolynomial::RawPolynomial(const std::vector<int> &coefficients): coefficients(coefficients) {
