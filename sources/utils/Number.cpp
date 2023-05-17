@@ -278,7 +278,7 @@ Number operator/(Number a, Number b) {
         int j = 0;
         while (part >= b) {
             j++;
-            part = NumberSubtraction::run(part, b, 0);
+            part = part - b;
         }
         result.push_back(j);
     } while (i < a.digits.size());
@@ -301,8 +301,103 @@ Number operator%(Number a, Number b) {
     Number quotient, remainder;
     quotient = a / b;
 
-    remainder = NumberMultiplication::run(quotient, b, 0);
-    remainder = NumberSubtraction::run(a, remainder, 0);
+    remainder = quotient * b;
+    remainder = a - remainder;
 
     return remainder;
+}
+
+Number operator+(Number a, Number b) {
+    Number result;
+    std::size_t minSize = std::min(a.digits.size(), b.digits.size());
+    bool carry = false;
+    for (std::size_t i = 0; i < minSize; i++) {
+        unsigned int v = a.digits[i] + b.digits[i] + carry;
+        carry = v / 10;
+        result.digits.emplace_back(v % 10);
+    }
+    Number longer = a.digits.size() > b.digits.size() ? a : b;
+    std::size_t i = minSize;
+    while (i < longer.digits.size()) {
+        unsigned int v = longer[i] + carry;
+        carry = v / 10;
+        result.digits.emplace_back(v % 10);
+        i++;
+    }
+    if (carry) {
+        result.digits.emplace_back(1);
+    }
+    return result;
+}
+
+Number operator-(Number a, Number b) {
+    if (a.isPositive && !b.isPositive) {
+        b.isPositive = true;
+        return a + b;
+    }
+
+    if (!a.isPositive && b.isPositive) {
+        a.isPositive = true;
+        Number result = a + b;
+        result.isPositive = false;
+        return result;
+    }
+
+    if (!a.isPositive && !b.isPositive) {
+        std::swap(a, b);
+        a.isPositive = true;
+        b.isPositive = true;
+    }
+
+    Number result;
+
+    if (a < b) {
+        std::swap(a, b);
+        result.isPositive = false;
+    }
+
+    result.digits.resize(a.digits.size());
+    int borrow = 0;
+    for (size_t i = 0; i < a.digits.size(); i++) {
+        int digit = a.digits[i];
+        if (i < b.digits.size()) {
+            digit -= b.digits[i];
+        }
+        digit -= borrow;
+        if (digit >= 0) {
+            borrow = 0;
+        } else {
+            borrow = 1;
+            digit += 10;
+        }
+        result.digits[i] = digit;
+    }
+
+    result.simplify();
+    return result;
+}
+
+Number operator*(Number a, Number b) {
+    Number product;
+    std::size_t aSize = a.digits.size();
+    std::size_t bSize = b.digits.size();
+    product.digits.resize(aSize + bSize);
+    for (std::size_t i = 0; i < aSize; i++) {
+        unsigned int carry = 0;
+        for (std::size_t j = 0; j < bSize; j++) {
+            huge temp = huge(a.digits[i]) * huge(b.digits[j]) + huge(product.digits[i+j]) + huge(carry);
+            product.digits[i+j] = temp % 10;
+            carry = temp / 10;
+        }
+        if (carry > 0) {
+            product.digits[i + bSize] += carry;
+        }
+    }
+
+    product.simplify();
+
+    if ((a.isPositive + b.isPositive) % 2) {
+        product.isPositive = false;
+    }
+    return product;
 }

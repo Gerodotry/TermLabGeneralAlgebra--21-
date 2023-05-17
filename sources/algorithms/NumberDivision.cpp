@@ -8,6 +8,8 @@ Number NumberDivision::run(Number a, Number b, Number modulo) {
     if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
+    } else {
+        return a / b;
     }
     return divide(a, b, modulo);
 }

@@ -16,7 +16,7 @@ RingPolynomial PolynomialDerivative::getDerivative(RingPolynomial& p, Number& mo
 		if (degree == 0) continue;
 		Number coefficient = p.terms[i].getCoefficient();
 		Number derivativeCoefficient = NumberMultiplication::run(degree, coefficient, modulo);
-		Number derivativeDegree = NumberSubtraction::run(degree, Number(1), 0);
+		Number derivativeDegree = degree - Number(1);
 		PolynomialTerm term({ derivativeDegree, derivativeCoefficient });
 		derivative.terms.push_back(term);
 	}

@@ -18,7 +18,7 @@ void FieldPolynomial::toField(int modulo) {
         FieldPolynomial g = FieldPolynomial(terms);
 
         for (auto &term: g.terms) {
-            term.coefficient = NumberMultiplication::run(term.coefficient, Number(R), 0);
+            term.coefficient = term.coefficient * Number(R);
         }
 
         FieldPolynomial h(g.terms);
@@ -113,7 +113,7 @@ void FieldPolynomial::toField(const Number &modulo) {
         FieldPolynomial g = FieldPolynomial(terms);
 
         for (auto &term: g.terms) {
-            term.coefficient = NumberMultiplication::run(term.coefficient, Number(R), 0);
+            term.coefficient = term.coefficient * Number(R);
         }
 
         FieldPolynomial h(g.terms);

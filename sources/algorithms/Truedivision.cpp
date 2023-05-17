@@ -19,9 +19,9 @@ Number Truedivision::tdivide( Number &a, Number &b, Number& modulo) {
     {
         if (b % Number(2) == 1)
         {
-            r = NumberMultiplication::run(r , a,0) % modulo;
+            r = (r * a) % modulo;
         }
-        a = NumberMultiplication::run(a ,a,0) % modulo;
+        a = (a * a) % modulo;
         b = b / 2;
     }
     return r;

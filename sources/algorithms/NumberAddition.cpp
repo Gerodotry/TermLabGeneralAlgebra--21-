@@ -4,6 +4,8 @@ Number NumberAddition::run(Number a, Number b, Number modulo) {
     if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
+    } else {
+        return a + b;
     }
     return add(a, b, modulo);
 }

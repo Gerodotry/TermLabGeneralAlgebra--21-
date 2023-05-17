@@ -27,11 +27,11 @@ Number Inverse::inverse(Number& a, Number& modulo) {
         a = temp;
 
         temp = x;
-        x = NumberSubtraction::run(lastX, NumberMultiplication::run(quotient, x, 0), 0);
+        x = lastX - (quotient * x);
         lastX = temp;
 
         temp = y;
-        y = NumberSubtraction::run(lastY, NumberMultiplication::run(quotient, y, 0), 0);
+        y = lastY - (quotient * y);
         lastY = temp;
     }
 
@@ -41,7 +41,7 @@ Number Inverse::inverse(Number& a, Number& modulo) {
 
     if (!lastX.isPositive) {
         lastX.isPositive = true;
-        lastX = NumberSubtraction::run(originalM, lastX, 0);
+        lastX = originalM - lastX;
     }
 
     return lastX % originalM;

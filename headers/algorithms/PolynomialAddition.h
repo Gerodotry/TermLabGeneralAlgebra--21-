@@ -31,7 +31,7 @@ T PolynomialAddition::add(const T& a, const T& b, Number& modulo) {
         Number aDegree = a.terms[i].getDegree(), bDegree = b.terms[j].getDegree();
         Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[j].getCoefficient();
         if (aDegree == bDegree) {
-            Number coefficientsSum = NumberAddition::run(aCoefficient, bCoefficient, 0);
+            Number coefficientsSum = aCoefficient + bCoefficient;
             PolynomialTerm term({aDegree, coefficientsSum});
             sum.terms.push_back(term);
             ++i;

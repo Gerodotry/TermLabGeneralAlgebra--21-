@@ -32,7 +32,7 @@ T PolynomialSubtraction::subtract(const T& a, const T& b, Number& modulo) {
         Number aDegree = a.terms[i].getDegree(), bDegree = b.terms[j].getDegree();
         Number aCoefficient = a.terms[i].getCoefficient(), bCoefficient = b.terms[j].getCoefficient();
         if (aDegree == bDegree) {
-            Number coefficientsDifference = NumberSubtraction::run(aCoefficient, bCoefficient, Number(0));
+            Number coefficientsDifference = aCoefficient - bCoefficient;
             PolynomialTerm term({aDegree, coefficientsDifference});
             difference.terms.push_back(term);
             ++i;
