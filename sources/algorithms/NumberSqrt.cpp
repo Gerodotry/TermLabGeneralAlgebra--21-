@@ -5,7 +5,6 @@
 #include "algorithms/NumberDivision.h"
 #include "algorithms/NumberAddition.h"
 #include <iostream>
-#include <cmath>
 #include <stdexcept>
 
 Number NumberSqrt::run(Number a, Number modulo) {
@@ -18,19 +17,19 @@ Number NumberSqrt::run(Number a, Number modulo) {
 
 Number NumberSqrt::sqrt(Number &a, Number &modulo) {
     if (!a.isPositive) {
-        throw std::invalid_argument("Division by zero");
+        std::cout<<"Negative number";
     }
-    if (a == 1) {
+    if (a.isZero() or (a == 1)) {
         return Number(1);
     }
 
-    Number guess = NumberDivision::run(a, Number(2), modulo);
-    Number prev_guess = NumberAddition::run(guess, Number(1), modulo);
+    Number x = a;
+    Number y = Number(1);
 
-    while (guess != prev_guess) {
-        prev_guess = guess;
-        guess = NumberDivision::run(NumberDivision::run(NumberAddition::run(guess, a, modulo), guess, modulo), Number(2), modulo);
+    while (x > y) {
+        x = NumberDivision::run(NumberAddition::run(x, y, modulo), Number(2), modulo);
+        y = NumberDivision::run(a, x, modulo);
     }
 
-    return guess;
-};
+    return x;
+}
