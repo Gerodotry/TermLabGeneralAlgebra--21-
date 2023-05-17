@@ -5,7 +5,6 @@
 #include "algorithms/NumberDivision.h"
 #include "algorithms/NumberAddition.h"
 #include <iostream>
-#include <cmath>
 #include <stdexcept>
 
 Number NumberSqrt::run(Number a, unsigned int modulo) {
@@ -13,30 +12,25 @@ Number NumberSqrt::run(Number a, unsigned int modulo) {
         a.toField(modulo);
     }
 
-    return sqrt(a, b, modulo);
+    return sqrt(a, modulo);
+}
 
-Number NumberSqrt::sqrt(const Number &a, unsigned int modulo){
-    NumberAddition na;
-    NumberDivision nd;
-
-    // If the input is not a number
-    if (std::isnan(a)) {
-        throw std::invalid_argument("Input is not a number.");
-    }
+Number NumberSqrt::sqrt(const Number &a, unsigned int modulo) {
     if (a < 0) {
-        a = -a;
+        std::cout<<"Negative number";
     }
-    if (a == 1) {
-        return 1;
-    }
-
-    double guess = nd.divide(a, 2);
-    double prev_guess = nd.add(guess, 1);
-
-    while (guess != prev_guess) {
-        prev_guess = guess;
-        guess = nd.divide((nd.divide(nd.add(guess, a), guess)), 2);
+    if ((a == 0) or (a == 1)) {
+        return Number(1);
     }
 
-    return guess;
-};
+
+    Number x = a;
+    Number y = Number(1);
+
+    while (x > y) {
+        x = NumberDivision::run(NumberAddition::run(x, y, modulo), Number(2), modulo);
+        y = NumberDivision::run(a, x, modulo);
+    }
+
+    return x;
+}
