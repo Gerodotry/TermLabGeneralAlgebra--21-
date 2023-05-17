@@ -19,7 +19,7 @@ Number NumberSqrt::sqrt(Number &a, Number &modulo) {
     if (!a.isPositive) {
         std::cout<<"Negative number";
     }
-    if (a.isZero() or (a == 1)) {
+    if (a.isZero() || (a == 1)) {
         return Number(1);
     }
 
