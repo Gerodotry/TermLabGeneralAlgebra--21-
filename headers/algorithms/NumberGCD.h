@@ -5,10 +5,10 @@
 
 class NumberGCD {
 public:
-    static Number run(Number a, Number b, unsigned int modulo);
+    static Number run(Number a, Number b, Number modulo);
 
 private:
-    static Number gcd(Number& a, Number& b, unsigned int modulo);
+    static Number gcd(Number& a, Number& b, Number& modulo);
 };
 
 

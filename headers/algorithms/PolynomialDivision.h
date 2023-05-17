@@ -11,15 +11,15 @@
 class PolynomialDivision {
 public:
     template<class T>
-    static T run(T dividend, T divisor, unsigned int modulo);
+    static T run(T dividend, T divisor, Number modulo);
 private:
     template<class T>
-    static T divide(T& dividend, T divisor, unsigned int modulo);
+    static T divide(T& dividend, T divisor, Number& modulo);
 };
 
 template<class T>
-T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
-    if (modulo) {
+T PolynomialDivision::run(T dividend, T divisor, Number modulo) {
+    if (!modulo.isZero()) {
         dividend.toField(modulo);
         divisor.toField(modulo);
     }
@@ -27,7 +27,7 @@ T PolynomialDivision::run(T dividend, T divisor, unsigned int modulo) {
 }
 
 template<class T>
-T PolynomialDivision::divide(T& dividend, T divisor, unsigned int modulo) {
+T PolynomialDivision::divide(T& dividend, T divisor, Number& modulo) {
     if (divisor.isZero()) {
         throw std::invalid_argument("Division by zero");
     }
@@ -48,22 +48,22 @@ T PolynomialDivision::divide(T& dividend, T divisor, unsigned int modulo) {
 
         if (remainder.terms.empty()) break;
 
-        Number degree_diff = NumberSubtraction::run(remainder.terms.front().degree, divisor.terms.front().degree, 0);
-        Number coeff_ratio = NumberDivision::run(remainder.terms.front().coefficient, divisor.terms.front().coefficient, 0);
+        Number degree_diff = remainder.terms.front().degree - divisor.terms.front().degree;
+        Number coeff_ratio = remainder.terms.front().coefficient / divisor.terms.front().coefficient;
 
         if (degree_diff.isZero() && coeff_ratio.isZero()) break;
 
         for (auto& term : divisor.terms) {
-            term.coefficient = NumberMultiplication::run(term.coefficient, coeff_ratio, 0);
-            term.degree = NumberAddition::run(term.degree, degree_diff, 0);
+            term.coefficient = term.coefficient * coeff_ratio;
+            term.degree = term.degree + degree_diff;
         }
 
         quotient.terms.push_back( { degree_diff, coeff_ratio } );
         remainder = PolynomialSubtraction::run(remainder, divisor, 0);
 
         for (auto& term : divisor.terms) {
-            term.coefficient = NumberDivision::run(term.coefficient, coeff_ratio, 0);
-            term.degree = NumberSubtraction::run(term.degree, degree_diff, 0);
+            term.coefficient = term.coefficient / coeff_ratio;
+            term.degree = term.degree - degree_diff;
         }
     }
 

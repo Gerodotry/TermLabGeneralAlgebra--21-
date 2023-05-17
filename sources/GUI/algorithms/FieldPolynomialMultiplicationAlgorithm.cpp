@@ -6,7 +6,7 @@
 #include "utils/Int.h"
 #include "algorithms/PolynomialMultiplication.h"
 #include "GUI/inputComponents/FieldPolynomialInputComponent.h"
-#include "GUI/inputComponents/IntInputComponent.h"
+#include "GUI/inputComponents/NumberInputComponent.h"
 
 std::string FieldPolynomialMultiplicationAlgorithm::getName() const {
     return "Field polynomial multiplication";
@@ -15,8 +15,8 @@ std::string FieldPolynomialMultiplicationAlgorithm::getName() const {
 Object *FieldPolynomialMultiplicationAlgorithm::run() {
     FieldPolynomial *polynomialA = dynamic_cast<FieldPolynomial *>(dataTypes[0]->getObject());
     FieldPolynomial *polynomialB = dynamic_cast<FieldPolynomial *>(dataTypes[1]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
-    result = PolynomialMultiplication::run(*polynomialA, *polynomialB, module);
+    Number* module = dynamic_cast<Number *>(dataTypes[2]->getObject());
+    result = PolynomialMultiplication::run(*polynomialA, *polynomialB, *module);
     return &result;
 }
 
@@ -24,6 +24,6 @@ FieldPolynomialMultiplicationAlgorithm::FieldPolynomialMultiplicationAlgorithm()
     dataTypes = {
             std::make_shared<FieldPolynomialInputComponent>("PolynomialA"),
             std::make_shared<FieldPolynomialInputComponent>("PolynomialB"),
-            std::make_shared<IntInputComponent>("Module")
+            std::make_shared<NumberInputComponent>("Module")
     };
 }

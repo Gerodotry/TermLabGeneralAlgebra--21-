@@ -8,8 +8,8 @@
 
 class Inverse {
 public:
-    static Number run(Number a, unsigned int modulo);
+    static Number run(Number a, Number modulo);
 private:
-    static Number inverse(Number a, unsigned int modulo);
+    static Number inverse(Number& a, Number& modulo);
 };
 #endif //LAB_INVERSE_H

@@ -7,7 +7,7 @@
 
 void BigIntInputComponent::createInputWindow() {
     ImGui::Begin(name.c_str());
-    ImGui::InputText("Value", &numberString[0], 2048);
+    ImGui::InputText("Value", &numberString[0], 2048, ImGuiInputTextFlags_CharsDecimal | ImGuiInputTextFlags_AutoSelectAll);
     ImGui::End();
 }
 

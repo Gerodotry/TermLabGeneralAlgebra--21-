@@ -15,8 +15,8 @@ std::string NumberSubtractionAlgorithm::getName() const {
 Object *NumberSubtractionAlgorithm::run() {
     Number *numberA = dynamic_cast<Number *>(dataTypes[0]->getObject());
     Number *numberB = dynamic_cast<Number *>(dataTypes[1]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
-    result = NumberSubtraction::run(*numberA, *numberB, module);
+    Number *module = dynamic_cast<Number *>(dataTypes[2]->getObject());
+    result = NumberSubtraction::run(*numberA, *numberB, *module);
     return &result;
 }
 
@@ -24,6 +24,6 @@ NumberSubtractionAlgorithm::NumberSubtractionAlgorithm() {
     dataTypes = {
             std::make_shared<NumberInputComponent>("NumberA"),
             std::make_shared<NumberInputComponent>("NumberB"),
-            std::make_shared<IntInputComponent>("Module")
+            std::make_shared<NumberInputComponent>("Module")
     };
 }

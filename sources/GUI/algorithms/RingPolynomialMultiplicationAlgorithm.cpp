@@ -7,6 +7,7 @@
 #include "algorithms/PolynomialMultiplication.h"
 #include "GUI/inputComponents/IntInputComponent.h"
 #include "GUI/inputComponents/RingPolynomialInputComponent.h"
+#include "GUI/inputComponents/NumberInputComponent.h"
 
 std::string RingPolynomialMultiplicationAlgorithm::getName() const {
     return "Ring polynomial multiplication";
@@ -15,8 +16,8 @@ std::string RingPolynomialMultiplicationAlgorithm::getName() const {
 Object *RingPolynomialMultiplicationAlgorithm::run() {
     RingPolynomial *polynomialA = dynamic_cast<RingPolynomial *>(dataTypes[0]->getObject());
     RingPolynomial *polynomialB = dynamic_cast<RingPolynomial *>(dataTypes[1]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
-    result = PolynomialMultiplication::run(*polynomialA, *polynomialB, module);
+    Number *module = dynamic_cast<Number *>(dataTypes[2]->getObject());
+    result = PolynomialMultiplication::run(*polynomialA, *polynomialB, *module);
     return &result;
 }
 
@@ -24,6 +25,6 @@ RingPolynomialMultiplicationAlgorithm::RingPolynomialMultiplicationAlgorithm() {
     dataTypes = {
             std::make_shared<RingPolynomialInputComponent>("PolynomialA"),
             std::make_shared<RingPolynomialInputComponent>("PolynomialB"),
-            std::make_shared<IntInputComponent>("Module")
+            std::make_shared<NumberInputComponent>("Module")
     };
 }

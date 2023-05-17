@@ -11,11 +11,11 @@
 class PolynomialFastPowering {
 public:
     template<class T>
-    static T run(const T& Polynomial, int n, int module);
+    static T run(const T& Polynomial, int n, Number module);
 };
 
 template<class T>
-T PolynomialFastPowering::run(const T& Polynomial, int n, int module) {
+T PolynomialFastPowering::run(const T& Polynomial, int n, Number module) {
     if (n == 0) return T({{0, 1}});
     else if (n == 1) return Polynomial;
     else if (n % 2) {

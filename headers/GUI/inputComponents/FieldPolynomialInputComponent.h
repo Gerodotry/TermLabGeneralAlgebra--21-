@@ -22,8 +22,8 @@ public:
 private:
     int count = 1;
 
-    std::string degrees = std::string(2048, '.');
-    std::string coefficients = std::string(2048, '.');
+    std::string degrees = std::string(2048, 0);
+    std::string coefficients = std::string(2048, 0);
 
     FieldPolynomial polynomial;
 };

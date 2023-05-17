@@ -26,17 +26,16 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
     }
 
     while (d == 1) {
-        x = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(x, x, 0), Number(1), 0), n, 0);
-
-        y = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(y, y, 0), Number(1), 0), n, 0);
-        y = NumberRemainder::run(NumberAddition::run(NumberMultiplication::run(y, y, 0), Number(1), 0), n, 0);
+        x = ((x * x) + Number(1)) % n;
+        y = ((y * y) + Number(1)) % n;
+        y = ((y * y) + Number(1)) % n;
 
         d = NumberGCD::run(sub(x, y), n, UINT_MAX);
     }
 
     if (d != n) {
         factors.push_back(d);
-        std::vector<Number> remainingFactors = pollard_factorization(NumberDivision::run(n, d, 0));
+        std::vector<Number> remainingFactors = pollard_factorization(n / d);
         factors.insert(factors.end(), remainingFactors.begin(), remainingFactors.end());
     } else {
         factors.push_back(n);
@@ -46,8 +45,8 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
 }
 
 Number Pollard::sub(Number x, Number y) {
-    if (!NumberSubtraction::run(x, y, 0).isPositive){
-        return NumberSubtraction::run(y, x, 0);
+    if (!(x - y).isPositive){
+        return y - x;
     }else
-        return NumberSubtraction::run(x, y, 0);
+        return x - y;
 }

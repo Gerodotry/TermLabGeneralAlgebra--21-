@@ -20,7 +20,6 @@ Object *NaiveFactorizationAlgorithm::run() {
 
 NaiveFactorizationAlgorithm::NaiveFactorizationAlgorithm() {
     dataTypes = {
-            std::make_shared<NumberInputComponent>("Number"),
-            std::make_shared<IntInputComponent>("Module")
+            std::make_shared<NumberInputComponent>("Number")
     };
 }

@@ -1,14 +1,16 @@
 #include "algorithms/NumberAddition.h"
 
-Number NumberAddition::run(Number a, Number b, unsigned int modulo) {
-    if (modulo) {
+Number NumberAddition::run(Number a, Number b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
+    } else {
+        return a + b;
     }
     return add(a, b, modulo);
 }
 
-Number NumberAddition::add(const Number& a, const Number& b, unsigned int modulo) {
+Number NumberAddition::add(Number& a, Number& b, Number& modulo) {
     Number result;
     std::size_t minSize = std::min(a.digits.size(), b.digits.size());
     bool carry = false;
@@ -28,7 +30,7 @@ Number NumberAddition::add(const Number& a, const Number& b, unsigned int modulo
     if (carry) {
         result.digits.emplace_back(1);
     }
-    if (modulo) {
+    if (!modulo.isZero()) {
         result.toField(modulo);
     }
     return result;

@@ -92,6 +92,10 @@ void Polynomial::toField(int modulo) {
 
 }
 
+void Polynomial::toField(const Number& modulo) {
+
+}
+
 Polynomial::Polynomial(int n, int value) {
     for (int i = 0; i < n; ++i) {
         terms.push_back({i, value});

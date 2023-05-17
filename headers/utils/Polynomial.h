@@ -28,6 +28,8 @@ public:
 
     virtual void toField(int modulo);
 
+    virtual void toField(const Number& modulo);
+
     Polynomial& operator=(const Polynomial &polynomial);
 
     bool operator==(const Polynomial& polynomial) const;

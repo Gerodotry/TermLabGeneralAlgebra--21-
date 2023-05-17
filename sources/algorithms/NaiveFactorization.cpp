@@ -16,10 +16,10 @@ std::vector<Number> NaiveFactorization::naive_factorization(Number& n) {
         return factors;
     }
 
-    for (Number i = Number(2); i <= NumberDivision::run(n, i, 0); i = NumberAddition::run(i, Number(1), 0)) {
-        while (NumberRemainder::run(n, i, 0).isZero()) {
+    for (Number i = Number(2); i <= n / i; i = i + Number(1)) {
+        while ((n % i).isZero()) {
             factors.push_back(i);
-            n = NumberDivision::run(n, i, 0);
+            n = n / i;
         }
     }
 

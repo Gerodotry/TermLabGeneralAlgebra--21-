@@ -5,10 +5,10 @@
 
 class NumberSubtraction {
 public:
-    static Number run(Number a, Number b, unsigned int modulo);
+    static Number run(Number a, Number b, Number modulo);
 
 private:
-    static Number subtract(Number& a, Number& b, unsigned int modulo);
+    static Number subtract(Number& a, Number& b, Number& modulo);
 };
 
 #endif //LAB_NUMBERSUBTRACTION_H

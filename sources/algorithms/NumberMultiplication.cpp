@@ -1,14 +1,16 @@
 #include "algorithms/NumberMultiplication.h"
 
-Number NumberMultiplication::run(Number a, Number b, unsigned int modulo) {
-    if (modulo) {
+Number NumberMultiplication::run(Number a, Number b, Number modulo) {
+    if (!modulo.isZero()) {
         a.toField(modulo);
         b.toField(modulo);
+    } else {
+        return a * b;
     }
     return multiply(a, b, modulo);
 }
 
-Number NumberMultiplication::multiply(const Number &a, const Number &b, unsigned int modulo) {
+Number NumberMultiplication::multiply(Number &a, Number &b, Number& modulo) {
     Number product;
     std::size_t aSize = a.digits.size();
     std::size_t bSize = b.digits.size();
@@ -31,7 +33,7 @@ Number NumberMultiplication::multiply(const Number &a, const Number &b, unsigned
         product.isPositive = false;
     }
 
-    if (modulo) {
+    if (!modulo.isZero()) {
         product.toField(modulo);
     }
     return product;

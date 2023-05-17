@@ -15,8 +15,8 @@ std::string PolynomialValueAlgorithm::getName() const {
 Object *PolynomialValueAlgorithm::run() {
     RingPolynomial *polynomial = dynamic_cast<RingPolynomial *>(dataTypes[0]->getObject());
     Number *number = dynamic_cast<Number *>(dataTypes[1]->getObject());
-    int module = dynamic_cast<Int *>(dataTypes[2]->getObject())->get();
-    result = PolynomialValue::run(*polynomial, *number, module);
+    Number *module = dynamic_cast<Number *>(dataTypes[2]->getObject());
+    result = PolynomialValue::run(*polynomial, *number, *module);
     return &result;
 }
 
@@ -24,6 +24,6 @@ PolynomialValueAlgorithm::PolynomialValueAlgorithm() {
     dataTypes = {
             std::make_shared<RingPolynomialInputComponent>("Polynomial"),
             std::make_shared<NumberInputComponent>("Point"),
-            std::make_shared<IntInputComponent>("Module")
+            std::make_shared<NumberInputComponent>("Module")
     };
 }

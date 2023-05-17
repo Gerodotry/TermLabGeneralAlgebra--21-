@@ -18,7 +18,7 @@ void FieldPolynomial::toField(int modulo) {
         FieldPolynomial g = FieldPolynomial(terms);
 
         for (auto &term: g.terms) {
-            term.coefficient = NumberMultiplication::run(term.coefficient, Number(R), 0);
+            term.coefficient = term.coefficient * Number(R);
         }
 
         FieldPolynomial h(g.terms);
@@ -101,4 +101,35 @@ bool FieldPolynomial::isZero() {
 
 FieldPolynomial::FieldPolynomial(int n, int value) : Polynomial(n, value) {
 
+}
+
+void FieldPolynomial::toField(const Number &modulo) {
+    dropZeroes();
+
+    if (getDegree() > modulo) {
+        long long R = (2 << (int) log2(modulo.get())) + 1;
+        long long U = calculateU(R, modulo.get());
+
+        FieldPolynomial g = FieldPolynomial(terms);
+
+        for (auto &term: g.terms) {
+            term.coefficient = term.coefficient * Number(R);
+        }
+
+        FieldPolynomial h(g.terms);
+        for (int i = h.getDegree().get() - 1; i >= 0 && h.getDegree() > modulo; --i) {
+            h = PolynomialRemainder::run(h, { { i, 1 }, { 0, 1 } }, 0);
+        }
+
+        for (auto& term: h.terms) {
+            term.coefficient = NumberMultiplication::run(term.coefficient, Number(U), modulo);
+        }
+
+        terms = h.terms;
+    }
+
+    for (auto& term : terms) {
+        term.toField(modulo);
+    }
+    dropZeroes();
 }
