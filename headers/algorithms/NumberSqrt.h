@@ -11,7 +11,7 @@ class NumberSqrt {
 public:
     static Number run(Number a, unsigned int modulo);
 private:
-    static Number sqrt(const Number& a, unsigned int modulo);
+    static Number sqrt(Number& a, unsigned int modulo);
 };
 
 #endif //LAB_NUMBERSQRT_H
