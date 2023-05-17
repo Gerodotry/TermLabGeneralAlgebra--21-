@@ -7,8 +7,10 @@
 #include <random>
 #include <chrono>
 #include <complex>
+#include "Object.h"
 
-struct BigInt {
+class BigInt: public Object {
+public:
     static constexpr int maxn = 1e2 + 14, lg = 15;
     static constexpr int base = 1000000000;
     static constexpr int base_digits = 9;

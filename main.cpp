@@ -21,6 +21,18 @@
 #include "GUI/algorithms/FieldPolynomialMultiplicationAlgorithm.h"
 #include "GUI/algorithms/RingPolynomialFastPoweringAlgorithm.h"
 #include "GUI/algorithms/FieldPolynomialFastPoweringAlgorithm.h"
+#include "GUI/algorithms/GcdAlgorithm.h"
+#include "GUI/algorithms/MillerRabinTestAlgorithm.h"
+#include "GUI/algorithms/DivisionAlgorithm.h"
+#include "GUI/algorithms/RemainderAlgorithm.h"
+#include "GUI/algorithms/InverseAlgorithm.h"
+#include "GUI/algorithms/NaiveFactorizationAlgorithm.h"
+#include "GUI/algorithms/PollardAlgorithm.h"
+#include "GUI/algorithms/NumberSqrtAlgorithm.h"
+#include "GUI/algorithms/EuclidAlgorithm.h"
+#include "GUI/algorithms/PolynomialValueAlgorithm.h"
+#include "GUI/algorithms/PolynomialDerivativeAlgorithm.h"
+#include "GUI/algorithms/PolynomialGeneratorCheckAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -52,6 +64,7 @@ int main(int, char**)
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.FontGlobalScale = 2;
 
     ImGui::StyleColorsDark();
 
@@ -68,16 +81,28 @@ int main(int, char**)
     Windows.addAlgorithm<NumberGCDAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberDivisionAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberRemainderAlgorithm>("Numbers");
+    Windows.addAlgorithm<MillerRabinTestAlgorithm>("Numbers");
+    Windows.addAlgorithm<NaiveFactorizationAlgorithm>("Numbers");
+    Windows.addAlgorithm<PollardAlgorithm>("Numbers");
+    Windows.addAlgorithm<NumberSqrtAlgorithm>("Numbers");
+    Windows.addAlgorithm<InverseAlgorithm>("Numbers");
 
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialMultiplicationAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialFastPoweringAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<DivisionAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<RemainderAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<GcdAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialDerivativeAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialValueAlgorithm>("Ring polynomial");
+    Windows.addAlgorithm<PolynomialGeneratorCheckAlgorithm>("Ring polynomial");
 
     Windows.addAlgorithm<FieldPolynomialAdditionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialSubtractionAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialMultiplicationAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialFastPoweringAlgorithm>("Field polynomial");
+    Windows.addAlgorithm<EuclidAlgorithm>("Field polynomial");
 
     while (!glfwWindowShouldClose(window))
     {
@@ -133,7 +158,7 @@ int main() {
     //BigInt n = 87178291199;
 
     //if (MillerRabinTest::run(n, k))
-    //     cout <<"Number "<< n<<" is prime\n";  
+    //     cout <<"Number "<< n<<" is prime\n";
     //else
     //    cout << "Number " << n << " is not prime\n";
 

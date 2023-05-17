@@ -5,10 +5,11 @@
 #define LAB_NUMBERSQRT_H
 
 
+#include "utils/Number.h"
+
 class NumberSqrt {
 public:
     static Number run(Number a, unsigned int modulo);
-
 private:
     static Number sqrt(const Number& a, unsigned int modulo);
 };

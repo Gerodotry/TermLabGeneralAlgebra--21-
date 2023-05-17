@@ -1,0 +1,15 @@
+
+#ifndef LAB_EUCLID_H
+#define LAB_EUCLID_H
+#include <vector>
+#include "utils/FieldPolynomial.h"
+
+class Euclid {
+public:
+    static FieldPolynomial run(FieldPolynomial r1, FieldPolynomial r2);
+
+private:
+    static void inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2, FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b);
+};
+
+#endif //LAB_EUCLID_H

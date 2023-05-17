@@ -2,6 +2,7 @@
 // Created by Sasha on 07.05.2023.
 //
 
+#include <algorithm>
 #include "algorithms/Division.h"
 
 std::vector<int> Division::divisionCoefs;
@@ -52,6 +53,8 @@ std::vector<int> Division::division(std::vector<int> poly1, std::vector<int> pol
 }
 
 std::vector<int> Division::run(std::vector<int> poly1, std::vector<int> poly2, int mod) {
+    std::reverse(poly1.begin(), poly1.end());
+    std::reverse(poly2.begin(), poly2.end());
     std::vector<int> div = division(poly1, poly2, mod);
     return div;
 }

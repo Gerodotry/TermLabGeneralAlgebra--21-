@@ -14,7 +14,7 @@ public:
 
     Polynomial() = default;
 
-    explicit Polynomial(int n);
+    explicit Polynomial(int n, int value = 0);
 
     Polynomial(const std::initializer_list<PolynomialTerm>& terms);
 
@@ -29,6 +29,8 @@ public:
     virtual void toField(int modulo);
 
     Polynomial& operator=(const Polynomial &polynomial);
+
+    bool operator==(const Polynomial& polynomial) const;
 
     void sortByDegree(bool ascending = true);
 

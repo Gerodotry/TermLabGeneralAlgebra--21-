@@ -92,8 +92,12 @@ void Polynomial::toField(int modulo) {
 
 }
 
-Polynomial::Polynomial(int n) {
+Polynomial::Polynomial(int n, int value) {
     for (int i = 0; i < n; ++i) {
-        terms.push_back({i, 0});
+        terms.push_back({i, value});
     }
+}
+
+bool Polynomial::operator==(const Polynomial &polynomial) const {
+    return polynomial.terms == terms;
 }

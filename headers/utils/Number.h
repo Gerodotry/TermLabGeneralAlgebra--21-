@@ -8,13 +8,10 @@
 #include "Object.h"
 
 class Number: public Object {
-    friend class NumberAddition;
-    friend class NumberSubtraction;
-    friend class NumberMultiplication;
-    friend class NumberDivision;
-    friend class NumberRemainder;
-    friend class PolynomialTerm;
 public:
+    bool isPositive = true;
+    std::vector<unsigned int> digits;
+
     Number() = default;
 
     explicit Number(const std::vector<unsigned int>& number);
@@ -59,6 +56,8 @@ public:
 
     Number& operator = (const Number& other);
 
+    friend Number operator/(Number a, Number b);
+
     bool isZero();
 
     virtual std::string toString() override;
@@ -67,11 +66,9 @@ public:
 
     void toField(unsigned int modulo);
 
-    long long get();
+    void toField(const Number& modulo);
 
-protected:
-    bool isPositive = true;
-    std::vector<unsigned int> digits;
+    long long get();
 
     void simplify();
 

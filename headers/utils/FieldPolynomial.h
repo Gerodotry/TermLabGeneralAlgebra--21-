@@ -11,7 +11,7 @@ class FieldPolynomial : public Polynomial {
 public:
     FieldPolynomial() = default;
 
-    explicit FieldPolynomial(int n);
+    explicit FieldPolynomial(int n, int value = 0);
 
     FieldPolynomial(const std::initializer_list<PolynomialTerm> &terms);
 
@@ -23,14 +23,13 @@ public:
 
     virtual void toField(int modulo) override;
 
+    bool isZero();
+
 private:
     int calculateBitsNumber(int number);
 
-    long long calculateValue(long long t, long long module);
-
     static long long calculateU(long long R, long long module);
 
-    static FieldPolynomial PolyDiv(const FieldPolynomial& dividend, FieldPolynomial divisor);
 };
 
 #endif //LAB_FieldPolynomial_H

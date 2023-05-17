@@ -67,3 +67,7 @@ void PolynomialTerm::setDegree(const Number& newDegree) {
 void PolynomialTerm::setCoefficient(const Number& newCoefficient) {
     coefficient = newCoefficient;
 }
+
+bool PolynomialTerm::operator==(const PolynomialTerm &term) const {
+    return degree == term.degree && coefficient == term.coefficient;
+}

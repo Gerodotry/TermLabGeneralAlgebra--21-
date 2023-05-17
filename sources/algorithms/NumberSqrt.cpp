@@ -15,14 +15,13 @@ Number NumberSqrt::run(Number a, unsigned int modulo) {
     return sqrt(a, modulo);
 }
 
-Number NumberSqrt::sqrt(const Number &a, unsigned int modulo) {
-    if (a < 0) {
+Number NumberSqrt::sqrt(Number &a, unsigned int modulo) {
+    if (!a.isPositive) {
         std::cout<<"Negative number";
     }
-    if ((a == 0) or (a == 1)) {
+    if (a.isZero() or (a == 1)) {
         return Number(1);
     }
-
 
     Number x = a;
     Number y = Number(1);
