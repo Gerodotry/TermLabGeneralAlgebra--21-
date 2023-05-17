@@ -159,7 +159,7 @@ void Number::toField(unsigned int modulo) {
 }
 
 void Number::toField(const Number &modulo) {
-    *this = NumberRemainder::run(*this, modulo, 0);
+    *this = *this % modulo;
 }
 
 int Number::compareDigits(const Number &other) const {

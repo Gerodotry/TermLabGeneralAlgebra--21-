@@ -36,7 +36,7 @@ std::vector<Number> Pollard::pollard_factorization(Number n) {
 
     if (d != n) {
         factors.push_back(d);
-        std::vector<Number> remainingFactors = pollard_factorization(NumberDivision::run(n, d, 0));
+        std::vector<Number> remainingFactors = pollard_factorization(n / d);
         factors.insert(factors.end(), remainingFactors.begin(), remainingFactors.end());
     } else {
         factors.push_back(n);

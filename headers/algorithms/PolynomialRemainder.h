@@ -50,7 +50,7 @@ T PolynomialRemainder::divide(const T& dividend, T divisor, Number& modulo) {
         if (remainder.terms.empty()) break;
 
         Number degree_diff = NumberSubtraction::run(remainder.terms.front().degree, divisor.terms.front().degree, 0);
-        Number coeff_ratio = NumberDivision::run(remainder.terms.front().coefficient, divisor.terms.front().coefficient, 0);
+        Number coeff_ratio = remainder.terms.front().coefficient / divisor.terms.front().coefficient;
 
         for (auto& term : divisor.terms) {
             term.coefficient = NumberMultiplication::run(term.coefficient, coeff_ratio, 0);
@@ -60,7 +60,7 @@ T PolynomialRemainder::divide(const T& dividend, T divisor, Number& modulo) {
         remainder = PolynomialSubtraction::run(remainder, divisor, 0);
 
         for (auto& term : divisor.terms) {
-            term.coefficient = NumberDivision::run(term.coefficient, coeff_ratio, 0);
+            term.coefficient = term.coefficient / coeff_ratio;
             term.degree = NumberSubtraction::run(term.degree, degree_diff, 0);
         }
     }
