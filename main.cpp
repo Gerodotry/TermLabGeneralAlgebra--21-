@@ -33,6 +33,8 @@
 #include "GUI/algorithms/PolynomialValueAlgorithm.h"
 #include "GUI/algorithms/PolynomialDerivativeAlgorithm.h"
 #include "GUI/algorithms/PolynomialGeneratorCheckAlgorithm.h"
+#include "GUI/algorithms/GroupElementOrderAlgorithm.h"
+#include "GUI/algorithms/IsGroupGeneratorAlgorithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
@@ -86,6 +88,8 @@ int main(int, char**)
     Windows.addAlgorithm<PollardAlgorithm>("Numbers");
     Windows.addAlgorithm<NumberSqrtAlgorithm>("Numbers");
     Windows.addAlgorithm<InverseAlgorithm>("Numbers");
+    Windows.addAlgorithm<InverseAlgorithm>("Numbers");
+    Windows.addAlgorithm<GroupElementOrderAlgorithm>("Numbers");
 
     Windows.addAlgorithm<RingPolynomialAdditionAlgorithm>("Ring polynomial");
     Windows.addAlgorithm<RingPolynomialSubtractionAlgorithm>("Ring polynomial");
@@ -103,6 +107,7 @@ int main(int, char**)
     Windows.addAlgorithm<FieldPolynomialMultiplicationAlgorithm>("Field polynomial");
     Windows.addAlgorithm<FieldPolynomialFastPoweringAlgorithm>("Field polynomial");
     Windows.addAlgorithm<EuclidAlgorithm>("Field polynomial");
+    Windows.addAlgorithm<IsGroupGeneratorAlgorithm>("Field polynomial");
 
     while (!glfwWindowShouldClose(window))
     {
