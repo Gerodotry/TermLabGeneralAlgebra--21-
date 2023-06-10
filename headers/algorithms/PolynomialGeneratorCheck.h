@@ -5,10 +5,13 @@
 
 class PolynomialGeneratorCheck {
 public:
+    static int find_order(const std::vector<int>& degrees);
+
     static int run(const std::vector<int>& poly, int field_size);
 private:
     static bool is_generator(const std::vector<int>& poly, int field_size);
 
     static std::vector<int> multiply_polynomials(const std::vector<int>& a, const std::vector<int>& b, int field_size);
+
 };
 #endif

@@ -1,0 +1,256 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "bin/visualinfo.exe"
+		},
+		{
+			"path" : "bin/visualinfo.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"install",
+			"target_link_libraries",
+			"add_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"glew/build/cmake/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 179,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 185,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 180,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 57,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 127,
+				"parent" : 5
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 128,
+				"parent" : 5
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 86,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od  -MDd"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "GLEW_NO_GLU"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/h"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/headers"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/ImGui"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/imgui"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/glew/build/cmake/../../include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DWIN32 -D_DEBUG"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "GLEW_NO_GLU"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/h"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/headers"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/ImGui"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/imgui"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "C:/Users/volos/source/repos/TermLabGeneralAlgebra--21-/glew/build/cmake/../../include"
+				}
+			],
+			"language" : "RC",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "glew::@26b643d9417282ab8c42"
+		}
+	],
+	"id" : "visualinfo::@26b643d9417282ab8c42",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Users/volos/Source/Repos/TermLabGeneralAlgebra--21-/out/install/windows-default"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od  -MDd",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "..\\..\\..\\lib\\glew32d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "opengl32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "glu32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "visualinfo",
+	"nameOnDisk" : "visualinfo.exe",
+	"paths" : 
+	{
+		"build" : "glew/build/cmake",
+		"source" : "glew/build/cmake"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "glew/src/visualinfo.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "glew/build/visualinfo.rc",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

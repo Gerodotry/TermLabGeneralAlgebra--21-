@@ -1,43 +1,49 @@
 #include "algorithms/PolynomialGeneratorCheck.h"
 #include <vector>
 
-bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& poly, int field_size) {
-    std::vector<int> powers(field_size - 1, 0);
-    int x = 1;
-    for (int i = 0; i < field_size - 2; i++) {
-        powers[x] = i + 1;
-        x = multiply_polynomials({ x }, poly, field_size)[0];
-    }
-
-    for (int i = 1; i < field_size; i++) {
-        if (powers[i] == 0) {
-            return false;
+int PolynomialGeneratorCheck::find_order(const std::vector<int>& degrees) {
+    int order = 0;
+    for (int degree : degrees) {
+        if (degree > order) {
+            order = degree;
         }
     }
-    return true;
+    return order;
+} 
+
+bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& degrees, int field_size) {
+    int order = find_order(degrees);
+    return order == field_size - 1;
 }
 
-int PolynomialGeneratorCheck::run(const std::vector<int>& poly, int field_size) {
+int PolynomialGeneratorCheck::run(const std::vector<int>& degrees, int field_size) {
     std::vector<int> powers(field_size - 1, 0);
     int x = 1;
-    for (int i = 0; i < field_size - 2; i++) {
-        powers[x] = i + 1;
-        x = multiply_polynomials({ x }, poly, field_size)[0];
-    }
+    int order = 0;
 
-    for (int i = 1; i < field_size; i++) {
-        if (powers[i] == 0) {
-            return i;
+    while (true) {
+        powers[x % (field_size - 1)] = 1;
+        x = multiply_polynomials({ x }, degrees, field_size)[0];
+        order++;
+
+        if (powers[x % (field_size - 1)] == 1) {
+            break;
         }
     }
-    return field_size - 1;
+
+    return order;
+}
+
+bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& degrees, int field_size) {
+    int order = find_order(degrees);
+    return order == field_size - 1;
 }
 
 std::vector<int> PolynomialGeneratorCheck::multiply_polynomials(const std::vector<int>& a, const std::vector<int>& b, int field_size) {
     std::vector<int> result(a.size() + b.size() - 1, 0);
     for (int i = 0; i < a.size(); i++) {
         for (int j = 0; j < b.size(); j++) {
-            result[i + j] = (result[i + j] + a[i] * b[j]) % field_size;
+            result[i + j] = (result[i + j] + (a[i] * b[j]) % field_size) % field_size;
         }
     }
 
