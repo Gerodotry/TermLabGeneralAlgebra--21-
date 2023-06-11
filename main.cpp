@@ -28,6 +28,7 @@
 #include "GUI/algorithms/NaiveFactorizationAlgorithm.h"
 #include "GUI/algorithms/PollardAlgorithm.h"
 #include "algorithms/PolynomialIrreducible.h"
+#include "algorithms/DiscreteLogarithm.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -49,6 +50,8 @@ int main(int, char**)
     } else {
         std::cout << "The polynomial is reducible." << std::endl;
     }
+
+    std::cout << DiscreteLogarithm::discrete_logarithm(2535452443767, 4327588590113, 17) << std::endl;
 
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit()) {
