@@ -27,8 +27,10 @@
 #include "GUI/algorithms/RemainderAlgorithm.h"
 #include "GUI/algorithms/NaiveFactorizationAlgorithm.h"
 #include "GUI/algorithms/PollardAlgorithm.h"
+#include "algorithms/PolynomialIrreducible.h"
 #include <stdio.h>
 #include <GLFW/glfw3.h>
+#include <iostream>
 
 static void glfw_error_callback(int error, const char* description)
 {
@@ -37,6 +39,17 @@ static void glfw_error_callback(int error, const char* description)
 
 int main(int, char**)
 {
+    std::vector<int> polynomial = {1, 0, 1};  // x^2 + 1
+    int fieldSize = 7;
+    PolynomialIrreducible polynomialIrreducible;
+    bool isPolyIrreducible = polynomialIrreducible.isIrreducible(polynomial, fieldSize);
+
+    if (isPolyIrreducible) {
+        std::cout << "The polynomial is irreducible." << std::endl;
+    } else {
+        std::cout << "The polynomial is reducible." << std::endl;
+    }
+
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit()) {
         return 1;
