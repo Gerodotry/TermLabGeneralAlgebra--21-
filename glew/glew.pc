@@ -1,6 +1,6 @@
-prefix=C:/Users/volos/Source/Repos/TermLabGeneralAlgebra--21-/out/install/windows-default
+prefix=C:/Program Files (x86)/Lab
 exec_prefix=${prefix}
-libdir=C:/Users/volos/Source/Repos/TermLabGeneralAlgebra--21-/out/install/windows-default/lib
+libdir=C:/Program Files (x86)/Lab/lib
 includedir=${prefix}/include
 
 Name: glew
