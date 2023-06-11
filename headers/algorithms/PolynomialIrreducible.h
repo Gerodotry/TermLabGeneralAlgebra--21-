@@ -10,11 +10,11 @@
 using namespace std;
 
 class PolynomialIrreducible {
-    vector<int> power_mod(const vector<int>& a, const vector<int>& exp, const vector<int>& modulus);
-    vector<int> reduce(const vector<int>& a, const vector<int>& b);
-    vector<int> multiply(const vector<int>& a, const vector<int>& b);
+    int polynomialDegree(const std::vector<int>& polynomial);
+    std::vector<int> convolution(const std::vector<int>& a, const std::vector<int>& b);
+    std::vector<int> polynomialMod(const std::vector<int>& dividend, const std::vector<int>& divisor);
 public:
-    bool test_irreducibility(const vector<int>& polynomial);
+    bool isIrreducible(const std::vector<int>& polynomial, int fieldSize);
 };
 
 #endif //LAB_POLYNOMIALIRREDUCIBLE_H

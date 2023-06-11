@@ -2,69 +2,46 @@
 // Created by sofia on 11.06.2023.
 //
 
+#include <random>
 #include "algorithms/PolynomialIrreducible.h"
 #include "algorithms/Gcd.h"
 
-vector<int> PolynomialIrreducible::multiply(const vector<int> &a, const vector<int> &b) {
-    vector<int> result(a.size() + b.size() - 1, 0);
-    for (int i = 0; i < a.size(); ++i) {
-        for (int j = 0; j < b.size(); ++j) {
-            result[i + j] ^= (a[i] & b[j]);
-        }
-    }
-    return result;
+int PolynomialIrreducible::polynomialDegree(const vector<int> &polynomial) {
+    return polynomial.size() - 1;
 }
 
-vector<int> PolynomialIrreducible::reduce(const vector<int> &a, const vector<int> &b) {
-    vector<int> result(a);
-    while (result.size() >= b.size()) {
-        const vector<int> quotient = { result[0] / b[0] };
-        vector<int> temp(b.size(), 0);
-        for (int i = 0; i < b.size(); ++i) {
-            temp[i] = quotient[0] * b[i];
-        }
-        for (int i = 0; i < result.size() && i < temp.size(); ++i) {
-            result[i] ^= temp[i];
-        }
-        while (!result.empty() && result[0] == 0) {
-            result.erase(result.begin());
-        }
-    }
-    return result;
+std::vector<int> PolynomialIrreducible::convolution(const vector<int> &a, const vector<int> &b) {
+    return std::vector<int>();
 }
 
-vector<int> PolynomialIrreducible::power_mod(const vector<int> &a, const vector<int> &exp, const vector<int> &modulus) {
-    vector<int> result = { 1 };
-    vector<int> base = a;
-    vector<int> exponent = exp;
-    while (!exponent.empty()) {
-        if (exponent[0] & 1) {
-            result = reduce(multiply(result, base), modulus);
+std::vector<int> PolynomialIrreducible::polynomialMod(const vector<int> &dividend, const vector<int> &divisor) {
+    std::vector<int> quotient;
+    std::vector<int> remainder(dividend);
+    while (polynomialDegree(remainder) >= polynomialDegree(divisor)) {
+        int factor = remainder.back() / divisor.back();
+        int degreeDiff = polynomialDegree(remainder) - polynomialDegree(divisor);
+        quotient.push_back(factor);
+        for (int i = 0; i <= degreeDiff; ++i) {
+            int j = i + polynomialDegree(dividend) - polynomialDegree(divisor);
+            remainder[j] -= factor * divisor[i];
         }
-        base = reduce(multiply(base, base), modulus);
-        for (int & i : exponent) {
-            i /= 2;
+        while (remainder.back() == 0 && !remainder.empty()) {
+            remainder.pop_back();
         }
     }
-    return result;
+    return remainder;
 }
 
-bool PolynomialIrreducible::test_irreducibility(const vector<int> &polynomial) {
-    if (polynomial.empty() || (polynomial[0] == 0 && polynomial.size() > 1)) {
-        return false;
-    }
-    const int n = polynomial.size() - 1;
-    if (n <= 1) {
-        return true;
-    }
-    vector<int> alpha = { 0, 1 };
-    vector<int> P = polynomial;
-    for (int i = 1; i <= n / 2; ++i) {
-        vector<int> tmp = reduce(power_mod(alpha, { i }, P), polynomial);
-        for (int j = 0; j < alpha.size(); ++j) {
-            tmp[j] ^= alpha[j];
+bool PolynomialIrreducible::isIrreducible(const vector<int> &polynomial, int fieldSize) {
+    std::uniform_int_distribution<int> dis(1, fieldSize - 1);
+    std::vector<int> x = {1, 1};
+    for (int i = 1; i <= fieldSize / 2; ++i) {
+        std::vector<int> power = {1};
+        for (int j = 0; j < i; ++j) {
+            power = polynomialMod(convolution(power, x), polynomial);
         }
-        if (tmp.empty() || Gcd::gcd(polynomial, tmp, 2).size() > 0) {
+        std::vector<int> gcdResult = Gcd::gcd(polynomial, power, 2);
+        if (gcdResult != std::vector<int>({1})) {
             return false;
         }
     }
