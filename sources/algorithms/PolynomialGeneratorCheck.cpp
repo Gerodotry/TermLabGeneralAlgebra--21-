@@ -11,8 +11,8 @@ int PolynomialGeneratorCheck::find_order(const std::vector<int>& degrees) {
     return order;
 } 
 
-bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& degrees, int field_size) {
-    int order = find_order(degrees);
+bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& degrees, int field_size, int& order) {
+    order = find_order(degrees);
     return order == field_size - 1;
 }
 
@@ -32,11 +32,6 @@ int PolynomialGeneratorCheck::run(const std::vector<int>& degrees, int field_siz
     }
 
     return order;
-}
-
-bool PolynomialGeneratorCheck::is_generator(const std::vector<int>& degrees, int field_size) {
-    int order = find_order(degrees);
-    return order == field_size - 1;
 }
 
 std::vector<int> PolynomialGeneratorCheck::multiply_polynomials(const std::vector<int>& a, const std::vector<int>& b, int field_size) {

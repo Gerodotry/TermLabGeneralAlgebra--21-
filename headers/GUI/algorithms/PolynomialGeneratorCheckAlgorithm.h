@@ -8,6 +8,7 @@
 
 #include "Algorithm.h"
 #include "utils/Bool.h"
+#include "utils/IsGenerator.h"
 
 class PolynomialGeneratorCheckAlgorithm: public Algorithm {
 public:
@@ -17,7 +18,7 @@ public:
 
     virtual Object* run() override;
 private:
-    Bool result;
+    IsGenerator result;
 };
 
 #endif //LAB_POLYNOMIALGENERATORCHECKALGORITHM_H
