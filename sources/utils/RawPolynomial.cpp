@@ -30,9 +30,11 @@ RawPolynomial::RawPolynomial(const std::vector<std::string> &degrees, const std:
 }
 
 void RawPolynomial::add(const std::vector<int>& degrees, const std::vector<int>& coefs) {
+
     int max = 0;
     for (int degree : degrees) {
         max = std::max(max, degree);
+        _degrees.push_back(degree);
     }
 
     coefficients.reserve(max + 1);
@@ -68,5 +70,6 @@ RawPolynomial::RawPolynomial(const std::vector<int> &coefficients): coefficients
 
 RawPolynomial &RawPolynomial::operator=(const RawPolynomial &polynomial) {
     coefficients = polynomial.coefficients;
+    _degrees = polynomial._degrees;
     return *this;
 }

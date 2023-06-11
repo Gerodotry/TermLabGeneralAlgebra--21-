@@ -16,7 +16,7 @@ Object *PolynomialGeneratorCheckAlgorithm::run() {
     RawPolynomial *polynomial = dynamic_cast<RawPolynomial*>(dataTypes[0]->getObject());
     int module = dynamic_cast<Int *>(dataTypes[1]->getObject())->get();
     int order;
-    bool isGenerator = PolynomialGeneratorCheck::is_generator(polynomial->coefficients, module, order);
+    bool isGenerator = PolynomialGeneratorCheck::is_generator(polynomial->_degrees, module, order);
     result = { isGenerator, order };
     return &result;
 }

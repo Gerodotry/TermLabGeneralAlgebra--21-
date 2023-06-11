@@ -11,6 +11,7 @@
 class RawPolynomial: public Object {
 public:
     std::vector<int> coefficients;
+    std::vector<int> _degrees;
 
     RawPolynomial();
 
