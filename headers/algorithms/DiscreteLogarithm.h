@@ -7,7 +7,7 @@
 
 class DiscreteLogarithm {
 public:
-    static int discrete_logarithm(int a, int b, int m);
+    static long long discrete_logarithm(long a, long b, long m);
 };
 
 #endif //LAB_DISCRETELOGARITHM_H

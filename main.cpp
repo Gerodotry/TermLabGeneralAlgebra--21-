@@ -40,7 +40,7 @@ static void glfw_error_callback(int error, const char* description)
 
 int main(int, char**)
 {
-    std::vector<int> polynomial = {1, 0, 1};  // x^2 + 1
+    std::vector<int> polynomial = {1, 0, 2};  // x^2 + 1
     int fieldSize = 7;
     PolynomialIrreducible polynomialIrreducible;
     bool isPolyIrreducible = polynomialIrreducible.isIrreducible(polynomial, fieldSize);
@@ -51,7 +51,7 @@ int main(int, char**)
         std::cout << "The polynomial is reducible." << std::endl;
     }
 
-    std::cout << DiscreteLogarithm::discrete_logarithm(2535452443767, 4327588590113, 17) << std::endl;
+   cout << DiscreteLogarithm::discrete_logarithm(5, 123456789, 1000000007) << std::endl;
 
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit()) {
