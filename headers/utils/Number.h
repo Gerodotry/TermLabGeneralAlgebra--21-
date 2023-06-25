@@ -79,6 +79,8 @@ public:
     int compareDigits(const Number& other) const;
 
     void digitalize(const std::string& string);
+
+    Number findAbs() const;
 };
 
 #endif //LAB_NUMBER_H

@@ -401,3 +401,10 @@ Number operator*(Number a, Number b) {
     }
     return product;
 }
+
+Number Number::findAbs() const {
+    Number result = *this;
+    result.isPositive = true;
+    return result;
+}
+

@@ -2,39 +2,38 @@
 #include <algorithms/PolynomialAddition.h>
 #include <algorithms/PolynomialSubtraction.h>
 #include <algorithms/PolynomialDivision.h>
+#include <algorithms/PolynomialRemainder.h>
 #include "utils/FieldPolynomial.h"
 #include "algorithms/Euclid.h"
 
 
-FieldPolynomial Euclid::run(FieldPolynomial r1, FieldPolynomial r2)
+FieldPolynomial Euclid::run(FieldPolynomial a, FieldPolynomial b)
 {
-    FieldPolynomial a, gcd, b, result,mod;
+    FieldPolynomial r0 = a;
+    FieldPolynomial r1 = b;
+    FieldPolynomial s0 = FieldPolynomial({{0, 1}});
+    FieldPolynomial s1 = FieldPolynomial();
+    FieldPolynomial t0 = FieldPolynomial();
+    FieldPolynomial t1 = FieldPolynomial({{0, 1}});
 
-    mod = r2;
+    while (!r1.isZero()) {
+        FieldPolynomial q = PolynomialDivision::run(r0, r1,0);
+        FieldPolynomial temp_r = PolynomialSubtraction::run(r0, PolynomialMultiplication::run(q, r1, 0), 0);
+        FieldPolynomial temp_s = PolynomialSubtraction::run(s0, PolynomialMultiplication::run(q, s1, 0), 0);
+        FieldPolynomial temp_t = PolynomialSubtraction::run(t0, PolynomialMultiplication::run(q, t1, 0), 0);
 
-    Number d1 = r1.getDegree();
-    Number d2 = r2.getDegree();
-
-    inversion(d1 > d2 ? r1 : r2, d1 < d2 ? r1 : r2, FieldPolynomial(1, 1), FieldPolynomial(1), FieldPolynomial(1), FieldPolynomial(1, 1), gcd, d1 > d2 ? a : b, d1 < d2 ? a : b);
-
-    return PolynomialAddition::run(a, mod, Number(0));
-}
-
-void Euclid::inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2,
-                       FieldPolynomial& gcd, FieldPolynomial& a, FieldPolynomial& b) {
-
-    FieldPolynomial q = PolynomialDivision::run(r1, r2, 0);
-
-    FieldPolynomial r3 = PolynomialSubtraction::run(r1, PolynomialMultiplication::run(r2, q, 0), 0);
-    FieldPolynomial x3 = PolynomialSubtraction::run(x1, PolynomialMultiplication::run(x2, q, 0), 0);
-    FieldPolynomial y3 = PolynomialSubtraction::run(y1, PolynomialMultiplication::run(y2, q, 0), 0);
-
-    if (!r3.isZero()) {
-        inversion(r2, r3, x2, x3, y2, y3, gcd, a, b);
+        r0 = r1;
+        r1 = temp_r;
+        s0 = s1;
+        s1 = temp_s;
+        t0 = t1;
+        t1 = temp_t;
     }
-    else {
-        gcd = r2;
-        a = x2;
-        b = y2;
+
+    // Make sure the inverse exists
+    if (r0.getDegree() == 0 && r0.getCoefficient(0) == Number(1)) {
+        return t0;
+    } else {
+        throw std::runtime_error("The inverse does not exist.");
     }
 }

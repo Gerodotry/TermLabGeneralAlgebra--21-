@@ -1,52 +1,74 @@
-﻿#include <algorithms/NumberSqrt.h>
-#include <iostream>
-#include <algorithms/NumberMultiplication.h>
-#include "algorithms/Pollard.h"
-#include "algorithms/NumberDivision.h"
-#include "algorithms/NumberAddition.h"
+﻿#include "algorithms/Pollard.h"
 #include "algorithms/NumberGCD.h"
-#include "algorithms/NumberSubtraction.h"
-#include "algorithms/NumberRemainder.h"
+#include <iostream>
+#include <ctime>
 
 std::vector<Number> Pollard::run(Number a) {
-
-    return pollard_factorization(a);
-}
-
-std::vector<Number> Pollard::pollard_factorization(Number n) {
-
     std::vector<Number> factors;
-    Number x = Number(2);
-    Number y = Number(2);
-    Number d = Number(1);
 
-    if (!n.isPositive){
-        factors.push_back(n);
-        return factors;
-    }
-
-    while (d == 1) {
-        x = ((x * x) + Number(1)) % n;
-        y = ((y * y) + Number(1)) % n;
-        y = ((y * y) + Number(1)) % n;
-
-        d = NumberGCD::run(sub(x, y), n, UINT_MAX);
-    }
-
-    if (d != n) {
-        factors.push_back(d);
-        std::vector<Number> remainingFactors = pollard_factorization(n / d);
-        factors.insert(factors.end(), remainingFactors.begin(), remainingFactors.end());
-    } else {
-        factors.push_back(n);
+    while (factors.empty()){
+        pollard_factorization(a, factors);
     }
 
     return factors;
 }
 
-Number Pollard::sub(Number x, Number y) {
-    if (!(x - y).isPositive){
-        return y - x;
-    }else
-        return x - y;
+void Pollard::pollard_factorization(Number n, std::vector<Number>& factors) {
+    if (n == 1)
+        return;
+
+    if (is_prime(n)) {
+        factors.push_back(n);
+        return;
+    }
+
+    Number factor = pollard_rho(n);
+    pollard_factorization(factor, factors);
+    pollard_factorization(n / factor, factors);
 }
+
+bool Pollard::is_prime(Number n) {
+    if (n <= 1)
+        return false;
+
+    if (n == 2 || n == 3)
+        return true;
+
+    if (n % 2 == 0 || n % 3 == 0)
+        return false;
+
+    for (Number i = 5; i * i <= n; i = i + 6) {
+        if (n % i == 0 || n % (i + 2) == 0)
+            return false;
+    }
+
+    return true;
+}
+
+Number Pollard::pollard_rho(Number n) {
+    if (n == 1)
+        return n;
+
+    if (n % 2 == 0)
+        return 2;
+
+    srand(time(NULL));
+
+    Number x = rand() % (n - 2) + 2;
+    Number y = x;
+    Number c = rand() % (n - 1) + 1;
+    Number d = 1;
+
+    while (d == 1) {
+        x = (x * x + c) % n;
+        y = (y * y + c) % n;
+        y = (y * y + c) % n;
+        d = NumberGCD::run((x - y).findAbs(), n, UINT_MAX);
+
+        if (d == n)
+            return pollard_rho(n);
+    }
+
+    return d;
+}
+

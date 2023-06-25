@@ -9,7 +9,8 @@ public:
     static FieldPolynomial run(FieldPolynomial r1, FieldPolynomial r2);
 
 private:
-    static void inversion(FieldPolynomial r1, FieldPolynomial r2, FieldPolynomial x1, FieldPolynomial x2, FieldPolynomial y1, FieldPolynomial y2, FieldPolynomial &gcd, FieldPolynomial &a, FieldPolynomial &b);
+
+    static FieldPolynomial extendedEuclideanAlgorithm(const FieldPolynomial &a, const FieldPolynomial &b);
 };
 
 #endif //LAB_EUCLID_H
