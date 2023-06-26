@@ -1,8 +1,6 @@
 ﻿#include <algorithms/PolynomialMultiplication.h>
-#include <algorithms/PolynomialAddition.h>
 #include <algorithms/PolynomialSubtraction.h>
 #include <algorithms/PolynomialDivision.h>
-#include <algorithms/PolynomialRemainder.h>
 #include "utils/FieldPolynomial.h"
 #include "algorithms/Euclid.h"
 
@@ -34,6 +32,6 @@ FieldPolynomial Euclid::run(FieldPolynomial a, FieldPolynomial b)
     if (r0.getDegree() == 0 && r0.getCoefficient(0) == Number(1)) {
         return t0;
     } else {
-        throw std::runtime_error("The inverse does not exist.");
+        return r1;
     }
 }

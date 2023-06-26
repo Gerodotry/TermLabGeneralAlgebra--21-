@@ -91,7 +91,7 @@ long long FieldPolynomial::calculateU(long long R, long long module) {
 
 bool FieldPolynomial::isZero() {
     for (auto& term : terms) {
-        if (!term.coefficient.isZero()) {
+        if (term.coefficient.isZero()) {
             return false;
         }
     }
